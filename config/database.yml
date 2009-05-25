@@ -1,0 +1,25 @@
+development:
+  adapter: mysql
+  database: expert_development
+  username: root
+  password: 1
+  encoding: utf8
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
+
+test:
+  adapter: mysql
+  database: expert_test
+  username: root
+  password: 1
+  encoding: utf8
+  host: localhost
+   
+production:
+  adapter: mysql
+  database: expert
+  username: root
+  password: ci2Tahzi
+  encoding: utf8
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock

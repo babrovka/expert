@@ -1,0 +1,7 @@
+%h1 Редактирование профиля
+- form_for @user, :url => user_path(@user) do |f|
+  = f.error_messages
+  = render :partial => "form", :object => f
+  = f.submit "Сохранить"
+%br
+= link_to "Мой профиль", @user

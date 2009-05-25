@@ -1,0 +1,17 @@
+%h1 Вход в систему
+- form_for @user_session, :url => user_session_path do |f|
+  = f.error_messages
+  = f.label :email, "Ваш e-mail"
+  %br
+  = f.text_field :email, :class=>'text'
+  %br
+  = f.label :password, "пароль"
+  %br
+  = f.password_field :password, :class=>'text'
+  %br
+  = f.check_box :remember_me
+  = f.label :remember_me, "запомнить меня"
+  %br
+  %br
+  = f.submit "Войти"
+

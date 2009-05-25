@@ -1,0 +1,21 @@
+%p
+  %b e-mail:
+  =h @user.email
+%p
+  %b Заходы на сайт:
+  =h @user.login_count
+%p
+  %b Последний просмотр:
+  =h @user.last_request_at
+%p
+  %b Последний заход:
+  =h @user.last_login_at
+%p
+  %b Текущая сессия:
+  =h @user.current_login_at
+%p
+  %b последний ip:
+  =h @user.last_login_ip
+%p
+  %b текущий ip:
+  =h @user.current_login_ip
