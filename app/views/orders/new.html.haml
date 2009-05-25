@@ -1,0 +1,7 @@
+%h1 Новый заказ
+
+= error_messages_for :order
+
+- form_for(:order, :url => objects_url) do |f|
+  = render :partial => "form", :locals => {:f => f}
+  %p= submit_tag "Отправить"

@@ -1,0 +1,8 @@
+%p
+  %label{:for => "order_type"} Услуга:
+  = f.collection_select(:order_type, OrderType.find(:all), :id, :name)
+- f.fields_for :messages do |m_form|
+  %p
+    %label{:for => "message_body"} ваш комментарий:
+    %br
+    = m_form.text_area :body
