@@ -5,4 +5,5 @@ class Order < ActiveRecord::Base
   has_many :messages
   accepts_nested_attributes_for :messages
 
+  attr_protected :user_id, :status, :sum, :payment
 end

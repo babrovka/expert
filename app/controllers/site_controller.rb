@@ -9,4 +9,8 @@ class SiteController < ApplicationController
 
   end
 
+  def contacts
+
+  end
+
 end

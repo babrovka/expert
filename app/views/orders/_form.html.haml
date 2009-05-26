@@ -1,8 +1,21 @@
-%p
-  %label{:for => "order_type"} Услуга:
-  = f.collection_select(:order_type, OrderType.find(:all), :id, :name)
-- f.fields_for :messages do |m_form|
+- form_for(@order, :url => orders_url, :html=>{:multipart=>true}) do |order_form|
   %p
-    %label{:for => "message_body"} ваш комментарий:
-    %br
-    = m_form.text_area :body
+    %label{:for => "order_type_id"} Услуга:
+    = order_form.collection_select(:order_type_id, OrderType.find(:all), :id, :name)
+  %hr
+  - order_form.fields_for :messages do |msg|
+    .span-12
+      %p
+        %label{:for => "message_body"} ваш комментарий:
+        %br
+        = msg.text_area :body
+    %div{:class=>"span-8 last"}
+      %label Приложения
+      %br
+      %br
+      - 5.times do |index|
+        %p{:id=>"pfile_#{index}"}
+          = "#{index+1}. "
+          = file_field_tag "file_#{index}" 
+  .clear
+  %p= submit_tag "Отправить"
