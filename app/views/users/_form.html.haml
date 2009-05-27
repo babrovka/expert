@@ -2,6 +2,10 @@
 %br
 = form.text_field :email, :class=>'text'
 %br
+= form.label :name, "Ваше имя"
+%br
+= form.text_field :name, :class=>'text'
+%br
 = form.label :password, form.object.new_record? ? "пароль" : "Новый пароль"
 %br
 = form.password_field :password, :class=>'text'

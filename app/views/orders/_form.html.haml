@@ -9,13 +9,13 @@
         %label{:for => "message_body"} ваш комментарий:
         %br
         = msg.text_area :body
-    %div{:class=>"span-8 last"}
-      %label Приложения
+    %div{:class=>"span-10 last"}
+      %label Приложения:
       %br
       %br
-      - 5.times do |index|
-        %p{:id=>"pfile_#{index}"}
-          = "#{index+1}. "
-          = file_field_tag "file_#{index}" 
+      - msg.fields_for :documents do |doc|
+        %p
+          = "#{msg.object.documents.index(doc.object)+1}. "
+          = doc.file_field :file
   .clear
   %p= submit_tag "Отправить"

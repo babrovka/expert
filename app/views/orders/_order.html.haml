@@ -1,0 +1,11 @@
+.orderhead
+  .span-4
+    = "Заказ №#{order.id}"
+  .span-12
+    %b Статус: 
+    %b.green= order.status.name
+    \|
+    %b.green= order.payment ? "Оплачен" : "Не оплачен"
+  .clear
+%table.messages
+  = render :partial=>'orders/message', :collection=> order.messages

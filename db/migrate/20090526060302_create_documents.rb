@@ -1,6 +1,6 @@
-class CreateAttachments < ActiveRecord::Migration
+class CreateDocuments < ActiveRecord::Migration
   def self.up
-    create_table :attachments do |t|
+    create_table :documents do |t|
       t.integer :message_id
       t.string :file_file_name
       t.string :file_content_type
@@ -12,6 +12,6 @@ class CreateAttachments < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :attachments
+    drop_table :documents
   end
 end

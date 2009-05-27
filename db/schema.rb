@@ -9,9 +9,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090526060302) do
+ActiveRecord::Schema.define(:version => 20090527093504) do
 
-  create_table "attachments", :force => true do |t|
+  create_table "documents", :force => true do |t|
     t.integer  "message_id"
     t.string   "file_file_name"
     t.string   "file_content_type"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20090526060302) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "order_types", :force => true do |t|
@@ -39,9 +40,15 @@ ActiveRecord::Schema.define(:version => 20090526060302) do
   create_table "orders", :force => true do |t|
     t.integer  "order_type_id"
     t.integer  "user_id"
-    t.string   "status"
     t.boolean  "payment"
     t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status_id"
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20090526060302) do
     t.string   "current_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
 end

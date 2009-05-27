@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
       flash[:notice] = "Изменения сохранены!"
-      redirect_to user_url(@user)
+      redirect_to account_url
     else
       render :action => :edit
     end
@@ -43,5 +43,6 @@ class UsersController < ApplicationController
 
   def account
     @user = @current_user
+    @orders=@user.orders
   end
 end

@@ -1,7 +1,13 @@
-%h1 Редактирование профиля
+%h1 Настройки
 - form_for @user, :url => user_path(@user) do |f|
   = f.error_messages
-  = render :partial => "form", :object => f
+  = f.label :name, "Ваше имя"
+  %br
+  = f.text_field :name, :class=>'text'
+  %br
+  = f.label :password, f.object.new_record? ? "пароль" : "Новый пароль"
+  %br
+  = f.password_field :password, :class=>'text'
+  %br
   = f.submit "Сохранить"
-%br
-= link_to "Мой профиль", @user
+  %br

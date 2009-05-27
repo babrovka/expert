@@ -1,4 +1,7 @@
 class Message < ActiveRecord::Base
   belongs_to :order
-  has_many :attachments
+  belongs_to :user
+  has_many :documents
+  accepts_nested_attributes_for :documents
+  default_scope :order=>'created_at desc'
 end

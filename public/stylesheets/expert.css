@@ -7,3 +7,25 @@ ul.inline_menu li {display:inline; margin-right:2em;}
 #go_order {background:#aadfaa; padding:0.7em; text-align:center; font-size:150%; margin-top:0.5em;}
 
 .top5 {margin-top:6em;}
+
+.orderhead {background:#E5ECF9; padding:0.5em; font-size:150%; border: 1px solid #7f7f7f;}
+.orderhead b {font-size:75%;}
+.orderhead b.green {color:#397339;}
+
+a.tiny {font-size:70%;}
+
+.files a
+{
+  padding:2px 0 2px 22px;
+  margin: 2px 0;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-image: url(/images/icons/file.png); 
+}
+
+.files a.pdf   { background-image: url(/images/icons/pdf.png); }  
+.files a.doc   { background-image: url(/images/icons/doc.png); }  
+.files a.xls   { background-image: url(/images/icons/xls.png); }  
+
+table.messages {border-left: 1px solid #7f7f7f;}
+table.messages tr td {border-bottom: 1px solid #7f7f7f;border-right: 1px solid #7f7f7f;}
