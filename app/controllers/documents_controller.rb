@@ -6,7 +6,7 @@ class DocumentsController < ApplicationController
      doc=Document.find(params[:id])
      if doc.message.order.user==current_user || current_user.admin?
         #Set the X-Accel-Redirect header with the path relative to the /downloads location in nginx
-        response.headers['X-Accel-Redirect'] = "/downloads/#{doc.file.url}"
+        response.headers['X-Accel-Redirect'] = "/#{doc.file.url}"
 	#Set the Content-Type header as nginx won't change it and Rails will send text/html
 	response.headers['Content-Type'] = 'application/octet-stream'
 	#If you want to force download, set the Content-Disposition header (which nginx won't change)
