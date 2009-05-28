@@ -13,9 +13,12 @@
       %label Приложения:
       %br
       %br
-      - msg.fields_for :documents do |doc|
-        %p
-          = "#{msg.object.documents.index(doc.object)+1}. "
-          = doc.file_field :file
+      #uploads
+        - msg.fields_for :documents do |doc|
+          - ind=msg.object.documents.index(doc.object)+1
+          %p{:class=>'upload', :id=>"upload_#{ind}"}
+            = "#{ind}. "
+            = doc.file_field :file
+      = link_to "еще файл", "javascript:;", :id=>"more_files"
   .clear
   %p= submit_tag "Отправить"

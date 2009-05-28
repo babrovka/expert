@@ -1,3 +1,5 @@
+- content_for :head do
+  = javascript_include_tag 'new_order'
 %h1 Новый заказ
 = error_messages_for :order
 = render :partial => "form"
