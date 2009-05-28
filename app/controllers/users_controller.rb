@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
  before_filter :require_no_user, :only => [:new, :create]
  before_filter :require_user, :only => [:account, :edit, :update]
+ before_filter :require_admin, :only => [:index]
 
   def new
     @user = User.new
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users=User.find(:all)
+    @users=User.paginate(:page=>params[:page], :per_page=>20)
   end
 
   def show
@@ -28,12 +29,20 @@ class UsersController < ApplicationController
 
 
   def edit
-    @user = @current_user
+    if current_user.admin?
+      @user=User.find(params[:id])
+    else
+      @user = @current_user
+    end
   end
 
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
+      if current_user.supervisor?
+        @user.admin=params[:user][:admin]
+        @user.save
+      end
       flash[:notice] = "Изменения сохранены!"
       redirect_to account_url
     else
@@ -42,7 +51,13 @@ class UsersController < ApplicationController
   end
 
   def account
+    @status=params[:status]
+    if @status=="old"
+      conditions='status_id>3'
+    else
+      conditions='status_id<4'
+    end
     @user = @current_user
-    @orders=@user.orders
+    @orders=@user.orders.find(:all, :conditions=>conditions)
   end
 end

@@ -2,5 +2,6 @@
   Кабинет пользователя
   %b= @user.email
   = link_to "Настройки", edit_user_url(@user), :class=>'tiny'
+= render :partial=>'menu'
 = render :partial=>'orders/order', :collection=>@orders
 = link_to "Новый заказ", new_order_url

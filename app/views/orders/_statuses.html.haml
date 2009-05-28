@@ -1,0 +1,6 @@
+%div{:class=>"statuses", :id=>"statuses_#{id}"}
+  %ul.none
+    - @statuses.each do |status|
+      %li
+        = link_to status.name, change_status_order_url(id, :status=>status.id)
+

@@ -1,0 +1,16 @@
+%tr
+  %td{:width=>"10%"}
+    %b= link_to "Заказ №#{ordermin.id}", order_url(ordermin)
+  %td{:width=>"20%"}
+    = ordermin.user.name
+    %br
+    = ordermin.user.email
+  %td{:width=>"20%"}
+    = ordermin.status.name
+    %br
+    = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{ordermin.id}", :class=>"toggle_status" 
+    = render :partial=>'statuses', :locals=>{:id=>ordermin.id}
+  %td{:width=>"20%"}
+    = ordermin.payment ? "Оплачен" : "Не оплачен"
+  %td{:width=>"30%"}
+    = ordermin.messages[0].body if ordermin.messages

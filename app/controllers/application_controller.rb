@@ -32,6 +32,14 @@ class ApplicationController < ActionController::Base
         return false
       end
     end
+    
+
+    def require_admin
+      unless current_user && current_user.admin?
+        redirect_to :root
+        return false
+      end
+    end
 
     def require_no_user
       if current_user

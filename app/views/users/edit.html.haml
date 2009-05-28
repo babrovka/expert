@@ -9,5 +9,10 @@
   %br
   = f.password_field :password, :class=>'text'
   %br
+  - if current_user.supervisor?
+    = f.check_box :admin
+    Права администратора
+    %br
+  %br
   = f.submit "Сохранить"
   %br

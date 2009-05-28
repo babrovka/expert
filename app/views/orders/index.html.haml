@@ -1,0 +1,6 @@
+- content_for :head do
+  = javascript_include_tag 'orders'
+= render :partial=>'menu'
+%table.orders
+  = render :partial=>'ordermin', :collection=>@orders
+= will_paginate @orders

@@ -1,9 +1,13 @@
-%h1 Уже меняют планету
-%table
-  %tr
+%h1 Пользователи системы
+%table.users
   - @users.each do |user|
     %tr
-      %td= link_to user.login, user
-      %td=h user.login_count
-%br
-= link_to 'Я тоже хочу!', new_user_path unless current_user
+      %td{:width=>'20%'}= link_to user.name, user
+      %td{:width=>'20%'}= link_to user.email, user
+      %td{:width=>'20%'}
+        - if user.admin?
+          администратор
+      %td{:width=>'20%'}
+        = link_to "настройка", edit_user_url(user)
+      %td{:width=>'20%'}
+= will_paginate @users

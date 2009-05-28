@@ -3,19 +3,25 @@
 s1:
   id: 1
   name: Новый
+  menu_name: Новые
 
 s2:
   id: 2
   name: В обработке
+  menu_name: В обработке
 
 s3:
   id: 3
   name: Необходимо уточнение
+  menu_name: Ожидающие уточнения
 
 s4:
   id: 4
   name: Отменен 
+  menu_name: Отмененные
 
 s5:
   id: 5
   name: Выполнен
+  menu_name: Выполненные
+

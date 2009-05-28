@@ -1,0 +1,11 @@
+%ul.submenu
+  %li
+    - if @status!="old"
+      %span Текущие
+    - else
+      = link_to "Текущие", account_url
+  %li
+    - if @status=="old"
+      %span Архив
+    - else
+      = link_to "Архив", account_url(:status=>"old")

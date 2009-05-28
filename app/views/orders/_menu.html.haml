@@ -1,0 +1,8 @@
+%ul.submenu
+  - @statuses.each do |status|
+    %li
+      - if @status==status
+        %span= status.menu_name
+      - else
+        = link_to status.menu_name, orders_path(:status=>status.id)
+  
