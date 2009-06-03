@@ -1,11 +1,16 @@
 .orderhead
   .span-4
-    = "Заказ №#{order.id}"
-  .span-12
+    = link_to "Заказ №#{order.id}", order_url(order)
+  .span-8
     %b Статус: 
     %b.green= order.status.name
-    \|
-    %b.green= order.payment ? "Оплачен" : "Не оплачен"
+  %div{:class=>'span-8 last'}
+    %b Стоимость:
+    %b.green= order.price 
+    %b рублей (
+    %b.green= order.payment ? "оплачен)" : "не оплачен)"
   .clear
 %table.messages
-  = render :partial=>'orders/message', :collection=> order.messages
+  - order.messages.each do |message|
+    = render :partial=>'orders/message', :object=>message unless message.new_record?
+

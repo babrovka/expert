@@ -35,6 +35,20 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+     :tls => true,
+     :address  => "smtp.gmail.com",
+     :port  => 25,
+     :domain  => "gmail.com",
+     :user_name  => "noreply.ekka@gmail.com",
+     :password  => "ekkaekka",
+     :authentication  => :plain
+ }
+  
+  config.action_mailer.default_charset = "utf-8" 
+
+
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de

@@ -19,7 +19,7 @@
               = link_to "О проекте", "/about"
             %li
               = link_to "Контакты", "/contacts"
-          - if current_user && current_user.admin?
+          - if current_user && (current_user.admin? || current_user.supervisor?)
             = render :partial=>'site/admin_menu'
         %div{:class=>'span-6 last prepend-top'}
           #loginbox

@@ -1,0 +1,20 @@
+- form_for(@message, :url => {:controller=>"messages", :action=>:create}, :html=>{:multipart=>true}) do |msg|
+  .span-12
+    = msg.hidden_field :order_id
+    %p
+      %label{:for => "message_body"} текст сообщения:
+      %br
+      = msg.text_area :body
+  %div{:class=>"span-10 last"}
+    %label Приложения:
+    %br
+    %br
+    #uploads
+      - msg.fields_for :documents do |doc|
+        - ind=msg.object.documents.index(doc.object)+1
+        %p{:class=>'upload', :id=>"upload_#{ind}"}
+          = "#{ind}. "
+          = doc.file_field :file
+    = link_to "еще файл", "javascript:;", :id=>"more_files"
+  .clear
+  %p= submit_tag "Отправить"

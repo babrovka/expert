@@ -2,7 +2,7 @@
   %td{:width=>'20%', :align=>'center', :valign=>'middle'}
     = message.user ? message.user.name : message.author
     %br
-    = Russian::strftime(message.updated_at, "%d %B %Y %H:%M")
+    = to_russian_date(message.updated_at)
   %td{:width=>'50%'}
     = message.body
   %td{:width=>'30%', :valign=>'middle'}

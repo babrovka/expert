@@ -1,7 +1,7 @@
 - form_for(@order, :url => orders_url, :html=>{:multipart=>true}) do |order_form|
   %p
     %label{:for => "order_type_id"} Услуга:
-    = order_form.collection_select(:order_type_id, OrderType.find(:all), :id, :name)
+    = order_form.collection_select(:order_type_id, OrderType.find(:all), :id, :name_with_price)
   %hr
   - order_form.fields_for :messages do |msg|
     .span-12

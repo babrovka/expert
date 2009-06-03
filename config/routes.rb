@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
   map.resources :orders, :member=>{:change_status=>:get}
-
+  map.resources :messages
   map.resource :user_session
   
   map.account '/account', :controller=>'users', :action=>'account'

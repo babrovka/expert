@@ -11,6 +11,9 @@
     = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{ordermin.id}", :class=>"toggle_status" 
     = render :partial=>'statuses', :locals=>{:id=>ordermin.id}
   %td{:width=>"20%"}
-    = ordermin.payment ? "Оплачен" : "Не оплачен"
+    Стоимость:
+    = ordermin.price 
+    рублей (
+    = ordermin.payment ? "оплачен)" : "не оплачен)"
   %td{:width=>"30%"}
     = ordermin.messages[0].body if ordermin.messages

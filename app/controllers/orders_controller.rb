@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   before_filter :require_user
-  before_filter :require_admin, :except=>[:new, :create]
+  before_filter :require_admin, :except=>[:new, :create, :show]
 
   def new
      @order=Order.new
@@ -13,9 +13,12 @@ class OrdersController < ApplicationController
     if params_posted?(:order)
        @order=Order.new(params[:order])
        @order.user=current_user
+       @order.price=@order.order_type.price
        @order.status_id=1
        @order.messages[0].user=current_user
        if @order.save 
+          OrderMailer.deliver_inform(@order, 'kukhl@mail.ru')
+          OrderMailer.deliver_confirm(@order) unless @order.user.email.empty?
           flash[:notice]="Заказ создан!"
           redirect_to account_url
        else
@@ -39,6 +42,13 @@ class OrdersController < ApplicationController
 
   def show
     @order=Order.find(params[:id])
+    if @order.user==current_user || current_user.admin?
+      @show_message=params[:new_message]
+      @message=@order.messages.build
+      5.times {@message.documents.build}
+    else
+      redirect_to account_url
+    end
   end
 
   def change_status
