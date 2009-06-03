@@ -19,7 +19,7 @@ class OrderMailer < ActionMailer::Base
   end
 
   def message(message, sent_at = Time.now)
-    subject    "Заказ №#{message.order.id} принят!"
+    subject    "Новое сообщение по заказу №#{message.order.id}!"
     recipients message.order.user.email
     from       'noreply.ekka@gmail.com'
     sent_on    sent_at
