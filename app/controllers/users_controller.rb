@@ -52,6 +52,7 @@ class UsersController < ApplicationController
 
   def account
     @status=params[:status]
+    @statuses=Status.all
     if @status=="old"
       conditions='status_id>3'
     else
