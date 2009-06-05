@@ -5,7 +5,7 @@
     %b Статус: 
     %b.green= order.status.name
     = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{order.id}", :class=>"toggle_status", :style=>"font-size:75%;" 
-    = render :partial=>'statuses', :locals=>{:id=>order.id}
+    = render :partial=>'orders/statuses', :locals=>{:id=>order.id}
   %div{:class=>'span-8 last'}
     %b Стоимость:
     %b.green= order.price 
