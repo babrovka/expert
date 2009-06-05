@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_filter :require_admin, :except=>[:new, :create, :show]
 
   def new
+     @title="Новый заказ"
      @order=Order.new
      @order.messages.build
      5.times {@order.messages[0].documents.build}
@@ -31,6 +32,8 @@ class OrdersController < ApplicationController
    
 
   def index
+     @title="Заказы"
+
      if params[:status]
        @status=Status.find(params[:status].to_i)
        conditions=['status_id=?',@status.id]
@@ -45,6 +48,7 @@ class OrdersController < ApplicationController
 
   def show
     @order=Order.find(params[:id])
+    @title="Заказ №#{@order.id}"
     @statuses=Status.all
     if @order.user==current_user || current_user.admin?
       @show_message=params[:new_message]

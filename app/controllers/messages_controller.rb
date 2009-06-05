@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   before_filter :require_admin, :only=>[:edit, :update, :destroy]
   
   def new
+    @title="Новое сообщение"
     @order=Order.find(params[:order_id])
     if @order.user==current_user || current_user.admin?
       @show_message=params[:new_message]
@@ -36,6 +37,7 @@ class MessagesController < ApplicationController
   end
 
   def edit
+     @title="Редактирование сообщения"
      @message=Message.find(params[:id])
      5.times {@message.documents.build}
      redirect_to order_url(@message.order) unless @message.user.admin?

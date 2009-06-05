@@ -5,6 +5,8 @@ class UsersController < ApplicationController
  before_filter :require_admin, :only => [:index]
 
   def new
+    @title="Регистрация"
+
     @user = User.new
   end
 
@@ -20,6 +22,7 @@ class UsersController < ApplicationController
 
 
   def index
+    @title="Пользователи"
     @users=User.paginate(:page=>params[:page], :per_page=>20)
   end
 
@@ -29,6 +32,7 @@ class UsersController < ApplicationController
 
 
   def edit
+    @title="Настройка пользователя"
     if current_user.admin?
       @user=User.find(params[:id])
     else
@@ -51,6 +55,7 @@ class UsersController < ApplicationController
   end
 
   def account
+    @title="Личный кабинет"
     @status=params[:status]
     @statuses=Status.all
     if @status=="old"

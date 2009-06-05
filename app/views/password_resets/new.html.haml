@@ -1,0 +1,9 @@
+%h1 Восстановление пароля
+Пожалуйста, укажите ваш e-mail:
+%br
+- form_tag password_resets_path do
+  %br
+  = text_field_tag "email"
+  %br
+  %br
+  = submit_tag "Получить письмо"

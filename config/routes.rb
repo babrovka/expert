@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orders, :member=>{:change_status=>:get}
   map.resources :messages
   map.resources :order_types
-
+  map.resources :password_resets
   map.resource :user_session
   
   map.account '/account', :controller=>'users', :action=>'account'
