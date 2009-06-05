@@ -1,7 +1,8 @@
 - content_for :head do
   = javascript_include_tag 'new_order'
+  = javascript_include_tag 'orders'
 %h2= @title
 = render @order
 = link_to "Новое сообщение", new_message_url(:order_id=>@order.id), :id=>"new_message_#{@order.id}", :class=>"new_message"
 %div{:id=>"new_message_form_#{@order.id}", :class=>@show_message ? "" : "hide"}
-  = render :partial=>"messages/form"
+  = render :partial=>"messages/form", :locals=>{:url=>{:controller=>"messages", :action=>:create}, :html=>{:multipart=>true}}

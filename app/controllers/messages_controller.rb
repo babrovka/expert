@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   before_filter :require_user
+  before_filter :require_admin, :only=>[:edit, :update, :destroy]
   
   def new
     @order=Order.find(params[:order_id])
@@ -34,4 +35,39 @@ class MessagesController < ApplicationController
     end
   end
 
+  def edit
+     @message=Message.find(params[:id])
+     5.times {@message.documents.build}
+     redirect_to order_url(@message.order) unless @message.user.admin?
+  end
+
+  def update
+    if params[:message]
+      @message=Message.find(params[:id])
+      if @message.user.admin?      
+        if @message.update_attributes(params[:message])
+            flash[:notice]="Сообщение сохранено!"
+            redirect_to order_url(@message.order_id)
+         else
+            flash[:notice]="Ошибка создания сообщения!"
+            redirect_to :back
+         end
+       else
+          redirect_to account_url
+       end
+    end
+  end
+
+  def destroy
+      @message=Message.find(params[:id])
+      if @message.user.admin?      
+         if @message.destroy
+            flash[:notice]="Сообщение удалено!"
+            redirect_to :back
+         else
+            flash[:notice]="Ошибка удаления сообщения!"
+            redirect_to :back
+         end
+      end
+  end
 end

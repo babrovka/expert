@@ -1,5 +1,9 @@
 #content {min-height:500px;}
 
+.order_info {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.type_active {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.type_blocked {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+
 ul.inline_menu {list-style-type:none; font-size:200%;}
 ul.inline_menu li {display:inline; margin-right:2em;}
 

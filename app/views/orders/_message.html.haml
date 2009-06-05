@@ -3,6 +3,10 @@
     = message.user ? message.user.name : message.author
     %br
     = to_russian_date(message.updated_at)
+    - if current_user.admin? && message.user.admin?
+      %br
+      = link_to "Редактировать", edit_message_url(message)
+      = link_to "Удалить", message_url(message), :confirm => 'Вы уверены?', :method => :delete
   %td{:width=>'50%'}
     = message.body
   %td{:width=>'30%', :valign=>'middle'}

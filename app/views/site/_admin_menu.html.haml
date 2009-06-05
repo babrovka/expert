@@ -1,6 +1,7 @@
 %ul.submenu
   %li
-    = link_to "Заказы", orders_url
+    = link_to "Заказы", orders_url(:status=>1)
   %li
     = link_to "Пользователи", users_url
-
+  %li
+    = link_to "Услуги", order_types_url

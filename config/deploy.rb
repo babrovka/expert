@@ -46,8 +46,21 @@ end
 # end
 #end
 
+namespace :assets do
+  task :symlink, :roles => :app do
+    assets.create_dirs
+    run <<-CMD
+      rm -rf #{release_path}/downloads &&
+      ln -nfs #{shared_path}/downloads #{release_path}/downloads
+    CMD
+  end
+  task :create_dirs, :roles => :app do
+    run "mkdir -p #{release_path}/downloads"
+  end
+end
 
 
+after "deploy:update_code" , "assets:symlink"
 after "deploy:update_code", :fix_script_perms
 
 

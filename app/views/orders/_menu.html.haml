@@ -5,4 +5,9 @@
         %span= status.menu_name
       - else
         = link_to status.menu_name, orders_path(:status=>status.id)
+  %li
+    - if @status
+      = link_to "Все", orders_path
+    - else
+      %span Все
   

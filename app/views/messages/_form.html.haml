@@ -1,4 +1,4 @@
-- form_for(@message, :url => {:controller=>"messages", :action=>:create}, :html=>{:multipart=>true}) do |msg|
+- form_for(@message, :url => url, :html=>html) do |msg|
   .span-12
     = msg.hidden_field :order_id
     %p
@@ -14,7 +14,10 @@
         - ind=msg.object.documents.index(doc.object)+1
         %p{:class=>'upload', :id=>"upload_#{ind}"}
           = "#{ind}. "
-          = doc.file_field :file
+          - if doc.object.new_record?
+            = doc.file_field :file
+          - else
+            = link_to doc.object.file_file_name, {:controller=>:documents, :action=>:download, :id=>doc.object.id}
     = link_to "еще файл", "javascript:;", :id=>"more_files"
   .clear
   %p= submit_tag "Отправить"

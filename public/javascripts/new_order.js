@@ -16,6 +16,14 @@ $(document).ready(function() {
       return false;
    });
 
+   $("#order_order_type_id").change(function () {
+       var id=$("#order_order_type_id").val();
+       $(".order_info").hide();
+       $("#order_info_"+id).show();
+       if ($("#order_info_"+id).hasClass("type_blocked")) {$("#order_body").hide();} else {$("#order_body").show();}
+       
+     });
+
 
 });
 

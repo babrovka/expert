@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
      @order=Order.new
      @order.messages.build
      5.times {@order.messages[0].documents.build}
+     @default_type=OrderType.active.find(:first)
   end
 
   def create
@@ -32,16 +33,19 @@ class OrdersController < ApplicationController
   def index
      if params[:status]
        @status=Status.find(params[:status].to_i)
+       conditions=['status_id=?',@status.id]
      else
-       @status=Status.find(1)
+       conditions=''
      end
-    @orders=Order.paginate(:conditions=>['status_id=?',@status.id], :page=>params[:page], :per_page=>20)
+    
+    @orders=Order.paginate(:conditions=>conditions, :page=>params[:page], :per_page=>20)
     @statuses=Status.all
-    @title="Заказы: #{@status.menu_name}"
+    @title="Заказы: #{@status.menu_name if @status}"
   end
 
   def show
     @order=Order.find(params[:id])
+    @statuses=Status.all
     if @order.user==current_user || current_user.admin?
       @show_message=params[:new_message]
       @message=@order.messages.build

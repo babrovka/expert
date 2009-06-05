@@ -1,0 +1,15 @@
+%tr
+  %td
+    = order_type.name
+  %td
+    = order_type.price
+  %td
+    = order_type.info
+  %td
+    = order_type.active ? "доступна" : "не доступна"
+  %td
+    = link_to 'Просмотр', object_path(order_type)
+    |
+    = link_to 'Изменить', edit_object_path(order_type)
+    |
+    = link_to 'Удалить', object_path(order_type), :confirm => 'Вы уверены?', :method => :delete
