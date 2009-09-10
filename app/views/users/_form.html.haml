@@ -1,6 +1,7 @@
 = form.label :email, "Ваш e-mail"
 %br
 = form.text_field :email, :class=>'text'
+= errors_for(@user, :email)
 %br
 = form.label :name, "Ваше имя"
 %br
@@ -9,4 +10,5 @@
 = form.label :password, form.object.new_record? ? "пароль" : "Новый пароль"
 %br
 = form.password_field :password, :class=>'text'
+= errors_for(@user, :password)
 %br

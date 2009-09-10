@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   attr_protected :admin
 
   acts_as_authentic do |o|
-    o.validate_password_field = false
+    o.validates_format_of_email_field_options={:with => Authlogic::Regex.email, :message=>"необходим правильный электронный адрес"}
   end
 
   def admin?

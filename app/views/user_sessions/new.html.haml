@@ -1,6 +1,8 @@
 %h1 Вход в систему
 - form_for @user_session, :url => user_session_path do |f|
-  = f.error_messages
+  - if @user_session.errors && !@user_session.errors.empty?
+    .error
+      логин или пароль указаны неверно. попробуйте еще раз или воспользуйтесь функцией напоминания пароля.
   = f.label :email, "Ваш e-mail"
   %br
   = f.text_field :email, :class=>'text'

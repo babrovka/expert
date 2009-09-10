@@ -1,7 +1,7 @@
 %h1 Смена пароля
 - form_for @user, :url => password_reset_path, :method => :put do |f|
   = f.error_messages
-  = f.label :password
+  %label Пароль
   %br
   = f.password_field :password
   %br
