@@ -5,6 +5,11 @@ module ApplicationHelper
     Russian::strftime(date, "%d %B %Y %H:%M")
   end
 
+  def short_date(date)
+    date.strftime("%d.%m.%Y")
+  end
+
+
 
  def errors_for(object, method)
    if object

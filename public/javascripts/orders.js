@@ -5,5 +5,11 @@ $(document).ready(function() {
       $("#statuses_"+id).toggle();
    });
 
+   $('a.show_payments').click(function () { 
+      var id=this.id.split('_')[2]
+      $("#payments_"+id).toggle();
+   });
+
+
 });
 

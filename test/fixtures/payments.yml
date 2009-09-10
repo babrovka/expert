@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  order_id: 1
+  sum: 1
+  payment_date: 2009-09-10 20:07:11
+  comment: MyString
+
+two:
+  order_id: 1
+  sum: 1
+  payment_date: 2009-09-10 20:07:11
+  comment: MyString

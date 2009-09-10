@@ -1,0 +1,18 @@
+%div{:id=>"payments_#{order.id}", :class=>'payments hide'}
+  Платежи:
+  %table
+    - order.payments.each do |payment|
+      %tr
+        %td
+          = short_date(payment.payment_date)
+        %td
+          = payment.sum
+          р.
+        %td
+          = payment.comment
+        %td
+          - if current_user.admin?
+            = link_to "изменить", edit_payment_url(payment)
+            %br
+            = link_to "удалить", payment_url(payment), :method=>:delete, :confirm=>"Удалить платеж?"
+        

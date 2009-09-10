@@ -1,5 +1,7 @@
 #content {min-height:500px;}
 
+.red {color:red;}
+
 .order_info {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
 .type_active {background:#E6EFC2;color:#264409;border-color:#C6D880;}
 .type_blocked {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
@@ -50,4 +52,6 @@ table.orders td {padding:1em;}
 table.users tr {width:50%;}
 table.users tr td {border:1px solid #9797bf;}
 table.users td {padding:1em;}
+
+.payments {font-size:0.8em; }
 

@@ -20,6 +20,16 @@ class OrderMailer < ActionMailer::Base
     body       :order=>order, :date=>to_russian_date(order.created_at)
   end
 
+  def delivery(order_delivery, email, sent_at = Time.now)
+    subject    "Запрос на доставку по заказу №#{order_delivery.order_id}!"
+    recipients email
+    from       'noreply.ekka@gmail.com'
+    sent_on    sent_at
+    
+    body       :delivery=>order_delivery, :date=>to_russian_date(order_delivery.created_at)
+  end
+
+
   def message(message, sent_at = Time.now)
     subject    "Новое сообщение по заказу №#{message.order.id}!"
     recipients message.order.user.email

@@ -1,0 +1,17 @@
+- form_for(@payment) do |form|
+  .span-12
+    = form.hidden_field :order_id
+    %p
+      %label{:for => "payment_sum"} Сумма:
+      %br
+      = form.text_field :sum, :size=>10
+    %p
+      %label{:for => "payment_payment_date"} Дата:
+      %br
+      = form.date_select :payment_date
+    %p
+      %label{:for => "payment_comment"} Комментарий:
+      %br
+      = form.text_field :comment
+  .clear
+  %p= submit_tag "Сохранить"

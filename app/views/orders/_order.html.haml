@@ -10,8 +10,16 @@
   %div{:class=>'span-8 last'}
     %b Стоимость:
     %b.green= order.price 
-    %b рублей (
-    %b.green= order.payment ? "оплачен)" : "не оплачен)"
+    %b рублей
+    %br
+    = link_to "оплачено", "javascript:;", :id=>"show_payments_#{order.id}", :class=>"show_payments"
+    \:
+    %b{ :class=>order.paid_for? ? "green" : "red" }= order.payments.sum(:sum)
+    %b рублей
+    = render :partial=>'payments/payments', :locals=>{:order=>order}
+    - if current_user.admin?
+      %br
+      = link_to "ввести платеж", new_payment_url(:order_id=>order.id), :class=>'tiny'
   .clear
 %table.messages
   - order.messages.each do |message|

@@ -1,7 +1,7 @@
 %tr
   %td{:width=>"10%"}
     %b= link_to "Заказ №#{ordermin.id}", order_url(ordermin)
-  %td{:width=>"20%"}
+  %td{:width=>"15%"}
     = ordermin.user.name
     %br
     = ordermin.user.email
@@ -10,10 +10,14 @@
     %br
     = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{ordermin.id}", :class=>"toggle_status" 
     = render :partial=>'statuses', :locals=>{:id=>ordermin.id}
-  %td{:width=>"20%"}
-    Стоимость:
+  %td{:width=>"15%"}
     = ordermin.price 
     рублей (
     = ordermin.payment ? "оплачен)" : "не оплачен)"
-  %td{:width=>"30%"}
+  %td{:width=>"35%"}
     = ordermin.messages[0].body if ordermin.messages
+  %td.center{:width=>"5%"}
+    - if ordermin.delivery
+      = image_tag('mail_arrow.png')
+      доставка
+

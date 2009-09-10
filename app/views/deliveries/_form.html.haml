@@ -1,0 +1,23 @@
+- form_for(@delivery) do |dlv|
+  .span-12
+    = dlv.hidden_field :order_id
+    %p
+      %label{:for => "delivery_zip"} Индекс:
+      %br
+      = dlv.text_field :zip, :size=>10
+    %p
+      %label{:for => "delivery_city"} Город:
+      %br
+      = dlv.text_field :city
+      = errors_for(@delivery, :city)
+    %p
+      %label{:for => "delivery_address"} Адрес:
+      %br
+      = dlv.text_field :address
+      = errors_for(@delivery, :address)
+    %p
+      %label{:for => "delivery_comment"} Комментарий:
+      %br
+      = dlv.text_field :comment
+  .clear
+  %p= submit_tag "Отправить"

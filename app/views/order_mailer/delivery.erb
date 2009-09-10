@@ -1,0 +1,9 @@
+Поступил запрос на доставку документов по заказу №<%= @delivery.order_id %> от <%= @date %>!
+
+Покупатель: <%= @delivery.order.user.name %>
+e-mail: <%= @delivery.order.user.email %>
+
+Индекс: <%= @delivery.zip %> 
+Город: <%= @delivery.city %> 
+Адрес: <%= @delivery.address %> 
+Комментарий: <%= @delivery.comment %> 
