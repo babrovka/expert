@@ -15,7 +15,7 @@ set :scm_verbose, true
 # via the :deploy_to variable:
 
 set :deploy_to, "/var/www/apps/#{application}"
-#set :deploy_via, :remote_cache
+set :deploy_via, :remote_cache
 default_run_options[:pty] = true
 
 # If you aren't using Subversion to manage your source code, specify
