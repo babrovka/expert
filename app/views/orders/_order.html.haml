@@ -24,4 +24,20 @@
 %table.messages
   - order.messages.each do |message|
     = render :partial=>'orders/message', :object=>message unless message.new_record?
+.span-17
+  &nbsp;
+.span-6
+  - if order.delivery
+    = image_tag('mail_arrow.png')
+    Заказана доставка документов по адресу:
+    = order.delivery.full_address
+    - if current_user.admin?
+      %br
+      = link_to "Изменить", edit_delivery_url(order.delivery)
+      = link_to "Удалить", delivery_url(order.delivery), :method=>:delete, :confirm=>"Удалить запрос на доставку?"
+  - else
+    = image_tag('mail_arrow.png')
+    = link_to "Заказать доставку документов", new_delivery_url(:order_id=>order.id), :id=>"new_delivery_#{order.id}", :class=>"new_delivery"
+.clear
+
 

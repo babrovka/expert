@@ -7,7 +7,9 @@
 = render :partial=>'menu'
 - @orders.each do |order|
   = render order
-  = link_to "Новое сообщение", order_url(order, :new_message=>true)
+  %hr
+  %br
+  %br
 %br
 %br
 = link_to "Новый заказ", new_order_url

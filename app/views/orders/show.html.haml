@@ -3,21 +3,7 @@
   = javascript_include_tag 'orders'
 %h2= @title
 = render @order
-.span-17
-  = link_to "Новое сообщение", new_message_url(:order_id=>@order.id), :id=>"new_message_#{@order.id}", :class=>"new_message"
-.span-6
-  - if @order.delivery
-    = image_tag('mail_arrow.png')
-    Заказана доставка документов по адресу:
-    = @order.delivery.full_address
-    - if current_user.admin?
-      %br
-      = link_to "Изменить", edit_delivery_url(@order.delivery)
-      = link_to "Удалить", delivery_url(@order.delivery), :method=>:delete, :confirm=>"Удалить запрос на доставку?"
-  - else
-    = image_tag('mail_arrow.png')
-    = link_to "Заказать доставку документов", new_delivery_url(:order_id=>@order.id), :id=>"new_delivery_#{@order.id}", :class=>"new_delivery"
-.clear
+= link_to "Новое сообщение", new_message_url(:order_id=>@order.id), :id=>"new_message_#{@order.id}", :class=>"new_message"
 %div{:id=>"new_message_form_#{@order.id}", :class=>@show_message ? "" : "hide"}
   = render :partial=>"messages/form", :locals=>{:url=>{:controller=>"messages", :action=>:create}, :html=>{:multipart=>true}}
 
