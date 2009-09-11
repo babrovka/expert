@@ -10,10 +10,10 @@
     %br
     = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{ordermin.id}", :class=>"toggle_status" 
     = render :partial=>'statuses', :locals=>{:id=>ordermin.id}
-  %td{:width=>"15%"}
+  %td.center{:width=>"7%"}
     = ordermin.price 
-    рублей (
-    = ordermin.payment ? "оплачен)" : "не оплачен)"
+  %td.center{:width=>"7%"}
+    %b{ :class=>ordermin.paid_for? ? "green" : "red" }= ordermin.payments.sum(:sum)
   %td{:width=>"35%"}
     = ordermin.messages[0].body if ordermin.messages
   %td.center{:width=>"5%"}

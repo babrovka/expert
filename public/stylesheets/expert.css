@@ -1,6 +1,8 @@
 #content {min-height:500px;}
 
 .red {color:red;}
+.green {color:green;}
+.center {text-align:center;}
 
 .order_info {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
 .type_active {background:#E6EFC2;color:#264409;border-color:#C6D880;}
