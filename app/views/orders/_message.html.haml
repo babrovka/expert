@@ -8,7 +8,8 @@
       = link_to "Редактировать", edit_message_url(message)
       = link_to "Удалить", message_url(message), :confirm => 'Вы уверены?', :method => :delete
   %td{:width=>'50%'}
-    %p= message.body
+    .message_box
+      = message.body
   %td{:width=>'30%', :valign=>'middle'}
     .files
       - message.documents.each do |doc|

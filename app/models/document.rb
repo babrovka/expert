@@ -6,8 +6,8 @@ class Document < ActiveRecord::Base
   validates_attachment_size :file, :less_than => 10.megabytes, :message=>"Слишком большой файл, попробуйте его заархивировать"
 
   def public_file_name
-     if file_file_name && file_file_name.length>30
-        file_file_name.gsub(File.extname(file_file_name),"")[0..30]+File.extname(file_file_name)
+     if file_file_name && file_file_name.length>27
+        file_file_name.gsub(File.extname(file_file_name),"")[0..27]+"__"+File.extname(file_file_name)
      else
         file_file_name
      end

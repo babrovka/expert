@@ -44,8 +44,9 @@ a.tiny {font-size:70%;}
 .files a.doc   { background-image: url(/images/icons/doc.png); }  
 .files a.xls   { background-image: url(/images/icons/xls.png); }  
 
-table.messages {border-left: 1px solid #7f7f7f;}
+table.messages {border-left: 1px solid #7f7f7f; }
 table.messages tr td {border-bottom: 1px solid #7f7f7f;border-right: 1px solid #7f7f7f;}
+.message_box {width:450px; overflow: hidden;}
 
 table.orders tr {background:#E5ECF9;}
 table.orders tr td {border-right:1px solid #9797bf;border-top:1px solid #9797bf;}

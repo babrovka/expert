@@ -15,7 +15,8 @@
   %td.center{:width=>"7%"}
     %b{ :class=>ordermin.paid_for? ? "green" : "red" }= ordermin.payments.sum(:sum)
   %td{:width=>"35%"}
-    = ordermin.messages[0].body if ordermin.messages
+    .message_box
+      = ordermin.messages[0].body if ordermin.messages
   %td.center{:width=>"5%"}
     - if ordermin.delivery
       = image_tag('mail_arrow.png')
