@@ -24,7 +24,15 @@
         %div{:class=>'span-6 last prepend-top'}
           #loginbox
             - if current_user
-              = link_to "Личный кабинет", account_url
+              Вы вошли как: 
+              - if current_user.name && !current_user.name.empty?
+                %br
+                = current_user.name
+              %br
+              = link_to current_user.email, account_url, :class=>"nick", :title=>"Войти в личный кабинет"
+              %br
+              %br
+              = link_to "личный кабинет", account_url
               \|
               = link_to "выйти", logout_url
             - else

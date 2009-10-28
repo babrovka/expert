@@ -8,9 +8,9 @@
       = link_to "Редактировать", edit_message_url(message)
       = link_to "Удалить", message_url(message), :confirm => 'Вы уверены?', :method => :delete
   %td{:width=>'50%'}
-    = message.body
+    %p= message.body
   %td{:width=>'30%', :valign=>'middle'}
     .files
       - message.documents.each do |doc|
-        = link_to doc.file_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
+        = link_to doc.public_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
         %br

@@ -1,9 +1,8 @@
 - form_for(@order, :url => orders_url, :html=>{:multipart=>true}) do |order_form|
-  .span-12
+  .span-20
     %p
       %label{:for => "order_type_id"} Услуга:
       = order_form.collection_select(:order_type_id, OrderType.find(:all), :id, :name_with_price)
-  %div{:class=>'span-10 last'}
     - OrderType.all.each do |type|
       %div{:id=>"order_info_#{type.id}", :class=>"order_info #{type.active ? 'type_active' : 'type_blocked'}#{' hide' unless type==@default_type}"}
         = type.active ? type.info : "К сожалению, услуга временно недоступна. Производится техническое обслуживание системы. Система возобновит работу в ближайшее время."

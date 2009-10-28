@@ -12,7 +12,11 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Вы вошли в систему!"
-      redirect_back_or_default account_url
+      if @user_session.user.admin?
+        redirect_back_or_default orders_url(:status=>1)
+      else
+        redirect_back_or_default account_url
+      end
     else
       render :action => :new
     end
