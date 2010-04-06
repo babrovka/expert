@@ -1,12 +1,12 @@
 set :application, "expert"
 
-ssh_options[:port] = 8587
+ssh_options[:port] = 8584
 ssh_options[:username] = "kukhl"
 ssh_options[:forward_agent] = true
 
 set :user, "kukhl"
 set :runner, "root"
-set :scm_verbose, true 
+set :scm_verbose, true
 
 #set :use_sudo, true
 
@@ -14,7 +14,7 @@ set :scm_verbose, true
 # servers (which is the default), you can specify the actual location
 # via the :deploy_to variable:
 
-set :deploy_to, "/var/www/apps/#{application}"
+set :deploy_to, "/var/apps/#{application}"
 set :deploy_via, :remote_cache
 default_run_options[:pty] = true
 
@@ -26,11 +26,11 @@ set :scm, :git
 set :repository,  "git@kukhl.unfuddle.com:kukhl/expert.git"
 set :branch, "master"
 set :scm_passphrase, "gegrby"
- 
 
-role :app, "74.207.226.126"
-role :web, "74.207.226.126"
-role :db,  "74.207.226.126", :primary => true
+
+role :app, "178.63.0.78"
+role :web, "178.63.0.78"
+role :db,  "178.63.0.78", :primary => true
 
 namespace :deploy do
   task :start, :roles => :app do
@@ -53,7 +53,7 @@ task :fix_script_perms do
 end
 
 #namespace :deploy do
-# desc "Create asset packages for production" 
+# desc "Create asset packages for production"
 # task :after_update_code, :roles => [:web] do
 #   run <<-EOF
 #     cd #{release_path} && rake asset:packager:build_all
@@ -77,5 +77,4 @@ end
 
 after "deploy:update_code" , "assets:symlink"
 after "deploy:update_code", :fix_script_perms
-
 

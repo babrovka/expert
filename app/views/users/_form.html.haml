@@ -2,14 +2,20 @@
 %br
 = form.text_field :email, :class=>'text'
 = errors_for(@user, :email)
+.hint
+  укажите ваш электронный адрес. Например, mymail@mail.ru
 %br
 = form.label :name, "Ваше имя"
 %br
 = form.text_field :name, :class=>'text'
 = errors_for(@user, :name)
+.hint
+  укажите ваше имя
 %br
 = form.label :password, form.object.new_record? ? "пароль" : "Новый пароль"
 %br
 = form.password_field :password, :class=>'text'
 = errors_for(@user, :password)
+.hint
+  укажите пароль, не менее 4 знаков
 %br

@@ -1,8 +1,15 @@
 #content {min-height:500px;}
 
 .red {color:red;}
+.blue {color:#0000ff;}
 .green {color:green;}
 .center {text-align:center;}
+.right {text-align:right;}
+.left {text-align:left;}
+
+.about {font-size:140%;}
+
+.hint {font-size:75%, font-style:italic; color:#7f7f7f;}
 
 .order_info {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
 .type_active {background:#E6EFC2;color:#264409;border-color:#C6D880;}
@@ -37,12 +44,12 @@ a.tiny {font-size:70%;}
   margin: 2px 0;
   background-repeat: no-repeat;
   background-position: left center;
-  background-image: url(/images/icons/file.png); 
+  background-image: url(/images/icons/file.png);
 }
 
-.files a.pdf   { background-image: url(/images/icons/pdf.png); }  
-.files a.doc   { background-image: url(/images/icons/doc.png); }  
-.files a.xls   { background-image: url(/images/icons/xls.png); }  
+.files a.pdf   { background-image: url(/images/icons/pdf.png); }
+.files a.doc   { background-image: url(/images/icons/doc.png); }
+.files a.xls   { background-image: url(/images/icons/xls.png); }
 
 table.messages {border-left: 1px solid #7f7f7f; }
 table.messages tr td {border-bottom: 1px solid #7f7f7f;border-right: 1px solid #7f7f7f;}
