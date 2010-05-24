@@ -19,8 +19,8 @@ class OrdersController < ApplicationController
        @order.status_id=1
        @order.messages[0].user=current_user
        if @order.save
-          #OrderMailer.deliver_inform(@order, 'ooo_ekka@mail.ru')
-          #OrderMailer.deliver_confirm(@order) unless @order.user.email.empty?
+          OrderMailer.deliver_inform(@order, 'ooo_ekka@mail.ru')
+          OrderMailer.deliver_confirm(@order) unless @order.user.email.empty?
           flash[:notice]="Заказ создан!"
           redirect_to account_url
        else

@@ -3,11 +3,11 @@ class OrderMailer < ActionMailer::Base
 
   default_url_options[:host] = ""
 
-  def confirm(order, sent_at = Time.now)
+  def confirm(order)
     subject    "Заказ №#{order.id} принят!"
     recipients order.user.email
     from       'noreply.ekka@gmail.com'
-    sent_on    sent_at
+    sent_on    Time.now
     body       :order=>order, :date=>to_russian_date(order.created_at), :name=>order.user.name
   end
 

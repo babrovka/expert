@@ -35,16 +35,16 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'Moscow'
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-     :tls => true,
-     :address  => "smtp.gmail.com",
-     :port  => 25,
-     :domain  => "gmail.com",
-     :user_name  => "noreply.ekka@gmail.com",
-     :password  => "ekkaekka",
-     :authentication  => :plain
- }
+  config.action_mailer.delivery_method = :sendmail
+#  config.action_mailer.smtp_settings = {
+#     :tls => true,
+#     :address  => "smtp.gmail.com",
+#     :port  => 25,
+#     :domain  => "gmail.com",
+#     :user_name  => "noreply.ekka@gmail.com",
+#     :password  => "ekkaekka",
+#     :authentication  => :plain
+# }
 
   config.action_mailer.default_charset = "utf-8"
 
