@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
        @order.price=@order.order_type.price
        @order.status_id=1
        @order.messages[0].user=current_user
-       if @order.save 
+       if @order.save
           OrderMailer.deliver_inform(@order, 'ooo_ekka@mail.ru')
           OrderMailer.deliver_confirm(@order) unless @order.user.email.empty?
           flash[:notice]="Заказ создан!"
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
 
     end
   end
-   
+
 
   def index
      @title="Заказы"
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
      else
        conditions=''
      end
-    
+
     @orders=Order.paginate(:conditions=>conditions, :page=>params[:page], :per_page=>20)
     @statuses=Status.all
     @title="Заказы: #{@status.menu_name if @status}"
@@ -68,6 +68,7 @@ class OrdersController < ApplicationController
      else
        flash[:notice]="Ошибка: Статус заказа #{order.id} не изменен!"
      end
-     redirect_to :back     
+     redirect_to :back
   end
 end
+
