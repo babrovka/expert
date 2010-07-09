@@ -1,7 +1,7 @@
 class SiteController < ApplicationController
 
   def index
-   @title="Главная"
+   @title="Экспертный калькулятор"
   end
 
 
@@ -14,3 +14,4 @@ class SiteController < ApplicationController
   end
 
 end
+

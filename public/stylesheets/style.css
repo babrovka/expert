@@ -1,0 +1,214 @@
+* 		{margin:0;padding: 0;}
+html 	{height:100%;}
+body	{font:14px Tahoma, Geneva, sans-serif;width:100%;color:#262626;background:#fff;height:100%;}
+
+a 		{color:#673092;outline:none;}
+a:hover	{text-decoration:none;color:#b38ad3}
+a:active {color:#add13a}
+
+img		{border:0}
+p		{margin:0 0 20px 0}
+
+.clear:after {content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clear {display: inline-block;}
+.clear {display: block;}
+.clearboth {clear:both}
+table tr td {vertical-align: top}
+ul {list-style:none}
+
+h1,h2,h3,h4,h5,h6{font-weight:500}
+h1 {font-size:21px;margin-bottom:10px;color:#673092}
+h2 {font-size:18px;margin-bottom:10px}
+h3 {font-size:16px;margin-bottom:10px}
+h4 {font-size:14px;margin-bottom:8px}
+h5 {font-size:13px;margin-bottom:5px}
+
+fieldset {border:0}
+input, textarea {outline:none;font-family:Tahoma, Geneva, sans-serif}
+input.button {cursor:pointer}
+
+div.page {width:931px;margin:0 auto;padding:50px 0 45px 0;padding-left:46px}
+
+
+/*//////////------//////////*/
+/*          Header          */
+/*//////////------//////////*/
+div.header {padding:0 46px 15px 0;}
+div.header div.logo {width:590px;padding-top:6px; float:left;font-size:16px; color:#abd03a;line-height:14px}
+div.header div.logo strong {font-weight:500}
+
+div.header div.phone {float:right;width:260px;text-align:right;font-size:12px;color:#add13a}
+div.header div.phone div.inner {font-size:41px;color:#939598;padding-bottom:4px}
+div.header div.phone span {font-size:14px}
+div.header div.phone a {padding-left:15px}
+
+
+div.topmenu {clear:both;padding:0 46px 30px 0}
+div.topmenuL {float:left;width:625px;font-size:16px;padding-top:13px}
+div.topmenuL ul {}
+div.topmenuL li {display:inline;padding-right:54px}
+div.topmenuL li.active a {color:#add13a}
+
+div.topmenuR {width:259px;float:right;text-align:right;height:48px;}
+a.zakaz {display:block;font-size:21px;color:#fff;height:40px;text-align:center;padding-top:8px; background:url(../images/button_zakaz.png) 0 0 no-repeat;}
+a.zakaz:hover {background-position:0 -48px;text-decoration:underline;color:#fff}
+a.zakaz:active {background-position:0 -96px;text-decoration:underline;color:#fff}
+
+/*//////////------//////////*/
+/*          Content         */
+/*//////////------//////////*/
+div.body {clear:both;background:url(../images/right.png) 100% 5px no-repeat;}
+div.body div.inner {background:url(../images/right_bottom.png) 100% 100% no-repeat; }
+
+div.content {width:583px;float:left;padding-bottom:25px}
+
+div.intro p {margin-bottom:5px}
+div.intro {padding-bottom:20px}
+
+div.content ul li {padding:0 0 4px 10px; background:url(../images/li.png) 0 6px no-repeat}
+div.content ul.f16 li {font-size:16px; padding:0 0 8px 14px; background-position: 0 8px}
+
+div.block_new {margin-top:20px; height:129px;overflow:hidden;font-size:20px;color:#d6d6eb; padding:27px 25px; background:url(../images/block_new.png) 0 0 no-repeat;line-height:28px;}
+div.block_new h2 {font-size:23px;color:#add13a;font-weight:700;margin-bottom:15px;}
+div.block_new a, div.block_new a:link, div.block_new a:hover, div.block_new a:active {color:#d6d6eb}
+div.block_new span {color:#fff}
+
+div.seo {clear:both;padding:70px 46px 0 0}
+div.seo h2 {color:#8954a2;font-weight:700;font-size:14px;margin-bottom:2px}
+div.seo ul li {background:url(../images/li_green.png) 0 7px no-repeat;padding:0 0 0 11px;}
+div.seo h3 {color:#8954a2;font-size:14px;margin-bottom:0}
+div.seo h3 span {color:#add13a}
+
+div.content ul.links li {width:49%;float:left;display:block;padding:0;background:none;font-size:12px;line-height:22px}
+
+/*~~~~внутренние страницы~~~~*/
+
+/*~~~~услуги~~~~*/
+div.service {padding-bottom:25px;clear:both;}
+div.service div.serviceL {float:left;width:420px;position:relative;}
+div.service div.service_info {display:none;font-size:12px;padding:6px 0 0 0;color:#262626}
+a.opener {padding-right:14px;font-size:16px;cursor:pointer; text-decoration:none; background:url(../images/arrow_bot.png) 100% 9px no-repeat}
+a.opener.close {background-image:url(../images/arrow_top.png)}
+a.opener span { background:url(../images/dotted.png) 0 100% repeat-x; }
+
+div.service div.serviceR {float:right;width:130px;text-align:right;color:#673092;font-size:30px}
+div.service div.serviceR span {font-size:17px}
+a.greenButton, a.activeStatus {font-size:16px;text-align:center; padding:6px 0 10px 0;text-decoration:none; color:white;background:url(../i/greenbutton_l.png) 0 0 no-repeat;}
+a.greenButton i, a.activeStatus i {font-style:normal;background:url(../images/greenbutton_r.png) 100% 0 no-repeat;text-decoration:underline; padding:6px 15px 10px 15px; }
+a.greenButton i, a.activeStatusi { color:#fff;}
+a.greenButton:hover i, a.activeStatus:hover i {text-decoration:none}
+
+
+/*~~~~кабинет~~~~*/
+div.zakaz_status {padding-bottom:30px}
+div.zakaz_status span {font-size:21px;color:#673092;padding-right:25px;}
+div.zakaz_status a.activeStatus {margin-right:5px;}
+div.zakaz_status a.activeStatus i {text-decoration:none}
+div.zakaz_status a.inactiveStatus {padding:0 15px;font-size:16px}
+div.zakaz_status a.inactiveStatus i {font-style:normal}
+
+/*~~заказы~~*/
+div.cabinet div.service div.serviceL {float:left;width:240px;position:relative;color:#abd03b;font-size:16px}
+div.cabinet div.service div.serviceStatus {float:left;width:175px;font-size:16px;color:#939598}
+div.cabinet div.service div.serviceStatus .active {color:#abd03b}
+div.cabinet div.service div.serviceR {width:150px;float:right;position:relative;top:-16px;font-size: 16px}
+div.cabinet div.service div.serviceR p.price {font-size:30px;margin-bottom:2px}
+div.cabinet div.service div.serviceR a.link {font-size:16px;}
+
+
+
+/*~~~~всплывающие окна~~~~*/
+.modal {display:none;}
+#simplemodal-overlay {background-color:#4d1b6f;}
+#simplemodal-container {border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px; background:#fff;  padding:30px 40px;}
+#simplemodal-container a.modalCloseImg {background:url(../images/modal_close.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:10px; right:0; cursor:pointer;}
+#simplemodal-container h3 {font-size:21px;color:#673092;margin-bottom:20px}
+#simplemodal-container label {font-size:15px;display:block;clear:left;float:left;width:60px;padding-top:10px}
+#simplemodal-container input {font-size:16px; line-height:34px !important; display:block;float:left;width:251px;height:34px;border:0;padding:0 10px 0 10px;margin-bottom:10px; background:url(../images/input.png) 0 0 no-repeat; }
+
+input.textbutton {font-size:21px !important; text-align:left; clear:both;margin-top:25px; width:auto !important;padding:0 !important; background:none !important;color:#673092;text-decoration:underline;cursor:pointer; height:30px !important; }
+div.formpass {height:25px;clear:left}
+input.checkbox {width:auto !important;height:auto !important; background:none !important;  padding:0 !important;vertical-align:top;margin:0 !important;}
+.checkboxlabel {position:relative;top:-4px;left:8px;float:left}
+
+div.modalOptions, div.modalReg {width:340px;height:280px}
+div.modalOptions h3, div.modalReg h3 {margin-bottom:40px !important}
+div.modalThanks {width:450px;height:85px}
+
+div.modalAuth {width:340px;height:220px}
+div.modalAuth h3 {margin-bottom:40px !important}
+input.textbutton.regbutton {float:left !important;clear:none !important;margin-left:20px;}
+
+div.modalService {width:430px;height:410px}
+div.modalService label {width:115px !important}
+div.modalService textarea {margin-top:10px !important }
+div.modalService input.textbutton {margin-top:15px !important}
+div.modalService input.long {font-size:15px !important; line-height:28px !important; width:285px !important;height:28px !important;padding:0 10px 0 10px;margin:3px 0 10px 0 !important; background:url(../images/input_long.png) 0 0 no-repeat !important; }
+
+/*~~~~Оформление заказа~~~~*/
+div.modalZakaz {width:425px;height:515px}
+div.modalZakaz select {width:420px;margin-bottom:10px}
+div.modalZakaz label {width:100% !important;float:none !important;padding-bottom:3px;padding-top:8px !important}
+div.modal textarea {width:402px;height:140px; padding:10px; background:url(../images/textarea.png) 0 0 no-repeat;border:0;font-size:15px !important}
+div.modalZakaz label.filenum {width:16px !important;display:block;float:left !important;clear:both;}
+div.modalZakaz input.fileinput {width:380px !important;background:url(../images/inputfile.png) 0 0 no-repeat !important;height:28px !important;padding:0 !important  }
+
+div.zakaz_total {float:left;width:245px;font-size:21px;color:#add13a}
+div.zakaz_total b {font-size:25px;color:#673092;font-weight:500}
+div.modalZakaz .button {width:165px !important; float:right !important;clear:none !important;margin:0 !important; height:32px !important}
+
+
+/*~~~~ADMIN~~~~*/
+div.admin div.zakaz_status h1 {margin-bottom:20px}
+div.admin div.zakaz_status a.activeStatus {padding:6px 0 10px 0;margin-right:0 !important}
+div.admin div.zakaz_status a.activeStatus i {padding:6px 10px 10px 10px; }
+div.admin div.zakaz_status a.inactiveStatus {padding:0 5px}
+
+.linkusers {font-size:12px;position:relative}
+
+/*~~заказы~~*/
+div.admin div.service div.serviceL {float:left;width:240px;position:relative;color:#abd03b;font-size:16px}
+div.admin div.service div.serviceL .checkbox {margin-top:4px !important}
+div.admin div.service div.serviceStatus {float:left;width:175px;font-size:15px;color:#262626}
+div.admin div.service div.serviceR {width:150px;float:right;position:relative;top:-16px;font-size: 16px}
+div.admin div.service div.serviceR p.price {font-size:30px;margin-bottom:2px}
+div.admin div.service div.serviceR a.link {font-size:16px;}
+
+div.manage {font-size:16px;color:#673092}
+
+/*~~~~пользователи~~~~*/
+ul.users {list-style:none}
+ul.users li {display:block;clear:both;background:none !important;padding:0 !important;margin-bottom:5px}
+ul.users li.odd .usersL {background:#e6efba;}
+ul.users li .usersL {float:left;width:462px;margin-right:10px;padding:8px 0 8px 8px;font-size:15px !important;color:#4d4d4f}
+ul.users li .usersL a.username {margin-right:12px;font-size:15px !important; background-position:100% 8px}
+ul.users li.odd .usersL a.username {background:url(../images/arrow_bot_gr.png) 100% 8px no-repeat}
+ul.users li.odd .usersL a.username.close {background:url(../images/arrow_top_gr.png) 100% 8px no-repeat}
+ul.users li .usersL a.usermail {padding-right:12px}
+ul.users li .usersL .userinfo {color:#262626;font-size:10px;padding-top:6px;display:none}
+
+ul.users li .usersR {float:left;width:100px;padding:6px 0}
+
+/*~~~~изменение данных пользователя. окошко~~~~*/
+div.modalChange {width:385px;height:235px}
+div.modalChange label {width:105px !important}
+
+
+/*//////////------//////////*/
+/*           Right          */
+/*//////////------//////////*/
+div.right {float:right;width:215px;padding:15px 73px 180px 0;font-size:12px;}
+
+div.right h3 {color:#6d6e71;font-size:16px;margin-bottom:15px}
+
+
+div.right ul.links li {padding-bottom:15px}
+
+
+/*//////////------//////////*/
+/*          Footer          */
+/*//////////------//////////*/
+div.footer {border-top:1px solid #cdced0;padding:5px 0 0 0;color:#9c9c9c;margin:4px 46px 0 0;}
+div.footerL {font-size:10px;width:585px;float:left}
+div.footerR {font-size:12px;float:right;width:200px;text-align:right}
+
