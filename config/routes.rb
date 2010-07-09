@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :order_types
   map.resources :password_resets
   map.resource :user_session
-  
+
   map.account '/account', :controller=>'users', :action=>'account'
 
 
@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "site"
   map.connect '/about', :controller=>'site', :action=>'about'
+  map.connect '/services', :controller=>'site', :action=>'services'
   map.connect '/contacts', :controller=>'site', :action=>'contacts'
   map.login '/login', :controller=>'user_sessions', :action=>'new'
   map.logout '/logout', :controller=>'user_sessions', :action=>'destroy'
@@ -58,3 +59,4 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
+

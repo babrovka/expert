@@ -50,15 +50,15 @@ div.topmenuL li {display:inline;padding-right:54px}
 div.topmenuL li.active a {color:#add13a}
 
 div.topmenuR {width:259px;float:right;text-align:right;height:48px;}
-a.zakaz {display:block;font-size:21px;color:#fff;height:40px;text-align:center;padding-top:8px; background:url(../images/button_zakaz.png) 0 0 no-repeat;}
+a.zakaz {display:block;font-size:21px;color:#fff;height:40px;text-align:center;padding-top:8px; background:url(../images/button_zakaz.png) 0 0 no-repeat}
 a.zakaz:hover {background-position:0 -48px;text-decoration:underline;color:#fff}
 a.zakaz:active {background-position:0 -96px;text-decoration:underline;color:#fff}
 
 /*//////////------//////////*/
 /*          Content         */
 /*//////////------//////////*/
-div.body {clear:both;background:url(../images/right.png) 100% 5px no-repeat;}
-div.body div.inner {background:url(../images/right_bottom.png) 100% 100% no-repeat; }
+div.body {clear:both;background:url(../images/right.png) 100% 5px no-repeat}
+div.body div.inner {background:url(../images/right_bottom.png) 100% 100% no-repeat }
 
 div.content {width:583px;float:left;padding-bottom:25px}
 
@@ -93,7 +93,7 @@ a.opener span { background:url(../images/dotted.png) 0 100% repeat-x; }
 
 div.service div.serviceR {float:right;width:130px;text-align:right;color:#673092;font-size:30px}
 div.service div.serviceR span {font-size:17px}
-a.greenButton, a.activeStatus {font-size:16px;text-align:center; padding:6px 0 10px 0;text-decoration:none; color:white;background:url(../i/greenbutton_l.png) 0 0 no-repeat;}
+a.greenButton, a.activeStatus {font-size:16px;text-align:center; padding:6px 0 10px 0;text-decoration:none; color:white;background:url(../images/greenbutton_l.png) 0 0 no-repeat;}
 a.greenButton i, a.activeStatus i {font-style:normal;background:url(../images/greenbutton_r.png) 100% 0 no-repeat;text-decoration:underline; padding:6px 15px 10px 15px; }
 a.greenButton i, a.activeStatusi { color:#fff;}
 a.greenButton:hover i, a.activeStatus:hover i {text-decoration:none}

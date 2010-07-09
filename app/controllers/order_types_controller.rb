@@ -6,5 +6,11 @@ class OrderTypesController < ApplicationController
       actions :all
     end
 
+    def edit
+      @order_type=OrderType.find(params[:id])
+      render :layout=>false
+    end
+
 
 end
+

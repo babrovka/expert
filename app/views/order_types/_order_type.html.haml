@@ -1,15 +1,11 @@
-%tr
-  %td
-    = order_type.name
-  %td
+.service.clear
+  .serviceL
+    = link_to "<span>#{order_type.name}</span>",'#', :class=>"opener"
+    .service_info
+      = order_type.info
+  .serviceR
     = order_type.price
-  %td
-    = order_type.info
-  %td
-    = order_type.active ? "доступна" : "не доступна"
-  %td
-    = link_to 'Просмотр', object_path(order_type)
-    |
-    = link_to 'Изменить', edit_object_path(order_type)
-    |
-    = link_to 'Удалить', object_path(order_type), :confirm => 'Вы уверены?', :method => :delete
+    %span руб.
+    %br
+    = link_to '<i>Изменить</i>', edit_object_path(order_type), :class=>"greenButton AmodalService", :id=>"service_#{order_type.id}"
+

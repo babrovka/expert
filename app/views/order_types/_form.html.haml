@@ -1,15 +1,13 @@
-%p
-  %label Название:
+%fieldset
+  %label{:for=>"order_type_name"} Название
+  = f.text_field :name, :size=>30, :class=>'long'
+  %label{:for=>"order_type_price"} Цена, руб.
+  = f.text_field :price, :size=>30, :class=>'long'
   %br
-  = f.text_field :name
-%p
-  %label Цена:
+  %label{:for=>"order_type_info"} Информация
+  = f.text_area :info, :rows=>10, :cols=>20
   %br
-  = f.text_field :price
-%p
-  %label Информация:
   %br
-  = f.text_area :info
-%p
-  = f.check_box :active
-  услуга доступна
+  = f.check_box :active, :class=>'checkbox'
+  %span.checkboxlabel Услуга доступна
+

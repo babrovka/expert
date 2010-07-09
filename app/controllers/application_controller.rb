@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
         return false
       end
     end
-    
+
 
     def require_admin
       unless current_user && (current_user.admin? || current_user.supervisor?)
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
       if current_user
         store_location
         #flash[:notice] = "You must be logged out to access this page"
-        redirect_to user_url(current_user)
+        redirect_to '/account'
         return false
       end
     end
@@ -62,3 +62,4 @@ class ApplicationController < ActionController::Base
 
 
 end
+

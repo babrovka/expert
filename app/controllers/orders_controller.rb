@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   def new
      @title="Новый заказ"
      @order=Order.new
+     @order.order_type_id=params[:order_type_id].to_i if params[:order_type_id]
      @order.messages.build
      5.times {@order.messages[0].documents.build}
      @default_type=OrderType.active.find(:first)

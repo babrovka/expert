@@ -13,5 +13,11 @@ class SiteController < ApplicationController
    @title="Контакты"
   end
 
+  def services
+   @title="Услуги"
+   @services=OrderType.active.all
+  end
+
+
 end
 

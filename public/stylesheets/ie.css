@@ -1,6 +1,7 @@
 div.header div.logo { padding-bottom:3px;}
 div.topmenu  {padding-top:5px}
 
+
 div.seo {padding-top:35px}
 a.opener {zoom:1;}
 a.greenButton, a.activeStatus {padding:6px 0 10px 15px;zoom: 1}
@@ -27,4 +28,3 @@ input.textbutton.regbutton  {width:200px !important;margin-left: 0 !important}
 div.topmenuR {overflow:hidden}
 
 .checkboxlabel {top:0 !important}
-

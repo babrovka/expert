@@ -1,0 +1,4 @@
+- content_for :head do
+  = javascript_include_tag 'services'
+= render :partial => 'order_types/service', :collection => @services
+
