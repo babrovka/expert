@@ -1,7 +1,51 @@
-=== master
+=== 0.2.7 - 5.05.2010
 
+* Fix using of standalone/non-standalone month names with %d/%e surroundings.
+* Улучшено распознавание формы названия месяца с strftime макросами %d/%e.
+
+=== 0.2.6 - 25.03.2010
+
+* Minimum Rails 3.0b support: Added fourth parameter (options) defaulting to nil to Advanced backend localize method for compliance with i18n-0.3 [Nikolay V. Nemshilov]
+* Минимальная поддержка Rails 3.0b: В метод localize бекенда Advanced добавлен четвертый параметр, для совместимости с i18n-0.3. По умолчанию равен nil. [Николай Немшилов]
+
+=== 0.2.5 - 23.12.2009
+
+* Added support for multi-char substrings in Russian.transliterate [Alex Fortuna]
+* Rails 2.3.5 error messages overloading compatibility (error messages overloading) (thanks Alex Eagle for bugreport)
+
+* Russian.transliterate: Теперь можно добавлять правила матчинга подстрок из нескольких символов ("Воробьёв", "Алябьев"). [Alex Fortuna]
+* Rails 2.3.5: совместимость для перегрузки сообщений об ошибках (багрепорт -- Александр Орел)
+
+=== 0.2.4 - 12.11.2009
+
+* Revert nested validation errors patch
+
+* Убран патч для вложенных сообщений валидации (не работал с Rails 2.3.3 и ниже)
+
+=== 0.2.3 - 9.11.2009
+
+* Improve ActiveRecord translations [Dmitri Koulikoff]
+* Fix nested validation errors with custom error message hack for Rails < 2.3.4 [valodzka]
+* Added almost_x_years datetime translation
+
+* Улучшен перевод ActiveRecord [Dmitri Koulikoff]
+* Исправлена ошибка, возникающая при вложенных сообщениях валидации при использовании хака для Rails < 2.3.4 [valodzka]
+* Добавлен перевод для ключа даты/времени almost_x_years
+
+=== 0.2.2 - 17.09.2009
+
+* Fix ^-prefixed error messages handling on Rails 2.3.4
+
+* Для Rails 2.3.4 исправлена работа сообщений валидаций, начинающихся с "^"
+
+=== 0.2.1 - 5.09.2009
+
+* Rails 2.3.4 compat (ActiveRecord::Error) and deprecation warning (use errors.full_messages.format from now on) [Alexander Semyonov/Yaroslav Markin]
+* Added a couple of missing translations from Rails 2.3.4
 * transliteration: Ы now transforms to Y [Alex Fortuna]
 
+* Совместимость с Rails 2.3.4 (ActiveRecord::Error) и устаревшее форматирование через "^" (теперь надо использовать errors.full_messages.format) [Alexander Semyonov/Yaroslav Markin]
+* Добавлена пара недостающих переводов из Rails 2.3.4
 * транслитерация: Ы теперь превращается в Y [Alex Fortuna]
 
 === 0.2.0 - 16.03.2009

@@ -4,7 +4,7 @@
       %label{:for => "order_type_id"} Услуга:
       = order_form.collection_select(:order_type_id, OrderType.find(:all), :id, :name_with_price)
     - OrderType.all.each do |type|
-      %div{:id=>"order_info_#{type.id}", :class=>"order_info #{type.active ? 'type_active' : 'type_blocked'}#{' hide' unless type==@default_type}"}
+      %div{:id=>"order_info_#{type.id}", :class=>"order_info #{type.active ? 'type_active' : 'type_blocked'} #{'hide' unless type==@default_type}"}
         = type.active ? type.info : "К сожалению, услуга временно недоступна. Производится техническое обслуживание системы. Система возобновит работу в ближайшее время."
   .clear
   %hr
@@ -28,3 +28,4 @@
         = link_to "еще файл", "javascript:;", :id=>"more_files"
     .clear
     %p= submit_tag "Отправить"
+

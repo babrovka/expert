@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*- 
 
-$KCODE='u'
+if RUBY_VERSION < "1.9"
+  $KCODE = 'u'
+end
 
 $:.push File.join(File.dirname(__FILE__), 'russian')
 require 'transliteration'
@@ -27,7 +29,7 @@ module Russian
   module VERSION
     MAJOR = 0
     MINOR = 2
-    TINY  = 0
+    TINY  = 7
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end

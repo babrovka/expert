@@ -2,14 +2,14 @@
   .span-4
     = link_to "Заказ №#{order.id}", order_url(order)
   .span-8
-    %b Статус: 
+    %b Статус:
     %b.green= order.status.name
     - if current_user.admin?
-      = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{order.id}", :class=>"toggle_status", :style=>"font-size:75%;" 
+      = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{order.id}", :class=>"toggle_status", :style=>"font-size:75%;"
       = render :partial=>'orders/statuses', :locals=>{:id=>order.id}
   %div{:class=>'span-8 last'}
     %b Стоимость:
-    %b.green= order.price 
+    %b.green= order.price
     %b рублей
     %br
     = link_to "оплачено", "javascript:;", :id=>"show_payments_#{order.id}", :class=>"show_payments"
@@ -39,5 +39,4 @@
     = image_tag('mail_arrow.png')
     = link_to "Заказать доставку документов", new_delivery_url(:order_id=>order.id), :id=>"new_delivery_#{order.id}", :class=>"new_delivery"
 .clear
-
 

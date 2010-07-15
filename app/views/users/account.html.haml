@@ -1,17 +1,15 @@
 - content_for :head do
   = javascript_include_tag 'new_order'
   = javascript_include_tag 'orders'
-%h2 
-  Кабинет пользователя
-  %b= @user.email
-  = link_to "Настройки", edit_user_url(@user), :class=>'tiny'
-= render :partial=>'menu'
-- @orders.each do |order|
-  = render order
-  = link_to "Новое сообщение", order_url(order, :new_message=>true)
-  %br
-  %br
-  %br
+.cabinet
+  = render :partial=>'menu'
+  - @orders.each do |order|
+    = render order
+    = link_to "Новое сообщение", order_url(order, :new_message=>true)
+    %br
+    %br
+    %br
 %br
 %br
 = link_to "Новый заказ", new_order_url
+

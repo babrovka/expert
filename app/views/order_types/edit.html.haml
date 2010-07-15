@@ -1,7 +1,6 @@
-#modalService.modalService
-  %h1 Редактирование услуги
-  = error_messages_for :order_type
-  - form_for(:order_type, :url => object_url, :html => { :method => :put }) do |f|
-    = render :partial => "form", :locals => {:f => f}
-    = submit_tag "Сохранить", :class=>"button textbutton"
+%h1 Редактирование услуги
+= error_messages_for :order_type
+- form_for(:order_type, :url => object_url, :html => { :method => :put }) do |f|
+  = render :partial => "form", :locals => {:f => f}
+  = submit_tag "Сохранить", :class=>"button textbutton"
 

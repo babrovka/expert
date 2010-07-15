@@ -62,6 +62,7 @@ describe Russian, "loading locales" do
     datetime.distance_in_words.x_months
     datetime.distance_in_words.about_x_years
     datetime.distance_in_words.over_x_years
+    datetime.distance_in_words.almost_x_years
     
     datetime.prompts.year
     datetime.prompts.month
@@ -72,6 +73,8 @@ describe Russian, "loading locales" do
     
     activerecord.errors.template.header
     activerecord.errors.template.body
+    
+    support.select.prompt
   ).each do |key| 
     it "should define '#{key}' in actionview translations" do
       lookup(key).should_not be_nil
@@ -98,6 +101,9 @@ describe Russian, "loading locales" do
     activerecord.errors.messages.less_than_or_equal_to
     activerecord.errors.messages.odd
     activerecord.errors.messages.even
+    activerecord.errors.messages.record_invalid
+
+    activerecord.errors.full_messages.format
   ).each do |key| 
     it "should define '#{key}' in activerecord translations" do
       lookup(key).should_not be_nil

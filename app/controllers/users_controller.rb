@@ -34,20 +34,23 @@ class UsersController < ApplicationController
 
   def edit
     @title="Настройка пользователя"
-    if current_user.admin?
+    if current_user.admin? || current_user.supervisor?
       @user=User.find(params[:id])
     else
       @user = @current_user
     end
+    render :layout=>false
   end
 
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    if current_user.supervisor?
+      @user=User.find(params[:id])
+    else
+      @user= @current_user
+    end
+
     if @user.update_attributes(params[:user])
-      if current_user.supervisor?
-        @user.admin=params[:user][:admin]
-        @user.save
-      end
+      @user.update_attribute(:admin, params[:user][:admin]) if current_user.supervisor?
       flash[:notice] = "Изменения сохранены!"
       redirect_to account_url
     else
@@ -68,3 +71,4 @@ class UsersController < ApplicationController
     @orders=@user.orders.find(:all, :conditions=>conditions)
   end
 end
+

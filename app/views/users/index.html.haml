@@ -1,13 +1,36 @@
-%h1 Пользователи системы
-%table.users
-  - @users.each do |user|
-    %tr
-      %td{:width=>'20%'}= link_to user.name, user
-      %td{:width=>'20%'}= link_to user.email, user
-      %td{:width=>'20%'}
-        - if user.admin?
-          администратор
-      %td{:width=>'20%'}
-        = link_to "настройка", edit_user_url(user)
-      %td{:width=>'20%'}
+- content_for :head do
+  = javascript_include_tag 'users'
+  = javascript_include_tag 'curvycorners.src'
+  = javascript_include_tag 'jquery.simplemodal.min'
+.admin
+  %h1 Пользователи
+  %ul.users
+    - @users.each do |user|
+      %li{:class=>cycle("clear odd", "clear")}
+        .usersL
+          = link_to "<span>#{user.name}</span>", user, :class=>"opener username"
+          = link_to user.email, "mailto:#{user.email}", :class=>"usermail"
+          %span.userrang= user.admin? ? 'администратор' : 'пользователь'
+          .userinfo
+            Заходы на сайт:
+            = user.login_count
+            %br
+            Последний просмотр:
+            = user.last_request_at
+            %br
+            Последний заход:
+            = user.last_login_at
+            %br
+            Текущая сессия:
+            = user.current_login_at
+            %br
+            последний ip:
+            = user.last_login_ip
+            %br
+            текущий ip:
+            = user.current_login_ip
+        .usersR
+          = link_to '<i>Изменить</i>', "#", :class=>"greenButton change", :id=>"user_#{user.id}"
 = will_paginate @users
+#modalChange.modal.modalChange
+

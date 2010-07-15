@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :orders
   has_many :messages
-  
+
   attr_protected :admin
 
   acts_as_authentic do |o|
@@ -19,9 +19,10 @@ class User < ActiveRecord::Base
   end
 
 
-  def deliver_password_reset_instructions!  
-    reset_perishable_token!  
-    OrderMailer.deliver_password_reset_instructions(self)  
-  end  
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    OrderMailer.deliver_password_reset_instructions(self)
+  end
 
 end
+

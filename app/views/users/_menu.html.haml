@@ -1,11 +1,5 @@
-%ul.submenu
-  %li
-    - if @status!="old"
-      %span Текущие
-    - else
-      = link_to "Текущие", account_url
-  %li
-    - if @status=="old"
-      %span Архив
-    - else
-      = link_to "Архив", account_url(:status=>"old")
+.zakaz_status
+  %span Состояние заказов
+  = link_to '<i>Текущие</i>', account_url, :class=> @status=="old" ? "inactiveStatus" : "activeStatus"
+  = link_to '<i>Архив</i>', account_url(:status=>"old"), :class=> @status=="old" ? "activeStatus" : "inactiveStatus"
+

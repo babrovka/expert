@@ -1,18 +1,12 @@
-%h1 Настройки
+%h3 Изменение данных пользователя
 - form_for @user, :url => user_path(@user) do |f|
-  = f.error_messages
-  = f.label :name, "Ваше имя"
-  %br
-  = f.text_field :name, :class=>'text'
-  %br
-  = f.label :password, f.object.new_record? ? "пароль" : "Новый пароль"
-  %br
-  = f.password_field :password, :class=>'text'
-  %br
-  - if current_user.supervisor?
-    = f.check_box :admin
-    Права администратора
-    %br
-  %br
-  = f.submit "Сохранить"
-  %br
+  %fieldset
+    %label{:for=>"user_name"} ФИО
+    = f.text_field :name
+    %label{:for=>"user_password"} Новый пароль
+    = f.text_field :password
+    .clear.formpass
+    = f.check_box :admin,  :id=>"makeadmin", :class=>"checkbox"
+    %span.checkboxlabel права администратора
+    = f.submit "Сохранить изменения", :class=>"button textbutton simplemodal-close"
+

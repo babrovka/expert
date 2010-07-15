@@ -13,6 +13,9 @@ p		{margin:0 0 20px 0}
 .clear {display: inline-block;}
 .clear {display: block;}
 .clearboth {clear:both}
+
+.hide {display:none;}
+
 table tr td {vertical-align: top}
 ul {list-style:none}
 
