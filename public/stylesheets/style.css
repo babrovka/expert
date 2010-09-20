@@ -13,7 +13,6 @@ p		{margin:0 0 20px 0}
 .clear {display: inline-block;}
 .clear {display: block;}
 .clearboth {clear:both}
-
 .hide {display:none;}
 
 table tr td {vertical-align: top}
@@ -91,7 +90,7 @@ div.service {padding-bottom:25px;clear:both;}
 div.service div.serviceL {float:left;width:420px;position:relative;}
 div.service div.service_info {display:none;font-size:12px;padding:6px 0 0 0;color:#262626}
 a.opener {padding-right:14px;font-size:16px;cursor:pointer; text-decoration:none; background:url(../images/arrow_bot.png) 100% 9px no-repeat}
-a.opener.close {background-image:url(../images/arrow_top.png)}
+a.opener.close {background-image:url(../images/arrow_top.png) !important;}
 a.opener span { background:url(../images/dotted.png) 0 100% repeat-x; }
 
 div.service div.serviceR {float:right;width:130px;text-align:right;color:#673092;font-size:30px}
@@ -100,7 +99,6 @@ a.greenButton, a.activeStatus {font-size:16px;text-align:center; padding:6px 0 1
 a.greenButton i, a.activeStatus i {font-style:normal;background:url(../images/greenbutton_r.png) 100% 0 no-repeat;text-decoration:underline; padding:6px 15px 10px 15px; }
 a.greenButton i, a.activeStatusi { color:#fff;}
 a.greenButton:hover i, a.activeStatus:hover i {text-decoration:none}
-
 
 /*~~~~кабинет~~~~*/
 div.zakaz_status {padding-bottom:30px}
@@ -117,8 +115,6 @@ div.cabinet div.service div.serviceStatus .active {color:#abd03b}
 div.cabinet div.service div.serviceR {width:150px;float:right;position:relative;top:-16px;font-size: 16px}
 div.cabinet div.service div.serviceR p.price {font-size:30px;margin-bottom:2px}
 div.cabinet div.service div.serviceR a.link {font-size:16px;}
-
-
 
 /*~~~~всплывающие окна~~~~*/
 .modal {display:none;}
@@ -214,4 +210,55 @@ div.right ul.links li {padding-bottom:15px}
 div.footer {border-top:1px solid #cdced0;padding:5px 0 0 0;color:#9c9c9c;margin:4px 46px 0 0;}
 div.footerL {font-size:10px;width:585px;float:left}
 div.footerR {font-size:12px;float:right;width:200px;text-align:right}
+
+
+
+
+/*//////////------//////////*/
+/*          !!NEW!!         */
+/*//////////------//////////*/
+
+
+/*~~~~страница заказа~~~~*/
+div.order div.head {line-height:30px;color:#673092;margin-bottom:20px;}
+div.order div.head .l {float:left;width:240px; font-size:21px;}
+div.order div.head .l small {font-size:16px}
+div.order div.head .c {float:left;width: 180px;color:#abd03b;font-size:16px}
+div.order div.head .r {float:right;width: 140px;text-align:right;font-size:16px;}
+div.order div.head .r span.price {font-size:30px;}
+div.order div.head .r span.price small {font-size:17px}
+div.order div.head .r a.add_pay {font-size: 12px;line-height:14px !important;display: block;}
+div.order div.plateji_info {float:right;width:270px;font-size:12px;line-height:15px;color:#262626;display:none; }
+div.order div.plateji_info span.date {display:inline-block;width:75px;}
+div.order div.plateji_info span.pay {display:inline-block;width:65px;}
+div.order div.plateji_info span.links {display:inline-block;width:115px;text-align:right;float:right;}
+div.order div.plateji_info a.add_pay {display:inline-block;padding-top:5px;float:left}
+
+div.order div.row {border-top:1px solid #cdced0;border-bottom:1px solid #cdced0; padding:5px 3px 8px 3px;margin-bottom:15px;font-size:12px;line-height:15px; }
+div.order div.row .l {float:left;width: 190px;}
+div.order div.row .r {float:right;width:360px;}
+
+
+div.order div.row form {position:relative;left:-10px}
+div.order div.row label {width:100% !important;float:left;  font-size:15px; clear:both; padding-bottom:3px;padding-top:8px !important;}
+div.order div.row textarea {width:354px;height:54px; padding:5px 10px; background:url(../images/textarea_374_64.gif) 0 0 no-repeat;border:0;font-size:12px !important;color:#262626;margin-top: 3px;}
+div.order div.row label.filenum {width:15px !important;display:block;}
+div.order div.row input.fileinput {width:345px !important;background:url(../images/inputfile.png) 0 0 no-repeat !important;height:28px !important;padding:0 !important;margin-bottom:7px; border:0 !important; margin-right:0 !important }
+div.order a.make_order {font-size:16px;float:right}
+div.order label.prilojeniya {margin-bottom:7px;}
+
+/*~~~~окошко заказ документов~~~~*/
+div.modalDocs {width:335px;height:380px}
+div.modalDocs label {width:57px !important;position: relative}
+div.modalDocs textarea {width:308px;height:57px; padding:5px 10px; background:url(../images/textarea_328_67.gif) 0 0 no-repeat;border:0;font-size:12px !important;color:#262626;margin-top:5px}
+div.modalDocs input.textbutton {margin-top:15px;font-size:23px}
+
+/*~~~~окошко Редактирование/внесение платежа~~~~*/
+div.modalPlatej {width:325px;height:280px}
+div.modalPlatej input {font-size:16px; line-height:33px !important; display:block;float:left;width:221px !important; height:33px !important;border:0;padding:0 10px !important; background:url(../images/input_short.gif) 0 0 no-repeat !important; }
+div.modalPlatej textarea {width:308px;height:57px; padding:5px 10px; background:url(../images/textarea_328_67.gif) 0 0 no-repeat;border:0;font-size:12px !important;color:#262626;margin-top:5px}
+div.modalPlatej input.textbutton {margin-top:15px;font-size:23px;height:30px !important; line-height:30px !important; background: none !important;padding:0 !important;}
+div.modalPlatej span.rub {position: relative;top:10px;left:7px;}
+div.modalPlatej select {margin:10px 0}
+div.modalPlatej label {width:50px !important;}
 

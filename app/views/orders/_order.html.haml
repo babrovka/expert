@@ -1,42 +1,12 @@
-.orderhead
-  .span-4
-    = link_to "Заказ №#{order.id}", order_url(order)
-  .span-8
-    %b Статус:
-    %b.green= order.status.name
-    - if current_user.admin?
-      = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{order.id}", :class=>"toggle_status", :style=>"font-size:75%;"
-      = render :partial=>'orders/statuses', :locals=>{:id=>order.id}
-  %div{:class=>'span-8 last'}
-    %b Стоимость:
-    %b.green= order.price
-    %b рублей
-    %br
-    = link_to "оплачено", "javascript:;", :id=>"show_payments_#{order.id}", :class=>"show_payments"
-    \:
-    %b{ :class=>order.paid_for? ? "green" : "red" }= order.payments.sum(:sum)
-    %b рублей
-    = render :partial=>'payments/payments', :locals=>{:order=>order}
-    - if current_user.admin?
-      %br
-      = link_to "ввести платеж", new_payment_url(:order_id=>order.id), :class=>'tiny'
-  .clear
-%table.messages
-  - order.messages.each do |message|
-    = render :partial=>'orders/message', :object=>message unless message.new_record?
-.span-17
-  &nbsp;
-.span-6
-  - if order.delivery
-    = image_tag('mail_arrow.png')
-    Заказана доставка документов по адресу:
-    = order.delivery.full_address
-    - if current_user.admin?
-      %br
-      = link_to "Изменить", edit_delivery_url(order.delivery)
-      = link_to "Удалить", delivery_url(order.delivery), :method=>:delete, :confirm=>"Удалить запрос на доставку?"
-  - else
-    = image_tag('mail_arrow.png')
-    = link_to "Заказать доставку документов", new_delivery_url(:order_id=>order.id), :id=>"new_delivery_#{order.id}", :class=>"new_delivery"
-.clear
+.service.clear
+  .serviceL
+    = "#{order.id}."
+    = link_to "<span>#{order.order_type.name}</span>", order
+  .serviceStatus
+    %span.active= order.status.name
+  .serviceR
+    %p.price
+      = number_with_delimiter(order.price, :delimiter=>' ')
+      %span руб.
+    = link_to "Оплатить", "#", :class=>'link'
 

@@ -1,18 +1,16 @@
-%tr
-  %td{:width=>'20%', :align=>'center', :valign=>'middle'}
+.row.clear
+  .l
     = message.user ? message.user.name : message.author
     %br
-    = to_russian_date(message.updated_at)
-    - if current_user.admin? && message.user.admin?
+    = to_russian_date(message.updated_at) if message.updated_at
+    - if current_user.admin?
       %br
       = link_to "Редактировать", edit_message_url(message)
       = link_to "Удалить", message_url(message), :confirm => 'Вы уверены?', :method => :delete
-  %td{:width=>'50%'}
-    .message_box
-      = message.body
-  %td{:width=>'30%', :valign=>'middle'}
-    .files
-      - message.documents.each do |doc|
-        = link_to doc.public_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
-        %br
+  .r
+    = message.body
+    %br
+    - message.documents.each do |doc|
+      = link_to doc.public_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
+      %br
 

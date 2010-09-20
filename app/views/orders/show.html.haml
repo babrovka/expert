@@ -1,9 +1,43 @@
 - content_for :head do
   = javascript_include_tag 'new_order'
   = javascript_include_tag 'orders'
-%h2= @title
-= render @order
-= link_to "Новое сообщение", new_message_url(:order_id=>@order.id), :id=>"new_message_#{@order.id}", :class=>"new_message"
-%div{:id=>"new_message_form_#{@order.id}", :class=>@show_message ? "" : "hide"}
-  = render :partial=>"messages/form", :locals=>{:url=>{:controller=>"messages", :action=>:create}, :html=>{:multipart=>true}}
+.order
+  .head.clear
+    .l
+      Заказ №
+      = @order.id
+      %br
+      %small= @order.order_type.name
+    .c= @order.status.name
+    .r
+      %span.price
+        = number_with_delimiter(@order.price, :delimiter=>' ')
+        %small руб.
+        %br
+      - if @order.paid_for?
+        = link_to "<span>Оплачено</span>", "#", :class=>'opener'
+      - else
+        - if current_user.admin?
+          Ожидание оплаты
+          %br
+          = link_to "Ввести платеж", "#", :class=>"add_pay AmodalPlatejNew"
+        - else
+          = link_to "Оплатить", '#'
+    .clearboth
+    .plateji_info
+      - @order.payments.each do |payment|
+        %span.date= payment.payment_date
+        %span.pay
+          = payment.sum
+          руб.
+        %span.links
+          - if current_user.admin?
+            = link_to "Изменить", "#", :class=>"AmodalPlatej1"
+            = link_to "Удалить", ""
+        %br
+  - @order.messages.each do |message|
+    = render :partial=>'message', :object=>message unless message.new_record?
+  = link_to "Новое сообщение", new_message_url(:order_id=>@order.id), :id=>"new_message_#{@order.id}", :class=>"new_message"
+  %div{:id=>"new_message_form_#{@order.id}", :class=>@show_message ? "" : "hide"}
+    = render :partial=>"messages/form", :locals=>{:url=>{:controller=>"messages", :action=>:create}, :html=>{:multipart=>true}}
 

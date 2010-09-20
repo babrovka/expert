@@ -1,23 +1,22 @@
-- form_for(@message, :url => url, :html=>html) do |msg|
-  .span-12
-    = msg.hidden_field :order_id
-    %p
-      %label{:for => "message_body"} текст сообщения:
-      %br
-      = msg.text_area :body
-  %div{:class=>"span-10 last"}
-    %label Приложения:
-    %br
-    %br
-    #uploads
-      - msg.fields_for :documents do |doc|
-        - ind=msg.object.documents.index(doc.object)+1
-        %p{:class=>'upload', :id=>"upload_#{ind}"}
-          = "#{ind}. "
-          - if doc.object.new_record?
-            = doc.file_field :file
-          - else
-            = link_to doc.object.file_file_name, {:controller=>:documents, :action=>:download, :id=>doc.object.id}
-    = link_to "еще файл", "javascript:;", :id=>"more_files"
-  .clear
-  %p= submit_tag "Отправить"
+.row.clear
+  .l
+    &nbsp;
+  .r
+    - form_for(@message, :url => url, :html=>html) do |msg|
+      = msg.hidden_field :order_id
+      %fieldset
+        = msg.text_area :body, :rows=>10, :cols=>20
+        %br
+        %label.prilojeniya Приложения:
+        #uploads
+          - msg.fields_for :documents do |doc|
+            - ind=msg.object.documents.index(doc.object)+1
+            %p{:class=>'upload', :id=>"upload_#{ind}"}
+              = "#{ind}. "
+              - if doc.object.new_record?
+                = doc.file_field :file
+              - else
+                = link_to doc.object.file_file_name, {:controller=>:documents, :action=>:download, :id=>doc.object.id}
+        = link_to "еще файл", "javascript:;", :id=>"more_files"
+        %p= submit_tag "Отправить"
+

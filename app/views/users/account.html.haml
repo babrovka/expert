@@ -3,13 +3,7 @@
   = javascript_include_tag 'orders'
 .cabinet
   = render :partial=>'menu'
-  - @orders.each do |order|
-    = render order
-    = link_to "Новое сообщение", order_url(order, :new_message=>true)
-    %br
-    %br
-    %br
-%br
+  = render @orders
 %br
 = link_to "Новый заказ", new_order_url
 
