@@ -1,24 +1,26 @@
-%tr
-  %td{:width=>"10%"}
-    %b= link_to "Заказ №#{ordermin.id}", order_url(ordermin)
-  %td{:width=>"15%"}
+.service.clear
+  .serviceL
+    = check_box_tag "order_#{ordermin.id}"
+    = "#{ordermin.id}."
+    = link_to "<span>ordermin.order_type.name</span>", ordermin, :class=>"opener"
+    .service_info
+      = ordermin.messages.first.body if ordermin.messages
+      %br
+      %br
+      .files
+        - ordermin.messages.first.documents.each do |doc|
+          = link_to doc.public_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
+          %br
+  .serviceStatus
     = ordermin.user.name
     %br
     = ordermin.user.email
-  %td{:width=>"20%"}
-    = ordermin.status.name
-    %br
-    = link_to "изменить [+]", "javascript:;", :id=>"toggle_#{ordermin.id}", :class=>"toggle_status" 
-    = render :partial=>'statuses', :locals=>{:id=>ordermin.id}
-  %td.center{:width=>"7%"}
-    = ordermin.price 
-  %td.center{:width=>"7%"}
-    %b{ :class=>ordermin.paid_for? ? "green" : "red" }= ordermin.payments.sum(:sum)
-  %td{:width=>"35%"}
-    .message_box
-      = ordermin.messages[0].body if ordermin.messages
-  %td.center{:width=>"5%"}
-    - if ordermin.delivery
-      = image_tag('mail_arrow.png')
-      доставка
+  .serviceR
+    %p.price
+      = ordermin.price
+      %span руб.
+    - if @order.paid_for?
+      Оплачено
+    - else
+      Ожидание оплаты
 

@@ -18,26 +18,40 @@
         = link_to "<span>Оплачено</span>", "#", :class=>'opener'
       - else
         - if current_user.admin?
-          Ожидание оплаты
-          %br
-          = link_to "Ввести платеж", "#", :class=>"add_pay AmodalPlatejNew"
+          = link_to "<span>Ожидание оплаты</span>", "#", :class=>'opener'
         - else
           = link_to "Оплатить", '#'
     .clearboth
     .plateji_info
       - @order.payments.each do |payment|
-        %span.date= payment.payment_date
+        %span.date= short_date(payment.payment_date) if payment.payment_date
         %span.pay
           = payment.sum
           руб.
         %span.links
           - if current_user.admin?
-            = link_to "Изменить", "#", :class=>"AmodalPlatej1"
-            = link_to "Удалить", ""
-        %br
+            = link_to "Изменить", edit_payment_url(payment), :class=>"AmodalPlatej", :id=>"payment_#{payment.id}"
+            = link_to "Удалить", payment_url(payment), :method=>:delete, :confirm=>"Удалить платеж?"
+      - if current_user.admin?
+        = link_to "Ввести платеж", "#", :class=>"add_pay AmodalPlatejNew"
   - @order.messages.each do |message|
     = render :partial=>'message', :object=>message unless message.new_record?
   = link_to "Новое сообщение", new_message_url(:order_id=>@order.id), :id=>"new_message_#{@order.id}", :class=>"new_message"
   %div{:id=>"new_message_form_#{@order.id}", :class=>@show_message ? "" : "hide"}
     = render :partial=>"messages/form", :locals=>{:url=>{:controller=>"messages", :action=>:create}, :html=>{:multipart=>true}}
+#modalPlatejNew.modal.modalPlatej
+  %h3 Новый платеж
+  - form_for(@payment) do |form|
+    = form.hidden_field :order_id
+    %label{:for => "payment_sum"} Сумма
+    = form.text_field :sum, :size=>10
+    %br
+    %label{:for => "payment_payment_date"} Дата
+    = form.date_select :payment_date
+    %br
+    %label{:for => "payment_comment"} Комментарий:
+    %br
+    = form.text_area :comment
+    %p= submit_tag "Сохранить", :class=>"textbutton"
+#modalPlatej.modal.modalPlatej
 

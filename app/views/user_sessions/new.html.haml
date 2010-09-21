@@ -1,21 +1,17 @@
-%h1 Вход в систему
-- form_for @user_session, :url => user_session_path do |f|
-  - if @user_session.errors && !@user_session.errors.empty?
-    .error
-      логин или пароль указаны неверно. попробуйте еще раз или воспользуйтесь функцией напоминания пароля.
-  = f.label :email, "Ваш e-mail"
-  %br
-  = f.text_field :email, :class=>'text'
-  %br
-  = f.label :password, "пароль ("
-  = link_to "забыли пароль?", new_password_reset_url
-  )
-  %br
-  = f.password_field :password, :class=>'text'
-  %br
-  = f.check_box :remember_me
-  = f.label :remember_me, "запомнить меня"
-  %br
-  %br
-  = f.submit "Войти"
+#container.clear
+  %h1 Вход в систему
+  - form_for @user_session, :url => user_session_path do |f|
+    - if @user_session.errors && !@user_session.errors.empty?
+      .error
+        логин или пароль указаны неверно. попробуйте еще раз или воспользуйтесь функцией напоминания пароля.
+    = f.label :email, "e-mail"
+    = f.text_field :email
+    %br
+    = f.label :password, "пароль"
+    = f.password_field :password
+    %br
+    = f.submit "Войти", :class=>'textbutton'
+.clear
+%br
+= link_to "забыли пароль?", new_password_reset_url
 

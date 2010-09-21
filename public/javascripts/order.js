@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-   $('a#new_message').click(function () { 
+   $('a#new_message').click(function () {
       size=$("p.upload").size();
       $("p#upload_"+size).after($("p#upload_"+size).clone().attr("id", "upload_"+(size+1)));
       $("p#upload_"+(size+1)+" > input").each(function () {
@@ -9,6 +9,10 @@ $(document).ready(function() {
         });
       $("p#upload_"+(size+1)).html($("p#upload_"+(size+1)).html().replace(""+size+".", ""+(size+1)+"."));
    });
+
+
+
+
 
 });
 

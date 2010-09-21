@@ -14,9 +14,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Ваш аккаунт создан!"
-      redirect_back_or_default account_url
+      redirect_back_or_default '/services'
     else
-      flash[:notice] = "Ошибка создания аккаунта! #{@user.errors.first}"
       render :action => :new
     end
   end

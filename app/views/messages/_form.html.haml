@@ -18,5 +18,5 @@
               - else
                 = link_to doc.object.file_file_name, {:controller=>:documents, :action=>:download, :id=>doc.object.id}
         = link_to "еще файл", "javascript:;", :id=>"more_files"
-        %p= submit_tag "Отправить"
+        %p= submit_tag "Отправить", :class=>'textbutton'
 

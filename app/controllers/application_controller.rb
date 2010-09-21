@@ -7,12 +7,28 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
+
+  before_filter :set_user
+
   include ExceptionNotifiable
 
   def params_posted?(symbol)
     request.post? and params[symbol]
   end
 
+
+  def set_user
+    unless current_user
+      @user=User.new
+      @user_session = UserSession.new
+    else
+      @user=current_user
+      @order=Order.new
+      @order.messages.build
+      5.times {@order.messages[0].documents.build}
+      @default_type=OrderType.active.find(:first)
+    end
+  end
 
   private
     def current_user_session

@@ -10,7 +10,9 @@
   .r
     = message.body
     %br
-    - message.documents.each do |doc|
-      = link_to doc.public_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
-      %br
+    %br
+    .files
+      - message.documents.each do |doc|
+        = link_to doc.public_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
+        %br
 

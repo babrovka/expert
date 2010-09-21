@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
     if params_posted?(:payment)
        order=Order.find(params[:payment][:order_id])
        @payment=Payment.new(params[:payment])
-       if @payment.save 
+       if @payment.save
           flash[:notice]="Платеж сохранен!"
           redirect_to order_url(@payment.order_id)
        else
@@ -22,8 +22,8 @@ class PaymentsController < ApplicationController
   end
 
   def edit
-     @title="Редактирование платежа"
      @payment=Payment.find(params[:id])
+     render :layout=>false
   end
 
   def update
@@ -51,3 +51,4 @@ class PaymentsController < ApplicationController
   end
 
 end
+

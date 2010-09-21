@@ -1,42 +1,8 @@
-#content {min-height:500px;}
-
 .red {color:red;}
 .blue {color:#0000ff;}
 .green {color:green;}
-.center {text-align:center;}
-.right {text-align:right;}
-.left {text-align:left;}
-
-.about {font-size:140%;}
 
 .hint {font-size:75%, font-style:italic; color:#7f7f7f;}
-
-.order_info {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
-.type_active {background:#E6EFC2;color:#264409;border-color:#C6D880;}
-.type_blocked {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
-
-ul.inline_menu {list-style-type:none; font-size:200%;}
-ul.inline_menu li {display:inline; margin-right:2em;}
-
-ul.submenu {list-style-type:none; font-size:120%;}
-ul.submenu li {display:inline; margin-right:2em;}
-ul.submenu li span {background:#E5ECF9; padding:0.5em;}
-
-ul.none {list-style-type:none; font-size:90%; margin:0;}
-ul.none li {margin-top:1em;}
-
-#loginbox {background:#E5ECF9; padding:1.5em; text-align:center;}
-#go_order {background:#aadfaa; padding:0.7em; text-align:center; font-size:150%; margin-top:0.5em;}
-
-.statuses {display:none; background:#a3e8a3;padding:1em;}
-
-.top5 {margin-top:6em;}
-
-.orderhead {background:#E5ECF9; padding:0.5em; font-size:150%; border: 1px solid #7f7f7f;}
-.orderhead b {font-size:75%;}
-.orderhead b.green {color:#397339;}
-
-a.tiny {font-size:70%;}
 
 .files a
 {
@@ -51,17 +17,15 @@ a.tiny {font-size:70%;}
 .files a.doc   { background-image: url(/images/icons/doc.png); }
 .files a.xls   { background-image: url(/images/icons/xls.png); }
 
-table.messages {border-left: 1px solid #7f7f7f; }
-table.messages tr td {border-bottom: 1px solid #7f7f7f;border-right: 1px solid #7f7f7f;}
-.message_box {width:450px; overflow: hidden;}
+.error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.error a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
 
-table.orders tr {background:#E5ECF9;}
-table.orders tr td {border-right:1px solid #9797bf;border-top:1px solid #9797bf;}
-table.orders td {padding:1em;}
 
-table.users tr {width:50%;}
-table.users tr td {border:1px solid #9797bf;}
-table.users td {padding:1em;}
-
-.payments {font-size:0.8em; }
+#container label {font-size:15px;display:block;clear:left;float:left;width:60px;padding-top:10px}
+#container input {font-size:16px; line-height:34px !important; display:block;float:left;width:251px;height:34px;border:0;padding:0 10px 0 10px;margin-bottom:10px; background:url(../images/input.png) 0 0 no-repeat; }
 

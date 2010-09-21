@@ -4,8 +4,12 @@
     %meta{'http-equiv'=>'content-type', 'content'=>'text/html;charset=UTF-8'}
     %title= "#{@title} | Экка"
     = stylesheet_link_tag 'style'
+    = stylesheet_link_tag 'expert'
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" href="stylesheets/ie.css"/><![endif]-->
     = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery.simplemodal.min'
+    = javascript_include_tag 'curvycorners.src'
+    = javascript_include_tag 'application'
     = yield :head
   %body
     .page
@@ -22,7 +26,7 @@
             = link_to "Настройки", '#', :class=>'AmodalOptions'
             = link_to "Выход", logout_url
           - else
-            = link_to "Личный кабинет", account_url
+            = link_to "Личный кабинет", login_url, :class=>'AmodalAuth'
       .topmenu.clear
         .topmenuL
           %ul
@@ -31,7 +35,7 @@
             %li= link_to "Законодательство"
             %li= link_to "Контакты", '/contacts'
         .topmenuR
-          = link_to "Заказать экспертизу", new_order_url, :class=>"zakaz"
+          = link_to "Заказать экспертизу", '/services', :class=>"zakaz #{current_user ? 'AmodalZakaz' : 'AmodalReg' }"
       .body
         .inner.clear
           .content
@@ -96,4 +100,55 @@
           %li Стоимость экспертизы от 500 рублей
           %li Выезд эксперта при сильных повреждениях
           %li Доставка отчета курьером
+      - unless current_user
+        #modalReg.modal.modalReg
+          %h3 Регистрация
+          - form_for @user do |f|
+            = render :partial => "users/form", :object => f
+            %br
+            = submit_tag "Зарегистрироваться", :class=>"textbutton"
+        #modalAuth.modal.modalAuth
+          %h3 Вход в личный кабинет
+          - form_for @user_session, :url => user_session_path do |f|
+            - if @user_session.errors && !@user_session.errors.empty?
+              .error
+                логин или пароль указаны неверно. попробуйте еще раз или воспользуйтесь функцией напоминания пароля.
+            = f.label :email, "E-mail"
+            = f.text_field :email, :class=>'text'
+            %br
+            = f.label :password, "пароль"
+            = f.password_field :password, :class=>'text'
+            %br
+            = f.submit "Войти", :class=>'textbutton'
+      - else
+        #modalZakaz.modal.modalZakaz
+          %h3 Оформление заказа!
+          - form_for(@order, :url => orders_url, :html=>{:multipart=>true}) do |order_form|
+            %fieldset
+              = order_form.collection_select(:order_type_id, OrderType.find(:all), :id, :name)
+              - order_form.fields_for :messages do |msg|
+                %label{:for => "message_body"} Ваш комментарий:
+                = msg.text_area :body
+                %label Приложения:
+                - msg.fields_for :documents do |doc|
+                  - ind=msg.object.documents.index(doc.object)+1
+                  %label{:class=>'filenum'}= "#{ind}. "
+                  = doc.file_field :file, :class=>'fileinput'
+              .zakaz_total
+                Стоимость:
+                - OrderType.find(:all).each do |type|
+                  %b{:id=>"price_#{type.id}", :class=>"zakaz_price #{'hide' unless type==@default_type}"}
+                    = type.price
+                    руб.
+              = submit_tag "Отправить заказ", :class=>"textbutton button"
+        #modalOptions.modal.modalOptions
+          %h3 Настройки
+          - form_for @user, :url => user_path(@user) do |f|
+            %fieldset
+              %label{:for=>"user_name"} ФИО
+              = f.text_field :name
+              %label{:for=>"user_password"} Новый пароль
+              = f.password_field :password
+            .clear.formpass
+            = f.submit "Сохранить", :class=>"textbutton"
 

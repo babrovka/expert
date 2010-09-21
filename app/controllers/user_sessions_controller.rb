@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
- 
+
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
 
@@ -25,6 +25,7 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = "Вы вышли из системы!"
-    redirect_back_or_default login_url
+    redirect_to :root
   end
 end
+

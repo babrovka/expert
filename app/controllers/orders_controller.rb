@@ -51,6 +51,8 @@ class OrdersController < ApplicationController
     @order=Order.find(params[:id])
     @title="Заказ №#{@order.id}"
     @statuses=Status.all
+    @payment=Payment.new(:order_id=>@order.id)
+
     if @order.user==current_user || current_user.admin?
       @show_message=params[:new_message]
       @message=@order.messages.build
@@ -70,6 +72,21 @@ class OrdersController < ApplicationController
        flash[:notice]="Ошибка: Статус заказа #{order.id} не изменен!"
      end
      redirect_to :back
+  end
+
+
+  def update_status
+    status=Status.find(params[:ord][:status])
+    ids=Array.new
+    params.keys.each do |key|
+      if key[0..4]=='order'
+        ids << key.split('_')[1]
+      end
+    end
+
+    Order.update_all({:status_id=>status}, "id IN (#{ids.join(',')})")
+    flash[:notice]="Статус изменен"
+    redirect_to orders_url(:status=>status)
   end
 end
 

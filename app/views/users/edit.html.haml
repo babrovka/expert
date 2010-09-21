@@ -6,7 +6,8 @@
     %label{:for=>"user_password"} Новый пароль
     = f.text_field :password
     .clear.formpass
-    = f.check_box :admin,  :id=>"makeadmin", :class=>"checkbox"
-    %span.checkboxlabel права администратора
-    = f.submit "Сохранить изменения", :class=>"button textbutton simplemodal-close"
+    - if current_user.supervisor?
+      = f.check_box :admin,  :id=>"makeadmin", :class=>"checkbox"
+      %span.checkboxlabel права администратора
+    = f.submit "Сохранить изменения", :class=>"button textbutton"
 
