@@ -4,13 +4,14 @@
     = "#{ordermin.id}."
     = link_to "<span>#{ordermin.order_type.name}</span>", ordermin, :class=>"opener"
     .service_info
-      = ordermin.messages[0].body if ordermin.messages[0]
-      %br
-      %br
-      .files
-        - ordermin.messages.first.documents.each do |doc|
-          = link_to doc.public_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
-          %br
+      - if ordermin.messages[0]
+        = ordermin.messages[0].body
+        %br
+        %br
+        .files
+          - ordermin.messages[0].documents.each do |doc|
+            = link_to doc.public_file_name, {:controller=>:documents, :action=>:download, :id=>doc.id}, :class=>File.extname(doc.file.url).split('?')[0].gsub('.','')
+            %br
   .serviceStatus
     = ordermin.user.name
     %br
