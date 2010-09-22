@@ -4,7 +4,7 @@
     = "#{ordermin.id}."
     = link_to "<span>#{ordermin.order_type.name}</span>", ordermin, :class=>"opener"
     .service_info
-      = ordermin.messages.first.body if ordermin.messages
+      = ordermin.messages[0].body if ordermin.messages[0]
       %br
       %br
       .files
