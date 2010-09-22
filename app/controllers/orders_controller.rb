@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
     @title="Заказ №#{@order.id}"
     @statuses=Status.all
     @payment=Payment.new(:order_id=>@order.id)
-
+    @delivery=Delivery.new(:order_id=>@order.id)
     if @order.user==current_user || current_user.admin?
       @show_message=params[:new_message]
       @message=@order.messages.build
