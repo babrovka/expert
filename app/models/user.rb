@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
 
   def supervisor?
-    id==1
+    id.to_i==1
   end
 
 
