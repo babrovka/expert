@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def edit
     @title="Настройка пользователя"
-    if current_user.admin? || current_user.supervisor?
+    if current_user.supervisor?
       @user=User.find(params[:id])
     else
       @user = @current_user
