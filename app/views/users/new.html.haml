@@ -1,6 +1,13 @@
-%h1 Регистрация
-- form_for @user do |f|
-  = render :partial => "form", :object => f
-  %br
-  = f.submit "Продолжить", :class=>'textbutton'
+#container.clear
+  %h1 Регистрация
+  - form_for @user do |f|
+    %fieldset
+      = render :partial => "form", :object => f
+      %br
+      = f.submit "Продолжить", :class=>'textbutton'
+    %br
+    %br
+    уже зарегистрированы? 
+    &nbsp;
+    = link_to "Войти в личный кабинет", login_url
 

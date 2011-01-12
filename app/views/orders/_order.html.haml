@@ -8,5 +8,9 @@
     %p.price
       = number_with_delimiter(order.price, :delimiter=>' ')
       %span руб.
-    = link_to "Оплатить", "#", :class=>'link'
+    - if @order.paid_for?
+      Оплачен
+    - else
+      = link_to "Как оплатить", "#", :class=>'link'
+      
 

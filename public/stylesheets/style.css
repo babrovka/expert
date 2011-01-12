@@ -101,11 +101,11 @@ a.greenButton i, a.activeStatusi { color:#fff;}
 a.greenButton:hover i, a.activeStatus:hover i {text-decoration:none}
 
 /*~~~~кабинет~~~~*/
-div.zakaz_status {padding-bottom:30px}
+div.zakaz_status {padding-bottom:30px; line-height:2;}
 div.zakaz_status span {font-size:21px;color:#673092;padding-right:25px;}
-div.zakaz_status a.activeStatus {margin-right:5px;}
+div.zakaz_status a.activeStatus {margin-right:5px; font-size:12px;}
 div.zakaz_status a.activeStatus i {text-decoration:none}
-div.zakaz_status a.inactiveStatus {padding:0 15px;font-size:16px}
+div.zakaz_status a.inactiveStatus {padding:0 8px; font-size:14px}
 div.zakaz_status a.inactiveStatus i {font-style:normal}
 
 /*~~заказы~~*/

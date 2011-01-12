@@ -4,8 +4,11 @@
     .service_info
       = service.info
   .serviceR
-    = service.price
-    %span руб.
+    - if service.price>0
+      = service.price
+      %span руб.
+    - else
+      бесплатно
     %br
     = link_to '<i>Заказать</i>', new_order_url(:order_type_id=>service.id), :class=>"greenButton #{current_user ? 'AmodalZakaz' : 'AmodalReg' } service", :id=>"service_#{service.id}"
 

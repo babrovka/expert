@@ -1,12 +1,15 @@
 = form.label :name, "ФИО"
 = form.text_field :name, :class=>'text'
+.clear
 = errors_for(@user, :name)
 = form.label :email, "E-mail"
 = form.text_field :email, :class=>'text'
+.clear
 = errors_for(@user, :email)
 .clear.formpass
 = form.label :password, form.object.new_record? ? "пароль" : "Новый пароль"
 = form.password_field :password, :class=>'text'
+.clear
 = errors_for(@user, :password)
 %br
 

@@ -26,12 +26,12 @@
             = link_to "Настройки", '#', :class=>'AmodalOptions'
             = link_to "Выход", logout_url
           - else
-            = link_to "Личный кабинет", login_url, :class=>'AmodalAuth'
+            = link_to "Личный кабинет", login_url, :class=>'AmodalAuth' unless controller.controller_name=='user_sessions'
       .topmenu.clear
         .topmenuL
           %ul
             %li= link_to "Услуги и цены", '/services'
-            %li= link_to "О проекте", '/about'
+            %li= link_to "Как это работает", '/about'
             %li= link_to "Законодательство"
             %li= link_to "Контакты", '/contacts'
         .topmenuR
@@ -45,11 +45,17 @@
           .right
             %h3 Полезные ссылки
             %ul.links
-              %li= link_to "Когда необходима независимая экспертиза", "/#l1"
-              %li= link_to "Почему именно независимая оценка автомобиля", "/#l2"
-              %li= link_to "Почему Вам стоит обратиться именно к нам", "/#l3"
-              %li= link_to "Условия оплаты и доставки"
-              %li= link_to "Задать вопрос специалисту"
+              - if current_user && current_user.supervisor?
+                %li= link_to "Пользователи", '/users'
+              - if current_user && current_user.admin?
+                %li= link_to "Заказы", '/orders'
+                %li= link_to "Услуги", '/order_types'
+              - else
+                %li= link_to "Когда необходима независимая экспертиза", "/#l1"
+                %li= link_to "Почему именно независимая оценка автомобиля", "/#l2"
+                %li= link_to "Почему Вам стоит обратиться именно к нам", "/#l3"
+                %li= link_to "Условия оплаты и доставки"
+                %li= link_to "Задать вопрос специалисту", new_order_url(:order_type_id=>6)
       .footer.clear
         .footerL
           - if main_page?
@@ -102,26 +108,27 @@
             %li Стоимость экспертизы от 500 рублей
             %li Выезд эксперта при сильных повреждениях
             %li Доставка отчета курьером
-      - unless current_user
-        #modalReg.modal.modalReg
-          %h3 Регистрация
-          - form_for @user do |f|
-            = render :partial => "users/form", :object => f
-            %br
-            = submit_tag "Зарегистрироваться", :class=>"textbutton"
-        #modalAuth.modal.modalAuth
-          %h3 Вход в личный кабинет
-          - form_for @user_session, :url => user_session_path do |f|
-            - if @user_session.errors && !@user_session.errors.empty?
-              .error
-                логин или пароль указаны неверно. попробуйте еще раз или воспользуйтесь функцией напоминания пароля.
-            = f.label :email, "E-mail"
-            = f.text_field :email, :class=>'text'
-            %br
-            = f.label :password, "пароль"
-            = f.password_field :password, :class=>'text'
-            %br
-            = f.submit "Войти", :class=>'textbutton'
+      - unless current_user  
+        - unless controller.controller_name=='password_resets'
+          #modalReg.modal.modalReg
+            %h3 Регистрация
+            - form_for @user do |f|
+              = render :partial => "users/form", :object => f
+              %br
+              = submit_tag "Зарегистрироваться", :class=>"textbutton"
+          #modalAuth.modal.modalAuth
+            %h3 Вход в личный кабинет
+            - form_for @user_session, :url => user_session_path do |f|
+              - if @user_session.errors && !@user_session.errors.empty?
+                .error
+                  логин или пароль указаны неверно. попробуйте еще раз или воспользуйтесь функцией напоминания пароля.
+              = f.label :email, "E-mail"
+              = f.text_field :email, :class=>'text'
+              %br
+              = f.label :password, "пароль"
+              = f.password_field :password, :class=>'text'
+              %br
+              = f.submit "Войти", :class=>'textbutton'
       - else
         #modalZakaz.modal.modalZakaz
           %h3 Оформление заказа!
