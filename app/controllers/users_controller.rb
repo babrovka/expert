@@ -62,9 +62,9 @@ class UsersController < ApplicationController
     @status=params[:status]
     @statuses=Status.all
     if @status=="old"
-      conditions='status_id>3'
+      conditions='status_id>4'
     else
-      conditions='status_id<4'
+      conditions='status_id<5'
     end
     @user = @current_user
     @orders=@user.orders.find(:all, :conditions=>conditions)

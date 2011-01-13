@@ -4,7 +4,7 @@ class OrderType < ActiveRecord::Base
   named_scope :active, :conditions=>'active'
 
   def name_with_price
-    "#{name} - #{price} рублей"
+    price && price>0 ? "#{name} - #{price} рублей" : "#{name} - бесплатно"
   end
 
 end

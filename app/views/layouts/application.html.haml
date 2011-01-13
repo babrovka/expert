@@ -35,7 +35,7 @@
             %li= link_to "Законодательство"
             %li= link_to "Контакты", '/contacts'
         .topmenuR
-          = link_to "Заказать экспертизу", '/services', :class=>"zakaz #{current_user ? 'AmodalZakaz' : 'AmodalReg' }"
+          = link_to "Заказать экспертизу", new_order_url, :class=>"zakaz #{current_user ? '' : 'AmodalReg' }"
       .body
         .inner.clear
           .content

@@ -10,5 +10,5 @@
     - else
       бесплатно
     %br
-    = link_to '<i>Заказать</i>', new_order_url(:order_type_id=>service.id), :class=>"greenButton #{current_user ? 'AmodalZakaz' : 'AmodalReg' } service", :id=>"service_#{service.id}"
+    = link_to '<i>Заказать</i>', new_order_url(:order_type_id=>service.id), :class=>"greenButton #{current_user ? '' : 'AmodalReg' } service", :id=>"service_#{service.id}"
 

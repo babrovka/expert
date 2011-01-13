@@ -31,6 +31,17 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    if params[:order]
+      order=Order.find(params[:id])
+      if order.update_attributes(params[:order])
+        flash[:notice]="Статус заказа #{order.id} изменен!"
+      end
+    end
+    redirect_to orders_url(:status=>order.status_id)
+  end
+
+
 
   def index
      @title="Заказы"
@@ -83,9 +94,12 @@ class OrdersController < ApplicationController
         ids << key.split('_')[1]
       end
     end
-
-    Order.update_all({:status_id=>status}, "id IN (#{ids.join(',')})")
-    flash[:notice]="Статус изменен"
+    if ids.size>0
+      Order.update_all({:status_id=>status}, "id IN (#{ids.join(',')})")
+      flash[:notice]="Статус изменен"
+    else
+      flash[:notice]="Не выбрано ни одного заказа"
+    end
     redirect_to orders_url(:status=>status)
   end
 end

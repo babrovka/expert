@@ -8,7 +8,15 @@
       = @order.id
       %br
       %small= @order.order_type.name
-    .c= @order.status.name
+    .c
+      - if current_user.admin?
+        - form_for @order do |form|
+          статус:
+          = form.collection_select :status_id, Status.all, :id, :name
+          %br
+          = submit_tag "установить статус"
+      - else
+        = @order.status.name
     .r
       %span.price
         = number_with_delimiter(@order.price, :delimiter=>' ')

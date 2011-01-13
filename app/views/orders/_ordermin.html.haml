@@ -9,10 +9,13 @@
     = ordermin.user.email
   .serviceR
     %p.price
-      = ordermin.price
-      %span руб.
+      - if ordermin.price>0
+        = number_with_delimiter(ordermin.price, :delimiter=>' ')
+        %span руб.
+      - else
+        бесплатно
     - if @order.paid_for?
       Оплачено
-    - else
+    - elsif ordermin.price>0
       Ожидание оплаты
 

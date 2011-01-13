@@ -46,9 +46,9 @@ div.header div.phone a {padding-left:15px}
 
 
 div.topmenu {clear:both;padding:0 46px 30px 0}
-div.topmenuL {float:left;width:625px;font-size:16px;padding-top:13px}
+div.topmenuL {float:left;width:625px;font-size:15px;padding-top:13px}
 div.topmenuL ul {}
-div.topmenuL li {display:inline;padding-right:54px}
+div.topmenuL li {display:inline;padding-right:40px}
 div.topmenuL li.active a {color:#add13a}
 
 div.topmenuR {width:259px;float:right;text-align:right;height:48px;}
