@@ -16,6 +16,6 @@
         бесплатно
     - if @order.paid_for?
       Оплачено
-    - elsif ordermin.price>0
+    - elsif ordermin.price && ordermin.price.to_i>0
       Ожидание оплаты
 
