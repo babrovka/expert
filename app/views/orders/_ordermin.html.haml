@@ -9,7 +9,7 @@
     = ordermin.user.email
   .serviceR
     %p.price
-      - if ordermin.price>0
+      - if ordermin.price && ordermin.price.to_i>0
         = number_with_delimiter(ordermin.price, :delimiter=>' ')
         %span руб.
       - else
