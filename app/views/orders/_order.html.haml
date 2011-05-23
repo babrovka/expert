@@ -6,14 +6,14 @@
     %span.active= order.status.name
   .serviceR
     %p.price
-      - if order.price>0
+      - if order.price && order.price.to_i>0
         = number_with_delimiter(order.price, :delimiter=>' ')
         %span руб.
       - else
         бесплатно
     - if @order.paid_for?
       Оплачен
-    - elsif order.price>0
+    - elsif order.price && order.price.to_i>0
       = link_to "Как оплатить", "#", :class=>'link'
       
 
