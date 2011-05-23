@@ -28,8 +28,7 @@ $(document).ready(function() {
 		$("#modalPlatejNew").modal(	{
 			onOpen: function (dialog) {
 			dialog.overlay.fadeIn();
-			var settings = {tl:{radius:5},tr:{radius:5},bl:{radius:5},br:{radius:5},antiAlias:true};
-			dialog.container.fadeIn(function(){curvyCorners(settings, "#simplemodal-container");});
+			dialog.container.fadeIn();
 			dialog.data.fadeIn();
 		}});
 		return false;
@@ -40,8 +39,7 @@ $(document).ready(function() {
 		$("#modalZakazDokumentov").modal(	{
 			onOpen: function (dialog) {
 			dialog.overlay.fadeIn();
-			var settings = {tl:{radius:5},tr:{radius:5},bl:{radius:5},br:{radius:5},antiAlias:true};
-			dialog.container.fadeIn(function(){curvyCorners(settings, "#simplemodal-container");});
+			dialog.container.fadeIn();
 			dialog.data.fadeIn();
 		}});
 		return false;
@@ -57,8 +55,7 @@ $(document).ready(function() {
 		$("#modalPlatej").html(data).modal(	{
 			onOpen: function (dialog) {
 			dialog.overlay.fadeIn();
-			var settings = {tl:{radius:5},tr:{radius:5},bl:{radius:5},br:{radius:5},antiAlias:true};
-			dialog.container.fadeIn(function(){curvyCorners(settings, "#simplemodal-container");});
+			dialog.container.fadeIn();
 			dialog.data.fadeIn();
 		}});
 

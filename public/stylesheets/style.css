@@ -123,7 +123,7 @@ div.cabinet div.service div.serviceR a.link {font-size:16px;}
 #simplemodal-container a.modalCloseImg {background:url(../images/modal_close.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:10px; right:0; cursor:pointer;}
 #simplemodal-container h3 {font-size:21px;color:#673092;margin-bottom:20px}
 #simplemodal-container label {font-size:15px;display:block;clear:left;float:left;width:60px;padding-top:10px}
-#simplemodal-container input {font-size:16px; line-height:34px !important; display:block;float:left;width:251px;height:34px;border:0;padding:0 10px 0 10px;margin-bottom:10px; background:url(../images/input.png) 0 0 no-repeat; }
+#simplemodal-container input {font-size:16px; line-height:16px !important; display:block;float:left;width:251px;height:16px;border:0;padding:9px 10px;margin-bottom:10px; background:url(../images/input.png) 0 0 no-repeat; }
 
 input.textbutton {font-size:21px !important; text-align:left; clear:both;margin-top:25px; width:auto !important;padding:0 !important; background:none !important;color:#673092;text-decoration:underline;cursor:pointer; height:30px !important; }
 div.formpass {height:25px;clear:left}
@@ -142,7 +142,7 @@ div.modalService {width:430px;height:410px}
 div.modalService label {width:115px !important}
 div.modalService textarea {margin-top:10px !important }
 div.modalService input.textbutton {margin-top:15px !important}
-div.modalService input.long {font-size:15px !important; line-height:28px !important; width:285px !important;height:28px !important;padding:0 10px 0 10px;margin:3px 0 10px 0 !important; background:url(../images/input_long.png) 0 0 no-repeat !important; }
+div.modalService input.long {font-size:15px !important; line-height:18px !important; width:285px !important;height:18px !important;padding:5px 10px;margin:3px 0 10px 0 !important; background:url(../images/input_long.png) 0 0 no-repeat !important; }
 
 /*~~~~Оформление заказа~~~~*/
 div.modalZakaz {width:425px;height:515px}

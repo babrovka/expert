@@ -5,8 +5,7 @@ $('.AmodalOptions').click(function (e) {//открываем окно настр
 		$("#modalOptions").modal(	{
 			onOpen: function (dialog) {
 			dialog.overlay.fadeIn();
-			var settings = {tl:{radius:5},tr:{radius:5},bl:{radius:5},br:{radius:5},antiAlias:true};
-			dialog.container.fadeIn(function(){curvyCorners(settings, "#simplemodal-container");});
+			dialog.container.fadeIn();
 			dialog.data.fadeIn();
 		}});
 		return false;
@@ -18,8 +17,7 @@ $('.AmodalReg').click(function (e) {// окно рег-ция
 		$("#modalReg").modal(	{
 			onOpen: function (dialog) {
 			dialog.overlay.fadeIn();
-			var settings = {tl:{radius:5},tr:{radius:5},bl:{radius:5},br:{radius:5},antiAlias:true};
-			dialog.container.fadeIn(function(){curvyCorners(settings, "#simplemodal-container");});
+			dialog.container.fadeIn();
 			dialog.data.fadeIn();
 		}});
 		return false;
@@ -30,8 +28,7 @@ $('a.AmodalAuth').click(function (e) {// окно логин
 		$("#modalAuth").modal(	{
 			onOpen: function (dialog) {
 			dialog.overlay.fadeIn();
-			var settings = {tl:{radius:5},tr:{radius:5},bl:{radius:5},br:{radius:5},antiAlias:true};
-			dialog.container.fadeIn(function(){curvyCorners(settings, "#simplemodal-container");});
+			dialog.container.fadeIn();
 			dialog.data.fadeIn();
 		}});
 		return false;
@@ -61,8 +58,7 @@ $('.AmodalZakaz').click(function (e) {
 		$("#modalZakaz").modal(	{
 			onOpen: function (dialog) {
 			dialog.overlay.fadeIn();
-			var settings = {tl:{radius:5},tr:{radius:5},bl:{radius:5},br:{radius:5},antiAlias:true};
-			dialog.container.fadeIn(function(){curvyCorners(settings, "#simplemodal-container");});
+			dialog.container.fadeIn();
 			dialog.data.fadeIn();
 		}});
 		return false;
