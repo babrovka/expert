@@ -55,7 +55,7 @@
                 %li= link_to "Почему именно независимая оценка автомобиля", "/#l2"
                 %li= link_to "Почему Вам стоит обратиться именно к нам", "/#l3"
                 %li= link_to "Условия оплаты и доставки"
-                %li= link_to "Задать вопрос специалисту", new_order_url(:order_type_id=>6)
+                %li= link_to "Задать вопрос специалисту", new_order_url(:order_type_id=>6), :class=>"zakaz #{current_user ? '' : 'AmodalReg' }"
       .footer.clear
         .footerL
           - if main_page?
