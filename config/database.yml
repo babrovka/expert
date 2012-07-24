@@ -2,10 +2,9 @@ development:
   adapter: mysql
   database: expert_development
   username: root
-  password: 1
+  password: 
   encoding: utf8
   host: localhost
-  socket: /var/run/mysqld/mysqld.sock
 
 test:
   adapter: mysql
