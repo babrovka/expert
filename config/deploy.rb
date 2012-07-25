@@ -14,7 +14,7 @@ role :web, *nodes
 role :db,  nodes.first, :primary => true
 
 set :scm, :git
-set :user, "autoexpert"
+set :user, "carexpert"
 set :password, "carbagus"
 set :use_sudo, false
 
