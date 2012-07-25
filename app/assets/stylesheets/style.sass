@@ -1,0 +1,800 @@
+*
+  :margin 0
+  :padding 0
+
+html
+  :height 100%
+
+body
+  :font 14px Tahoma, Geneva, sans-serif
+  :width 100%
+  :color #262626
+  :background #fff
+  :height 100%
+
+a
+  :color #673092
+  :outline none
+  &:hover
+    :text-decoration none
+    :color #b38ad3
+  &:active
+    :color #add13a
+
+img
+  :border 0
+
+p
+  :margin 0 0 20px 0
+
+.clear
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
+  :display inline-block
+  :display block
+
+.clearboth
+  :clear both
+
+.hide
+  :display none
+
+table td
+  :vertical-align top
+
+ul
+  :list-style none
+
+h1, h2, h3, h4, h5, h6
+  :font-weight 500
+
+h1
+  :font-size 21px
+  :margin-bottom 10px
+  :color #673092
+
+h2
+  :font-size 18px
+  :margin-bottom 10px
+
+h3
+  :font-size 16px
+  :margin-bottom 10px
+
+h4
+  :font-size 14px
+  :margin-bottom 8px
+
+h5
+  :font-size 13px
+  :margin-bottom 5px
+
+fieldset
+  :border 0
+
+input, textarea
+  :outline none
+  :font-family Tahoma, Geneva, sans-serif
+
+input.button
+  :cursor pointer
+
+div
+  &.page
+    :width 931px
+    :margin 0 auto
+    :padding 50px 0 45px 0
+    :padding-left 46px
+  &.header
+    :padding 0 46px 15px 0
+    div
+      &.logo
+        :width 590px
+        :padding-top 6px
+        :float left
+        :font-size 16px
+        :color #abd03a
+        :line-height 14px
+        strong
+          :font-weight 500
+      &.phone
+        :float right
+        :width 260px
+        :text-align right
+        :font-size 12px
+        :color #add13a
+        div.inner
+          :font-size 41px
+          :color #939598
+          :padding-bottom 4px
+        span
+          :font-size 14px
+        a
+          :padding-left 15px
+  &.topmenu
+    :clear both
+    :padding 0 46px 30px 0
+  &.topmenuL
+    :float left
+    :width 625px
+    :font-size 15px
+    :padding-top 13px
+    li
+      :display inline
+      :padding-right 40px
+      &.active a
+        :color #add13a
+  &.topmenuR
+    :width 259px
+    :float right
+    :text-align right
+    :height 48px
+
+/*//////////------//////////
+/*          Header
+/*//////////------//////////
+
+a.zakaz
+  :display block
+  :font-size 21px
+  :color #fff
+  :height 40px
+  :text-align center
+  :padding-top 8px
+  :background url(/assets/button_zakaz.png) 0 0 no-repeat
+  &:hover
+    :background-position 0 -48px
+    :text-decoration underline
+    :color #fff
+  &:active
+    :background-position 0 -96px
+    :text-decoration underline
+    :color #fff
+
+/*//////////------//////////
+/*          Content
+/*//////////------//////////
+
+
+div.body
+  :clear both
+  :background url(/assets/right.png) 100% 5px no-repeat
+  div.inner
+    :background url(/assets/right_bottom.png) 100% 100% no-repeat
+div.content
+  :width 583px
+  :float left
+  :padding-bottom 25px
+div.intro
+  p
+    :margin-bottom 5px
+  :padding-bottom 20px
+div.content
+  ul
+    li
+      :padding 0 0 4px 10px
+      :background url(/assets/li.png) 0 6px no-repeat
+    &.f16
+      :overflow hidden
+      li
+        :font-size 16px
+        :padding 0 0 8px 14px
+        :background-position 0 8px
+
+div.block_new
+  :margin-top 20px
+  :height 129px
+  :overflow hidden
+  :font-size 20px
+  :color #d6d6eb
+  :padding 27px 25px
+  :background url(/assets/block_new.png) 0 0 no-repeat
+  :line-height 28px
+  h2
+    :font-size 23px
+    :color #add13a
+    :font-weight 700
+    :margin-bottom 15px
+  a
+    :color #d6d6eb
+    &:link, &:hover, &:active
+      :color #d6d6eb
+  span
+    :color #fff
+div
+  &.seo
+    :clear both
+    :padding 70px 46px 0 0
+    h2
+      :color #8954a2
+      :font-weight 700
+      :font-size 14px
+      :margin-bottom 2px
+    ul li
+      :background url(/assets/li_green.png) 0 7px no-repeat
+      :padding 0 0 0 11px
+    h3
+      :color #8954a2
+      :font-size 14px
+      :margin-bottom 0
+      span
+        :color #add13a
+  &.content li
+    :width 49%
+    :float left
+    :display block
+    :padding 0
+    :background none
+    :font-size 12px
+    :line-height 22px
+  &.service
+    :padding-bottom 25px
+    :clear both
+    div
+      &.serviceL
+        :float left
+        :width 420px
+        :position relative
+      &.service_info
+        :display none
+        :font-size 12px
+        :padding 6px 0 0 0
+        :color #262626
+
+/*~~~~внутренние страницы~~~~
+
+/*~~~~услуги~~~~
+
+a.opener
+  :padding-right 14px
+  :font-size 16px
+  :cursor pointer
+  :text-decoration none
+  :background url(/assets/arrow_bot.png) 100% 9px no-repeat
+  &.close
+    :background-image url(/assets/arrow_top.png) !important
+  span
+    :background url(/assets/dotted.png) 0 100% repeat-x
+
+div.service div.serviceR
+  :float right
+  :width 130px
+  :text-align right
+  :color #673092
+  :font-size 30px
+  span
+    :font-size 17px
+
+a
+  &.greenButton, &.activeStatus
+    :font-size 16px
+    :text-align center
+    :padding 6px 0 10px 0
+    :text-decoration none
+    :color white
+    :background url(/assets/greenbutton_l.png) 0 0 no-repeat
+  &.greenButton i, &.activeStatus i
+    :font-style normal
+    :background url(/assets/greenbutton_r.png) 100% 0 no-repeat
+    :text-decoration underline
+    :padding 6px 15px 10px 15px
+  &.greenButton i, &.activeStatusi
+    :color #fff
+  &.greenButton:hover i, &.activeStatus:hover i
+    :text-decoration none
+
+/*~~~~кабинет~~~~
+
+div
+  &.zakaz_status
+    :padding-bottom 30px
+    :line-height 2
+    span
+      :font-size 21px
+      :color #673092
+      :padding-right 25px
+    a
+      &.activeStatus
+        :margin-right 5px
+        :font-size 12px
+        i
+          :text-decoration none
+      &.inactiveStatus
+        :padding 0 8px
+        :font-size 14px
+        i
+          :font-style normal
+  &.cabinet div
+    &.serviceL
+      :float left
+      :width 240px
+      :position relative
+      :color #abd03b
+      :font-size 16px
+    &.serviceStatus
+      :float left
+      :width 175px
+      :font-size 16px
+      :color #939598
+      .active
+        :color #abd03b
+    &.serviceR
+      :width 150px
+      :float right
+      :position relative
+      :top -16px
+      :font-size 16px
+      p.price
+        :font-size 30px
+        :margin-bottom 2px
+      a.link
+        :font-size 16px
+
+/*~~заказы~~
+
+/*~~~~всплывающие окна~~~~
+
+.modal
+  :display none
+
+#simplemodal-overlay
+  :background-color #4d1b6f
+
+#simplemodal-container
+  :border-radius 5px
+  :-moz-border-radius 5px
+  :-webkit-border-radius 5px
+  :background #fff
+  :padding 30px 40px
+  a.modalCloseImg
+    :background url(/assets/modal_close.png) no-repeat
+    :width 25px
+    :height 29px
+    :display inline
+    :z-index 3200
+    :position absolute
+    :top 10px
+    :right 0
+    :cursor pointer
+  h3
+    :font-size 21px
+    :color #673092
+    :margin-bottom 20px
+  label
+    :font-size 15px
+    :display block
+    :clear left
+    :float left
+    :width 60px
+    :padding-top 10px
+  input
+    :font-size 16px
+    :line-height 16px !important
+    :display block
+    :float left
+    :width 251px
+    :height 16px
+    :border 0
+    :padding 9px 10px
+    :margin-bottom 10px
+    :background url(/assets/input.png) 0 0 no-repeat
+
+input.textbutton
+  :font-size 21px !important
+  :text-align left
+  :clear both
+  :margin-top 25px
+  :width auto !important
+  :padding 0 !important
+  :background none !important
+  :color #673092
+  :text-decoration underline
+  :cursor pointer
+  :height 30px !important
+
+div.formpass
+  :height 25px
+  :clear left
+
+input.checkbox
+  :width auto !important
+  :height auto !important
+  :background none !important
+  :padding 0 !important
+  :vertical-align top
+  :margin 0 !important
+
+.checkboxlabel
+  :position relative
+  :top -4px
+  :left 8px
+  :float left
+
+div
+  &.modalOptions, &.modalReg
+    :width 340px
+    :height 280px
+  &.modalOptions h3, &.modalReg h3
+    :margin-bottom 40px !important
+  &.modalThanks
+    :width 450px
+    :height 85px
+  &.modalAuth
+    :width 340px
+    :height 220px
+    h3
+      :margin-bottom 40px !important
+  &.modalReg
+    .textbutton
+      :margin-top -9px
+input.textbutton.regbutton
+  :float left !important
+  :clear none !important
+  :margin-left 20px
+
+div
+  &.modalService
+    :width 430px
+    :height 410px
+    label
+      :width 115px !important
+    textarea
+      :margin-top 10px !important
+    input
+      &.textbutton
+        :margin-top 15px !important
+      &.long
+        :font-size 15px !important
+        :line-height 18px !important
+        :width 285px !important
+        :height 18px !important
+        :padding 5px 10px
+        :margin 3px 0 10px 0 !important
+        :background url(/assets/input_long.png) 0 0 no-repeat !important
+  &.modalZakaz
+    :width 425px
+    :height 515px
+    select
+      :width 420px
+      :margin-bottom 10px
+    label
+      :width 100% !important
+      :float none !important
+      :padding-bottom 3px
+      :padding-top 8px !important
+  &.modal textarea
+    :width 402px
+    :height 140px
+    :padding 10px
+    :background url(/assets/textarea.png) 0 0 no-repeat
+    :border 0
+    :font-size 15px !important
+  &.modalZakaz
+    label.filenum
+      :width 16px !important
+      :display block
+      :float left !important
+      :clear both
+    input.fileinput
+      :width 380px !important
+      :background url(/assets/inputfile.png) 0 0 no-repeat !important
+      :height 28px !important
+      :padding 0 !important
+  &.zakaz_total
+    :float left
+    :width 245px
+    :font-size 21px
+    :color #add13a
+    b
+      :font-size 25px
+      :color #673092
+      :font-weight 500
+  &.modalZakaz .button
+    :width 165px !important
+    :float right !important
+    :clear none !important
+    :margin 0 !important
+    :height 32px !important
+  &.admin div.zakaz_status
+    h1
+      :margin-bottom 20px
+    a
+      &.activeStatus
+        :padding 6px 0 10px 0
+        :margin-right 0 !important
+        i
+          :padding 6px 10px 10px 10px
+      &.inactiveStatus
+        :padding 0 5px
+
+/*~~~~Оформление заказа~~~~
+
+/*~~~~ADMIN~~~~
+
+.linkusers
+  :font-size 12px
+  :position relative
+
+/*~~заказы~~
+
+div
+  &.admin div
+    &.serviceL
+      :float left
+      :width 240px
+      :position relative
+      :color #abd03b
+      :font-size 16px
+      .checkbox
+        :margin-top 4px !important
+    &.serviceStatus
+      :float left
+      :width 175px
+      :font-size 15px
+      :color #262626
+    &.serviceR
+      :width 150px
+      :float right
+      :position relative
+      :top -16px
+      :font-size 16px
+      p.price
+        :font-size 30px
+        :margin-bottom 2px
+      a.link
+        :font-size 16px
+  &.manage
+    :font-size 16px
+    :color #673092
+
+/*~~~~пользователи~~~~
+
+ul.users
+  :list-style none
+  li
+    :display block
+    :clear both
+    :background none !important
+    :padding 0 !important
+    :margin-bottom 5px
+    &.odd .usersL
+      :background #e6efba
+    .usersL
+      :float left
+      :width 462px
+      :margin-right 10px
+      :padding 8px 0 8px 8px
+      :font-size 15px !important
+      :color #4d4d4f
+      a.username
+        :margin-right 12px
+        :font-size 15px !important
+        :background-position 100% 8px
+    &.odd a.username
+      :background url(/assets/arrow_bot_gr.png) 100% 8px no-repeat
+      &.close
+        :background url(/assets/arrow_top_gr.png) 100% 8px no-repeat
+    .usersL
+      a.usermail
+        :padding-right 12px
+      .userinfo
+        :color #262626
+        :font-size 10px
+        :padding-top 6px
+        :display none
+    .usersR
+      :float left
+      :width 100px
+      :padding 6px 0
+
+/*~~~~изменение данных пользователя. окошко~~~~
+
+div
+  &.modalChange
+    :width 385px
+    :height 235px
+    label
+      :width 105px !important
+  &.right
+    :float right
+    :width 215px
+    :padding 15px 73px 180px 0
+    :font-size 12px
+    h3
+      :color #6d6e71
+      :font-size 16px
+      :margin-bottom 15px
+    ul.links li
+      :padding-bottom 15px
+  &.footer
+    :border-top 1px solid #cdced0
+    :padding 5px 0 0 0
+    :color #9c9c9c
+    :margin 4px 46px 0 0
+  &.footerL
+    :font-size 10px
+    :width 585px
+    :float left
+  &.footerR
+    :font-size 12px
+    :float right
+    :width 200px
+    :text-align right
+  &.order
+    div
+      &.head
+        :line-height 30px
+        :color #673092
+        :margin-bottom 20px
+        .l
+          :float left
+          :width 240px
+          :font-size 21px
+          small
+            :font-size 16px
+        .c
+          :float left
+          :width 180px
+          :color #abd03b
+          :font-size 16px
+        .r
+          :float right
+          :width 140px
+          :text-align right
+          :font-size 16px
+          span.price
+            :font-size 30px
+            small
+              :font-size 17px
+          a.add_pay
+            :font-size 12px
+            :line-height 14px !important
+            :display block
+      &.plateji_info
+        :float right
+        :width 270px
+        :font-size 12px
+        :line-height 15px
+        :color #262626
+        :display none
+        span
+          &.date
+            :display inline-block
+            :width 75px
+          &.pay
+            :display inline-block
+            :width 65px
+          &.links
+            :display inline-block
+            :width 115px
+            :text-align right
+            :float right
+        a.add_pay
+          :display inline-block
+          :padding-top 5px
+          :float left
+      &.row
+        :border-top 1px solid #cdced0
+        :border-bottom 1px solid #cdced0
+        :padding 5px 3px 8px 3px
+        :margin-bottom 15px
+        :font-size 12px
+        :line-height 15px
+        .l
+          :float left
+          :width 190px
+        .r
+          :float right
+          :width 360px
+        form
+          :position relative
+          :left -10px
+        label
+          :width 100% !important
+          :float left
+          :font-size 15px
+          :clear both
+          :padding-bottom 3px
+          :padding-top 8px !important
+        textarea
+          :width 354px
+          :height 54px
+          :padding 5px 10px
+          :background url(/assets/textarea_374_64.gif) 0 0 no-repeat
+          :border 0
+          :font-size 12px !important
+          :color #262626
+          :margin-top 3px
+        label.filenum
+          :width 15px !important
+          :display block
+        input.fileinput
+          :width 345px !important
+          :background url(/assets/inputfile.png) 0 0 no-repeat !important
+          :height 28px !important
+          :padding 0 !important
+          :margin-bottom 7px
+          :border 0 !important
+          :margin-right 0 !important
+    a.make_order
+      :font-size 16px
+      :float right
+    label.prilojeniya
+      :margin-bottom 7px
+  &.modalDocs
+    :width 335px
+    :height 380px
+    label
+      :width 57px !important
+      :position relative
+    textarea
+      :width 308px
+      :height 57px
+      :padding 5px 10px
+      :background url(/assets/textarea_328_67.gif) 0 0 no-repeat
+      :border 0
+      :font-size 12px !important
+      :color #262626
+      :margin-top 5px
+    input.textbutton
+      :margin-top 15px
+      :font-size 23px
+  &.modalPlatej
+    :width 325px
+    :height 280px
+    input
+      :font-size 16px
+      :line-height 33px !important
+      :display block
+      :float left
+      :width 221px !important
+      :height 33px !important
+      :border 0
+      :padding 0 10px !important
+      :background url(/assets/input_short.gif) 0 0 no-repeat !important
+    textarea
+      :width 308px
+      :height 57px
+      :padding 5px 10px
+      :background url(/assets/textarea_328_67.gif) 0 0 no-repeat
+      :border 0
+      :font-size 12px !important
+      :color #262626
+      :margin-top 5px
+    input.textbutton
+      :margin-top 15px
+      :font-size 23px
+      :height 30px !important
+      :line-height 30px !important
+      :background none !important
+      :padding 0 !important
+    span.rub
+      :position relative
+      :top 10px
+      :left 7px
+    select
+      :margin 10px 0
+    label
+      :width 50px !important
+
+/*//////////------//////////
+/*           Right
+/*//////////------//////////
+
+/*//////////------//////////
+/*          Footer
+/*//////////------//////////
+
+/*//////////------//////////
+/*          !!NEW!!
+/*//////////------//////////
+
+/*~~~~страница заказа~~~~
+
+/*~~~~окошко заказ документов~~~~
+
+/*~~~~окошко Редактирование/внесение платежа~~~~

@@ -1,0 +1,30 @@
+div.header div.logo { padding-bottom:3px;}
+div.topmenu  {padding-top:5px}
+
+
+div.seo {padding-top:35px}
+a.opener {zoom:1;}
+a.greenButton, a.activeStatus {padding:6px 0 10px 15px;zoom: 1}
+a.activeStatus:hover {color:#fff}
+a.greenButton i, a.activeStatus i { padding:6px 15px 10px 0; }
+div.zakaz_status a.inactiveStatus {padding:6px 15px 10px 15px;zoom:1}
+
+div.zakaz_status a.activeStatus {position:relative;top:6px !important}
+
+div.service a.greenButton {margin:10px 0}
+div.admin div.zakaz_status {padding-bottom:40px !important}
+div.admin div.zakaz_status h1 {margin-bottom:0px !important;}
+div.admin div.zakaz_status a.activeStatus {position:relative;top:16px !important}
+div.admin div.zakaz_status a.activeStatus, div.zakaz_status a.inactiveStatus {position:relative;top:6px}
+
+div.admin div.service div.serviceL .checkbox {margin-top:1px !important}
+
+ul.users li .usersR {padding:0 !important}
+
+*+html div.modalZakaz {height:530px}
+
+input.textbutton.regbutton  {width:200px !important;margin-left: 0 !important}
+
+div.topmenuR {overflow:hidden}
+
+.checkboxlabel {top:0 !important}
