@@ -1,3 +1,4 @@
+# encoding: utf-8
 class UsersController < ApplicationController
 
  before_filter :require_no_user, :only => [:new, :create]
@@ -58,16 +59,11 @@ class UsersController < ApplicationController
   end
 
   def account
-    @title="Личный кабинет"
-    @status=params[:status]
-    @statuses=Status.all
-    if @status=="old"
-      conditions='status_id>6'
-    else
-      conditions='status_id<7'
-    end
-    @user = @current_user
-    @orders=@user.orders.find(:all, :conditions=>conditions)
+    @title    = "Личный кабинет"
+    @status   = params[:status]
+    @statuses = Status.all
+    @user     = @current_user
+    @orders   = @user.orders.where(@status == "old" ? 'status_id > 6' : 'status_id < 7').includes(:status, :order_type).all
   end
 end
 

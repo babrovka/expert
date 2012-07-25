@@ -1,5 +1,5 @@
 development:
-  adapter: mysql
+  adapter: mysql2
   database: expert_development
   username: root
   password: 
@@ -7,7 +7,7 @@ development:
   host: localhost
 
 test:
-  adapter: mysql
+  adapter: mysql2
   database: expert_test
   username: root
   password: 1
@@ -15,10 +15,9 @@ test:
   host: localhost
    
 production:
-  adapter: mysql
-  database: expert
+  adapter: mysql2
+  database: carexpert
   username: root
-  password: ci2Tahzi
+  password: carbagus
   encoding: utf8
   host: localhost
-  socket: /var/run/mysqld/mysqld.sock

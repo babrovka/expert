@@ -1,3 +1,4 @@
+# encoding: utf-8
 class DocumentsController < ApplicationController
 
   before_filter :require_user

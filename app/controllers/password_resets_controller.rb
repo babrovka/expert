@@ -1,13 +1,12 @@
+# encoding: utf-8
 class PasswordResetsController < ApplicationController
-
  before_filter :load_user_using_perishable_token, :only => [:edit, :update]  
  before_filter :require_no_user  
 
- def new  
+ def new
    @title="Восстановление пароля"
-   render  
- end  
-   
+ end
+
  def create  
    @user = User.find_by_email(params[:email])  
    if @user  
@@ -28,14 +27,13 @@ class PasswordResetsController < ApplicationController
    
  def update  
    @user.password = params[:user][:password]  
-   if @user.save  
-     flash[:notice] = "Пароль успешно изменен"  
-     redirect_to account_url  
-   else  
-     render :action => :edit  
-   end  
- end  
-   
+   if @user.save
+     redirect_to account_url, :notice => "Пароль успешно изменен"  
+   else
+     render :action => :edit
+   end
+ end
+
 private  
  def load_user_using_perishable_token  
    @user = User.find_using_perishable_token(params[:id])  

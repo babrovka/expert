@@ -7,9 +7,8 @@
 .clear
 = errors_for(@user, :email)
 .clear.formpass
-= form.label :password, form.object.new_record? ? "пароль" : "Новый пароль"
+= form.label :password, form.object.new_record? ? "Пароль" : "Новый пароль"
 = form.password_field :password, :class=>'text'
 .clear
 = errors_for(@user, :password)
 %br
-

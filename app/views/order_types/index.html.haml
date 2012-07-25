@@ -7,7 +7,7 @@
 #modalServiceCreate.modal.modalService
   %h1 Новая услуга
   = error_messages_for :order_type
-  - form_for(:order_type, :url => objects_url) do |f|
+  = form_for(:order_type, :url => objects_url) do |f|
     = render :partial => "form", :locals => {:f => f}
     = submit_tag "Создать", :class=>"button textbutton"
 #modalService.modal.modalService

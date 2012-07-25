@@ -9,16 +9,14 @@ module ApplicationHelper
     date.strftime("%d.%m.%Y")
   end
 
-
-
  def errors_for(object, method)
    if object
-     errs=object.errors[method]
-     if errs
-        text=errs.is_a?(Array) ? errs.join(', ') : errs
+     errs = object.errors[method]
+     if errs.present?
+        text = errs.is_a?(Array) ? errs.join(', ') : errs
      end
      if text
-       "<div class='error'>#{text}</div>"
+       raw "<div class='error'>#{text}</div>"
      else
        nil
      end
@@ -26,8 +24,16 @@ module ApplicationHelper
  end
 
  def main_page?
-   request.request_uri=='/'
+   request.fullpath == '/'
  end
 
+ def error_messages_for(obj)
+   obj = instance_variable_get("@#{obj}") if obj.is_a?(Symbol)
+   text = ""
+   obj.errors.full_messages.each do |msg|
+     text << "<p>#{msg}</p>"
+   end
+   raw text
+ end
 end
 

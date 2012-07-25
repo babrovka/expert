@@ -1,3 +1,4 @@
+# encoding: utf-8
 class OrdersController < ApplicationController
 
   before_filter :require_user
@@ -9,7 +10,7 @@ class OrdersController < ApplicationController
      @order.order_type_id=params[:order_type_id].to_i if params[:order_type_id]
      @order.messages.build
      5.times {@order.messages[0].documents.build}
-     @default_type=@order.order_type || OrderType.active.find(:first)
+     @default_type=@order.order_type || OrderType.active.first
   end
 
   def create
@@ -20,8 +21,8 @@ class OrdersController < ApplicationController
        @order.status_id=1
        @order.messages[0].user=current_user
        if @order.save
-          OrderMailer.deliver_inform(@order, 'ooo_ekka@mail.ru')
-          OrderMailer.deliver_confirm(@order) unless @order.user.email.empty?
+          OrderMailer.inform(@order, 'ooo_ekka@mail.ru').deliver
+          OrderMailer.confirm(@order).deliver unless @order.user.email.empty?
           flash[:notice]="Заказ создан!"
           redirect_to account_url
        else

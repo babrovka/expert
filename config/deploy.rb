@@ -1,67 +1,54 @@
-set :application, "expert"
+require 'bundler/capistrano'
+require "rvm/capistrano"
 
-ssh_options[:port] = 8584
-ssh_options[:username] = "kukhl"
-ssh_options[:forward_agent] = true
+set :application, "carexpert"
+set :rvm_ruby_string, 'ruby-1.9.3-p194'
+set :rvm_type, :system
 
-set :user, "kukhl"
-set :runner, "root"
-set :scm_verbose, true
+nodes = [
+  '213.239.211.2'
+]
 
-#set :use_sudo, true
-
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-
-set :deploy_to, "/var/apps/#{application}"
-set :deploy_via, :remote_cache
-default_run_options[:pty] = true
-
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
-# set :scm, :subversion
+role :app, *nodes
+role :web, *nodes
+role :db,  nodes.first, :primary => true
 
 set :scm, :git
-set :repository,  "git@kukhl.unfuddle.com:kukhl/expert.git"
-set :branch, "master"
-set :scm_passphrase, "gegrby"
+set :user, "autoexpert"
+set :password, "carbagus"
+set :use_sudo, false
 
+set :deploy_via, :remote_cache
 
-role :app, "178.63.0.78"
-role :web, "178.63.0.78"
-role :db,  "178.63.0.78", :primary => true
+set :keep_releases, 15
+set :normalize_asset_timestamps, false
+
+set :repository,  "git@bitbucket.org:paxa/expert.git"
+
+set :deploy_to, "/srv/apps/#{application}"
+
+set :branch, 'master'
+
+THIN_COMMAND = "bundle exec thin -R config.ru -e production -d -a 0.0.0.0 -p 50000"
+
 
 namespace :deploy do
   task :start, :roles => :app do
-    run "touch #{current_release}/tmp/restart.txt"
+    run "cd #{latest_release} && #{THIN_COMMAND} start"
   end
 
   task :stop, :roles => :app do
-    # Do nothing.
+    run "cd #{latest_release} && #{THIN_COMMAND} stop"
   end
 
-  desc "Restart Application"
-  task :restart, :roles => :app do
-    run "touch #{current_release}/tmp/restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "cd #{latest_release} && (#{THIN_COMMAND} stop || test 1) && #{THIN_COMMAND} start "
   end
-end
 
+  task :precompile_assets do
+    run "cd #{release_path} && RAILS_ENV=production bundle exec rake assets:precompile"
+  end
 
-task :fix_script_perms do
-  run "chmod 755 #{latest_release}/script/spin"
-end
-
-#namespace :deploy do
-# desc "Create asset packages for production"
-# task :after_update_code, :roles => [:web] do
-#   run <<-EOF
-#     cd #{release_path} && rake asset:packager:build_all
-#   EOF
-# end
-#end
-
-namespace :assets do
   task :symlink, :roles => :app do
     assets.create_dirs
     run <<-CMD
@@ -69,12 +56,7 @@ namespace :assets do
       ln -nfs #{shared_path}/downloads #{release_path}/downloads
     CMD
   end
-  task :create_dirs, :roles => :app do
-    run "mkdir -p #{release_path}/downloads"
-  end
 end
 
-
-after "deploy:update_code" , "assets:symlink"
-after "deploy:update_code", :fix_script_perms
-
+after 'deploy:update_code', 'deploy:precompile_assets'
+after "deploy:update_code", "deploy:symlink"

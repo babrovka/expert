@@ -1,3 +1,4 @@
+# encoding: utf-8
 class DeliveriesController < ApplicationController
 
   before_filter :require_user
@@ -19,7 +20,7 @@ class DeliveriesController < ApplicationController
        if order.user==current_user || current_user.admin?
          @delivery=Delivery.new(params[:delivery])
          if @delivery.save 
-            OrderMailer.deliver_delivery(@delivery, 'ooo_ekka@mail.ru')
+            OrderMailer.delivery(@delivery, 'ooo_ekka@mail.ru').deliver
             flash[:notice]="Запрос сохранен!"
             redirect_to order_url(@delivery.order_id)
          else

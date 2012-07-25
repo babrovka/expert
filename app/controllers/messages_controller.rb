@@ -1,3 +1,4 @@
+# encoding: utf-8
 class MessagesController < ApplicationController
 
   before_filter :require_user
@@ -23,7 +24,7 @@ class MessagesController < ApplicationController
          @message=Message.new(params[:message])
          @message.user=current_user
          if @message.save 
-            OrderMailer.deliver_message(@message) unless order.user.email.empty? || order.user==@message.user
+            OrderMailer.message_notification(@message).deliver unless order.user.email.empty? || order.user==@message.user
             flash[:notice]="Сообщение сохранено!"
             redirect_to order_url(@message.order_id)
          else

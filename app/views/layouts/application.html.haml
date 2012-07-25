@@ -1,10 +1,9 @@
-!!!
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 %html
   %head
     %meta{'http-equiv'=>'content-type', 'content'=>'text/html;charset=UTF-8'}
     %title= "#{@title} | Экка"
-    = stylesheet_link_tag 'style'
-    = stylesheet_link_tag 'expert'
+    = stylesheet_link_tag 'application'
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" href="stylesheets/ie.css"/><![endif]-->
     = javascript_include_tag 'jquery'
     = javascript_include_tag 'jquery.simplemodal.min'
@@ -112,13 +111,13 @@
         - unless controller.controller_name=='password_resets'
           #modalReg.modal.modalReg
             %h3 Регистрация
-            - form_for @user do |f|
+            = form_for @user do |f|
               = render :partial => "users/form", :object => f
               %br
               = submit_tag "Зарегистрироваться", :class=>"textbutton"
           #modalAuth.modal.modalAuth
             %h3 Вход в личный кабинет
-            - form_for @user_session, :url => user_session_path do |f|
+            = form_for @user_session, :url => user_session_path do |f|
               - if @user_session.errors && !@user_session.errors.empty?
                 .error
                   логин или пароль указаны неверно. попробуйте еще раз или воспользуйтесь функцией напоминания пароля.
@@ -132,27 +131,27 @@
       - else
         #modalZakaz.modal.modalZakaz
           %h3 Оформление заказа!
-          - form_for(@order, :url => orders_url, :html=>{:multipart=>true}) do |order_form|
+          = form_for(@order, :url => orders_url, :html=>{:multipart=>true}) do |order_form|
             %fieldset
-              = order_form.collection_select(:order_type_id, OrderType.find(:all), :id, :name)
-              - order_form.fields_for :messages do |msg|
+              = order_form.collection_select(:order_type_id, OrderType.all, :id, :name)
+              = order_form.fields_for :messages do |msg|
                 %label{:for => "message_body"} Ваш комментарий:
                 = msg.text_area :body
                 %label Приложения:
-                - msg.fields_for :documents do |doc|
+                = msg.fields_for :documents do |doc|
                   - ind=msg.object.documents.index(doc.object)+1
                   %label{:class=>'filenum'}= "#{ind}. "
                   = doc.file_field :file, :class=>'fileinput'
               .zakaz_total
                 Стоимость:
-                - OrderType.find(:all).each do |type|
+                - OrderType.all.each do |type|
                   %b{:id=>"price_#{type.id}", :class=>"zakaz_price #{'hide' unless type==@default_type}"}
                     = type.price
                     руб.
               = submit_tag "Отправить заказ", :class=>"textbutton button"
         #modalOptions.modal.modalOptions
           %h3 Настройки
-          - form_for @user, :url => user_path(@user) do |f|
+          = form_for @user, :url => user_path(@user) do |f|
             %fieldset
               %label{:for=>"user_name"} ФИО
               = f.text_field :name

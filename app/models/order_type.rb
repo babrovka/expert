@@ -1,7 +1,8 @@
+# encoding: utf-8
 class OrderType < ActiveRecord::Base
   has_many :orders
   
-  named_scope :active, :conditions=>'active'
+  scope :active, where(:active => true)
 
   def name_with_price
     price && price>0 ? "#{name} - #{price} рублей" : "#{name} - бесплатно"

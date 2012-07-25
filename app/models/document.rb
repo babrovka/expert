@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Document < ActiveRecord::Base
   belongs_to :message
   has_attached_file :file,

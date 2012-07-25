@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PaymentsController < ApplicationController
 
   before_filter :require_admin

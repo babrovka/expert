@@ -8,7 +8,7 @@
     - @users.each do |user|
       %li{:class=>cycle("clear odd", "clear")}
         .usersL
-          = link_to "<span>#{user.name}</span>", user, :class=>"opener username"
+          = link_to "<span>#{user.name}</span>".html_safe, user, :class => "opener username"
           = link_to user.email, "mailto:#{user.email}", :class=>"usermail"
           %span.userrang= user.admin? ? 'администратор' : 'пользователь'
           .userinfo
@@ -30,7 +30,7 @@
             текущий ip:
             = user.current_login_ip
         .usersR
-          = link_to '<i>Изменить</i>', "#", :class=>"greenButton change", :id=>"user_#{user.id}"
+          = link_to '<i>Изменить</i>'.html_safe, "#", :class=>"greenButton change", :id=>"user_#{user.id}"
 = will_paginate @users
 #modalChange.modal.modalChange
 

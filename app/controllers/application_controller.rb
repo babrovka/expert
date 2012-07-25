@@ -2,15 +2,10 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-
-  helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
 
   before_filter :set_user
-
-  include ExceptionNotifiable
 
   def params_posted?(symbol)
     request.post? and params[symbol]
@@ -26,7 +21,7 @@ class ApplicationController < ActionController::Base
       @order=Order.new
       @order.messages.build
       5.times {@order.messages[0].documents.build}
-      @default_type=OrderType.active.find(:first)
+      @default_type=OrderType.active.first
     end
   end
 
@@ -68,7 +63,7 @@ class ApplicationController < ActionController::Base
     end
 
     def store_location
-      session[:return_to] = request.request_uri
+      session[:return_to] = request.url
     end
 
     def redirect_back_or_default(default)

@@ -2,6 +2,6 @@
   %span Состояние заказов
   %br
   - @statuses.each do |status|
-    = link_to "<i>#{status.menu_name}</i>", orders_path(:status=>status.id), :class=> @status==status ? "activeStatus" : "inactiveStatus"
+    = link_to "<i>#{status.menu_name}</i>".html_safe, orders_path(:status=>status.id), :class=> @status==status ? "activeStatus" : "inactiveStatus"
   = link_to "<i>Все</i>", orders_path, :class=> @status ? "inactiveStatus" : "activeStatus"
 

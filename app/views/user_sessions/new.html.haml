@@ -1,6 +1,6 @@
 #container.clear
   %h1 Вход в систему
-  - form_for @user_session, :url => user_session_path do |f|
+  = form_for @user_session, :url => user_session_path do |f|
     - if @user_session.errors && !@user_session.errors.empty?
       .error
         логин или пароль указаны неверно. попробуйте еще раз или воспользуйтесь функцией напоминания пароля.

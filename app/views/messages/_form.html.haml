@@ -2,14 +2,14 @@
   .l
     &nbsp;
   .r
-    - form_for(@message, :url => url, :html=>html) do |msg|
+    = form_for(@message, :url => url, :html=>html) do |msg|
       = msg.hidden_field :order_id
       %fieldset
         = msg.text_area :body, :rows=>10, :cols=>20
         %br
         %label.prilojeniya Приложения:
         #uploads
-          - msg.fields_for :documents do |doc|
+          = msg.fields_for :documents do |doc|
             - ind=msg.object.documents.index(doc.object)+1
             %p{:class=>'upload', :id=>"upload_#{ind}"}
               = "#{ind}. "

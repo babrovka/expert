@@ -1,6 +1,6 @@
 #container.clear
   %h1 Регистрация
-  - form_for @user do |f|
+  = form_for @user do |f|
     %fieldset
       = render :partial => "form", :object => f
       %br
