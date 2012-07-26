@@ -50,7 +50,6 @@ namespace :deploy do
   end
 
   task :symlink, :roles => :app do
-    assets.create_dirs
     run <<-CMD
       rm -rf #{release_path}/downloads &&
       ln -nfs #{shared_path}/downloads #{release_path}/downloads

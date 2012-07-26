@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.6'
 gem 'mysql2'
 
-gem 'authlogic'
+gem 'authlogic', :git => 'git@github.com:james2m/authlogic.git', :branch => 'fix-migrations'
 gem "paperclip", "~> 2.4"
 gem 'russian'
 gem 'will_paginate'
