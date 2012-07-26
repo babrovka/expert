@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:james2m/authlogic.git
+  remote: https://github.com/james2m/authlogic.git
   revision: d1fdc90351697fc892b16baaf0ea381a9ca17e62
   branch: fix-migrations
   specs:
