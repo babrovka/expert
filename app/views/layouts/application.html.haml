@@ -5,9 +5,7 @@
     %title= "#{@title} | Экка"
     = stylesheet_link_tag 'application'
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" href="stylesheets/ie.css"/><![endif]-->
-    = javascript_include_tag 'jquery'
-    = javascript_include_tag 'jquery.simplemodal.min'
-    = javascript_include_tag 'curvycorners.src'
+    = csrf_meta_tags
     = javascript_include_tag 'application'
     = yield :head
   %body
@@ -28,18 +26,20 @@
             = link_to "Личный кабинет", login_url, :class=>'AmodalAuth' unless controller.controller_name=='user_sessions'
       .topmenu.clear
         .topmenuL
-          %ul
+          %ul{:class => current_user ? 'shorter' : nil}
+            - if current_user
+              %li= link_to "Мои заказы", :account
             %li= link_to "Услуги и цены", '/services'
             %li= link_to "Как это работает", '/about'
             %li= link_to "Законодательство"
             %li= link_to "Контакты", '/contacts'
         .topmenuR
-          = link_to "Заказать экспертизу", new_order_url, :class=>"zakaz #{current_user ? '' : 'AmodalReg' }"
+          = link_to "Заказать экспертизу", new_order_url, :class=>"zakaz #{current_user ? nil : 'AmodalReg' }"
       .body
         .inner.clear
           .content
-            - if flash[:notice]
-              #notice.success= flash[:notice]
+            - for key in flash.keys
+              .success{:id => key}= flash[key]
             = yield
           .right
             %h3 Полезные ссылки
@@ -53,8 +53,8 @@
                 %li= link_to "Когда необходима независимая экспертиза", "/#l1"
                 %li= link_to "Почему именно независимая оценка автомобиля", "/#l2"
                 %li= link_to "Почему Вам стоит обратиться именно к нам", "/#l3"
-                %li= link_to "Условия оплаты и доставки"
-                %li= link_to "Задать вопрос специалисту", new_order_url(:order_type_id=>6), :class=>"#{current_user ? '' : 'AmodalReg' }"
+                %li= link_to "Условия оплаты и доставки", payment_page_path
+                %li= link_to "Задать вопрос специалисту", new_order_path(:order_type_id=>6), :class=>"#{current_user ? '' : 'AmodalReg' }"
       .footer.clear
         .footerL
           - if main_page?

@@ -1,3 +1,19 @@
+= border-radius($radius: $main_radius, $y: false, $x: false)
+  @if $x
+    :-moz-border-radius-#{$y}#{$x} $radius
+    :-o-border-radius-#{$y}-#{$x} $radius
+    :-khtml-border-radius-#{$y}-#{$x} $radius
+    :-ms-border-radius-#{$y}-#{$x} $radius
+    :-webkit-border-#{$y}-#{$x}-radius $radius
+    :border-#{$y}-#{$x}-radius $radius
+  @else
+    :-moz-border-radius $radius
+    :-o-border-radius $radius
+    :-ms-border-radius $radius
+    :-khtml-border-radius $radius
+    :-webkit-border-radius $radius
+    :border-radius $radius
+
 *
   :margin 0
   :padding 0
@@ -128,6 +144,9 @@ div
       :padding-right 40px
       &.active a
         :color #add13a
+    ul.shorter
+      li
+        :padding-right 21px
   &.topmenuR
     :width 259px
     :float right
@@ -268,7 +287,14 @@ div.service div.serviceR
   :font-size 30px
   span
     :font-size 17px
-
+  .greenButton
+    :margin-top 2px
+    :font-size 13px
+    :line-height 13px
+    :display inline-block
+    +border-radius(4px)
+    i
+      :background none
 a
   &.greenButton, &.activeStatus
     :font-size 16px
@@ -345,9 +371,7 @@ div
   :background-color #4d1b6f
 
 #simplemodal-container
-  :border-radius 5px
-  :-moz-border-radius 5px
-  :-webkit-border-radius 5px
+  +border-radius(5px)
   :background #fff
   :padding 30px 40px
   a.modalCloseImg
@@ -780,6 +804,31 @@ div
       :margin 10px 0
     label
       :width 50px !important
+
+.order_form
+  :margin-top 20px
+  select
+    :width 500px
+  textarea
+    :width 308px
+    :height 57px
+    :padding 5px 10px
+    :background url(/assets/textarea_328_67.gif) 0 0 no-repeat
+    :border 0
+    :font-size 12px !important
+    :color #262626
+    :margin-top 5px
+  label
+    :font-weight bold
+    :color #666
+    :margin-right 3px
+  hr
+    :margin 15px 0
+    :border 0
+    :height 2px
+    :background #ddd
+  .order_info
+    :font-size 13px
 
 /*//////////------//////////
 /*           Right

@@ -16,10 +16,11 @@ Expert::Application.routes.draw do
   match '/account' => 'users#account', :as => :account
   match '/' => 'site#index'
   match '/about' => 'site#about'
-  match '/payment' => 'site#payment'
+  match '/payment' => 'site#payment', :as => :payment_page
   match '/services' => 'site#services'
   match '/contacts' => 'site#contacts'
   match '/login' => 'user_sessions#new', :as => :login
   match '/logout' => 'user_sessions#destroy', :as => :logout
   match '/:controller(/:action(/:id))'
+  root :to => 'site#index'
 end

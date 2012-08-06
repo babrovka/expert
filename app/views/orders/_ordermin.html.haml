@@ -2,7 +2,7 @@
   .serviceL
     = check_box_tag "order_#{ordermin.id}"
     = "#{ordermin.id}."
-    = link_to "<span>#{ordermin.order_type.name}</span>", ordermin
+    = link_to "<span>#{ordermin.order_type.name}</span>".html_safe, ordermin
   .serviceStatus
     = ordermin.user.name
     %br

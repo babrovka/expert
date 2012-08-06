@@ -1,14 +1,13 @@
-- content_for :head do
-  = javascript_include_tag 'orders'
 .cabinet
   = render :partial=>'menu'
-  - form_tag 'orders/update_status' do
+  = form_tag 'orders/update_status' do
     %fieldset
-      = render :partial=>'ordermin', :collection=>@orders
+      = render :partial => 'ordermin', :collection => @orders.all
       .manage
         Переместить отмеченные
         - @ord=Order.new
         = collection_select :ord, :status, Status.all, :id, :name, :prompt=>"Выберите категорию"
         = submit_tag "OK"
+
 = will_paginate @orders
 

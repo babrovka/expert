@@ -29,6 +29,7 @@ module ApplicationHelper
 
  def error_messages_for(obj)
    obj = instance_variable_get("@#{obj}") if obj.is_a?(Symbol)
+   return "" unless obj
    text = ""
    obj.errors.full_messages.each do |msg|
      text << "<p>#{msg}</p>"

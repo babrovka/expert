@@ -7,40 +7,39 @@ class PasswordResetsController < ApplicationController
    @title="Восстановление пароля"
  end
 
- def create  
-   @user = User.find_by_email(params[:email])  
-   if @user  
-     @user.deliver_password_reset_instructions!  
+ def create
+   @user = User.find_by_email(params[:email])
+   if @user
+     @user.deliver_password_reset_instructions!
      flash[:notice] = "На ваш электронный адрес выслано письмо, которое поможет вам восстановить пароль!"
      redirect_to new_user_session_url
-   else  
-     flash[:notice] = "Пользователь с таким e-mail не найден."  
-     render :action => :new  
-   end  
- end  
+   else
+     flash[:notice] = "Пользователь с таким e-mail не найден."
+     render :action => :new
+   end
+ end
 
 
- def edit  
+ def edit
    @title="Восстановление пароля"
-   render  
- end  
+   render
+ end
    
- def update  
-   @user.password = params[:user][:password]  
+ def update
+   @user.password = params[:user][:password]
    if @user.save
-     redirect_to account_url, :notice => "Пароль успешно изменен"  
+     redirect_to account_url, :notice => "Пароль успешно изменен"
    else
      render :action => :edit
    end
  end
 
 private  
- def load_user_using_perishable_token  
-   @user = User.find_using_perishable_token(params[:id])  
-   unless @user  
-     flash[:notice] = "К сожалению, определить пользователя не удалось. Попробуйте скопировать ссылку в окно браузера или повторить процедуру восстановления пароля. "
-     redirect_to root_url  
-   end  
- end  
-
+ def load_user_using_perishable_token
+   @user = User.find_using_perishable_token(params[:id])
+   unless @user
+     flash[:notice] = "К сожалению, определить пользователя не удалось. Попробуйте скопировать ссылку в окно браузера или повторить процедуру восстановления пароля."
+     redirect_to root_path
+   end
+ end
 end

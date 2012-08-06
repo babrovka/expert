@@ -1,3 +1,12 @@
-%table
-  = render :partial => 'order_type', :object => current_object
+.service.clear
+  .serviceL
+    %h1= @order_type.name
+    %p
+      = @order_type.info
+  .serviceR
+    = @order_type.price
+    %span руб.
+    %br
+    = link_to '<i>Изменить</i>'.html_safe, edit_object_path(@order_type), :class=>"greenButton AmodalService", :id=>"service_#{@order_type.id}"
+
 = link_to 'К списку услуг', objects_path 

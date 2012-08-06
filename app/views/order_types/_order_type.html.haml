@@ -1,11 +1,11 @@
 .service.clear
   .serviceL
-    = link_to "<span>#{order_type.name}</span>",'#', :class=>"opener"
-    .service_info
+    = link_to "<span>#{order_type.name}</span>".html_safe, '#', :class=>"opener"
+    %div{:class => defined?(expanded) && expanded ? "" : 'service_info'}
       = order_type.info
   .serviceR
     = order_type.price
     %span руб.
     %br
-    = link_to '<i>Изменить</i>', edit_object_path(order_type), :class=>"greenButton AmodalService", :id=>"service_#{order_type.id}"
+    = link_to '<i>Изменить</i>'.html_safe, edit_object_path(order_type), :class=>"greenButton AmodalService", :id=>"service_#{order_type.id}"
 

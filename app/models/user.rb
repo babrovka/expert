@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   attr_protected :admin
 
+  validates :name, :length => 3..40, :presence => true
+
   acts_as_authentic do |o|
     o.validates_format_of_email_field_options = {:with => Authlogic::Regex.email, :message=>"необходим правильный электронный адрес"}
     o.require_password_confirmation = false

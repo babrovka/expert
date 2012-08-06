@@ -1,4 +1,4 @@
-= form_for(@order, :url => orders_url, :html=>{:multipart=>true}) do |order_form|
+= form_for(@order, :url => orders_url, :html => {:multipart => true, :class => 'order_form'}) do |order_form|
   .span-20
     %p
       %label{:for => "order_type_id"} Услуга:

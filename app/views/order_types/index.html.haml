@@ -1,14 +1,12 @@
-- content_for :head do
-  = javascript_include_tag 'services'
-  = javascript_include_tag 'curvycorners.src'
-  = javascript_include_tag 'jquery.simplemodal.min'
 = render :partial => 'order_type', :collection => current_objects
-= link_to '<i>Добавить услугу</i>', new_object_path, :class=>"greenButton AmodalServiceCreate"
+
+= link_to '<i>Добавить услугу</i>'.html_safe, new_object_path, :class=>"greenButton AmodalServiceCreate"
+
 #modalServiceCreate.modal.modalService
   %h1 Новая услуга
   = error_messages_for :order_type
   = form_for(:order_type, :url => objects_url) do |f|
     = render :partial => "form", :locals => {:f => f}
     = submit_tag "Создать", :class=>"button textbutton"
-#modalService.modal.modalService
 
+#modalService.modal.modalService

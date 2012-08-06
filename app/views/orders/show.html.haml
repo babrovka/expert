@@ -1,6 +1,3 @@
-- content_for :head do
-  = javascript_include_tag 'new_order'
-  = javascript_include_tag 'orders'
 .order
   .head.clear
     .l
@@ -23,12 +20,12 @@
         %small руб.
         %br
       - if @order.paid_for?
-        = link_to "<span>Оплачено</span>", "#", :class=>'opener'
+        = link_to "<span>Оплачено</span>".html_safe, "#", :class=>'opener'
       - else
         - if current_user.admin?
-          = link_to "<span>Ожидание оплаты</span>", "#", :class=>'opener'
+          = link_to "<span>Ожидание оплаты</span>".html_safe, "#", :class=>'opener'
         - else
-          = link_to "Оплатить", '#'
+          = link_to "Оплатить", :payment_page
     .clearboth
     .plateji_info
       - @order.payments.each do |payment|
@@ -57,7 +54,7 @@
         %br
         = link_to "Изменить", edit_delivery_url(@order.delivery)
         = link_to "Удалить", delivery_url(@order.delivery), :method=>:delete, :confirm=>"Удалить запрос на доставку?"
-  - else
+  - elsif @order.paid_for?
     = link_to "Заказать доставку документов", new_delivery_url(:order_id=>@order.id), :id=>"new_delivery_#{@order.id}", :class=>"make_order AmodalZakazDokumentov"
 #modalPlatejNew.modal.modalPlatej
   %h3 Новый платеж

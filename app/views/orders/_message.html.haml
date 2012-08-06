@@ -6,7 +6,7 @@
     - if current_user.admin?
       %br
       = link_to "Редактировать", edit_message_url(message)
-      = link_to "Удалить", message_url(message), :confirm => 'Вы уверены?', :method => :delete
+      = link_to "Удалить", message_url(message), :data => {:confirm => 'Вы уверены?'}, :method => :delete
   .r
     = message.body
     %br

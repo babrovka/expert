@@ -9,7 +9,10 @@
 .block_new
   %h2 Экспертиза ОН-ЛАЙН
   %span 1
-  = link_to "Зарегистрируйтесь", new_user_url
+  - if current_user
+    = link_to "Сделайте заказ", new_order_path
+  - else
+    = link_to "Зарегистрируйтесь", new_user_url
   %br
   %span 2
   Пришлите нам фото автомобиля
