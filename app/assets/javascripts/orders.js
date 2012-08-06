@@ -9,15 +9,5 @@ $(document).ready(function() {
       var id=this.id.split('_')[2]
       $("#payments_"+id).toggle();
    });
-
-
-$(".opener").click(function () {
-		$(this).parent().children(".service_info").slideToggle(
-			function () {$(this).parent().children(".opener").toggleClass("close")}
-		);
-		return false;
-	});
-
-
 });
 

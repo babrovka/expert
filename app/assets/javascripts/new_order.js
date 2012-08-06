@@ -65,16 +65,5 @@ $(document).ready(function() {
 
 
 	});
-
-
-
-
-$(".opener").click(function () {
-		$(".plateji_info").slideToggle(
-			function () {$(this).parent().children(".r").children("a.opener").toggleClass("close")}
-
-     	);
-});
-
 });
 

@@ -60,5 +60,12 @@ $(document).ready(function() {
     }});
     return false;
   });
+
+  $(".opener").click(function () {
+    $(this).parent().children(".service_info").slideToggle(
+      function () {$(this).parent().children(".opener").toggleClass("close")}
+    );
+    return false;
+  });
 });
 
