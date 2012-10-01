@@ -1,6 +1,7 @@
-= render :partial => 'order_type', :collection => current_objects
+- @title = 'Услуги'
+= render current_objects
 
-= link_to '<i>Добавить услугу</i>'.html_safe, new_object_path, :class=>"greenButton AmodalServiceCreate"
+= link_to 'Добавить услугу', new_object_path, :class=>"bigger-green-button AmodalServiceCreate"
 
 #modalServiceCreate.modal.modalService
   %h1 Новая услуга

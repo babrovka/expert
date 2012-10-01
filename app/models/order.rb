@@ -9,11 +9,17 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :messages
 
   attr_protected :user_id, :status, :sum, :payment
-  default_scope :order=>'created_at desc'
+  default_scope :order => 'created_at desc'
 
+  validates_presence_of :status
 
   def paid_for?
      price && price>0 && price<=payments.sum(:sum)
   end
 
+  def with_empty_message
+    messages.build
+    5.times { messages[0].documents.build }
+    self
+  end
 end

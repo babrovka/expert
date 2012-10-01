@@ -2,8 +2,7 @@
   = javascript_include_tag 'new_order'
   = javascript_include_tag 'orders'
 .cabinet
-  = render :partial=>'menu'
+  = render :partial => 'menu'
   = render @orders
 %br
-= link_to "Новый заказ", new_order_url
-
+= link_to "Новый заказ", :new_order, :class => "new_order_buttom"

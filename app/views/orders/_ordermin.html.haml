@@ -1,6 +1,6 @@
 .service.clear
   .serviceL
-    = check_box_tag "order_#{ordermin.id}"
+    = check_box_tag "order_id[#{ordermin.id}]", ordermin.id, false
     = "#{ordermin.id}."
     = link_to "<span>#{ordermin.order_type.name}</span>".html_safe, ordermin
   .serviceStatus

@@ -1,11 +1,11 @@
-.service.clear
-  .serviceL
-    = link_to "<span>#{order_type.name}</span>".html_safe, '#', :class=>"opener"
+%article[order_type]
+  .name
+    = link_to "<span>#{order_type.name}</span>".html_safe, '#', :class => "opener"
     %div{:class => defined?(expanded) && expanded ? "" : 'service_info'}
       = order_type.info
-  .serviceR
-    = order_type.price
-    %span руб.
-    %br
-    = link_to '<i>Изменить</i>'.html_safe, edit_object_path(order_type), :class=>"greenButton AmodalService", :id=>"service_#{order_type.id}"
+  .price
+    = number_to_currency order_type.price
+  .actions
+    = link_to 'Изменить', edit_object_path(order_type), :class => "green-button AmodalService", :id => "service_#{order_type.id}"
+    = link_to image_tag('/assets/icons/black_cross.png'), order_type, :class => "red-button", :data => {:method => 'delete', :confirm => "Удаление, уверены?"}
 

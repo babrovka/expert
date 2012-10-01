@@ -3,3 +3,10 @@ ru:
     previous_label: "&#8592; назад"
     next_label: "вперед &#8594;"
     page_gap: "&hellip;"
+
+  number:
+    currency:
+      format:
+        format: "%n %u"
+        unit: "руб"
+        precision: 0

@@ -1,0 +1,35 @@
+.right
+  - if current_user && (current_user.supervisor? || current_user.admin?)
+    %h3 Управление сайтом
+    %ul.links
+      - if current_user.supervisor?
+        %li= link_to "Пользователи", '/users'
+      %li= link_to "Заказы", '/orders'
+      %li= link_to "Услуги", '/order_types'
+  - else
+    - if current_user
+      %h3 Личный кабинет
+      %ul.user-links.links
+        %li
+          %strong= current_user.name.presence || current_user.email
+        %li= link_to "Мои заказы", :account
+        %li= link_to "Настройки", '#', :class=>'AmodalOptions'
+        %li= link_to "Выход", :logout
+
+    %h3 Полезные ссылки
+    %ul.links
+      %li= link_to "Когда необходима независимая экспертиза", "/#l1"
+      %li= link_to "Почему именно независимая оценка автомобиля", "/#l2"
+      %li= link_to "Почему Вам стоит обратиться именно к нам", "/#l3"
+      %li= link_to "Условия оплаты и доставки", payment_page_path
+      %li= link_to "Задать вопрос специалисту", new_order_path(:order_type_id => 6), :class => "#{current_user ? '' : 'AmodalReg' }"
+      - if !current_user && controller.controller_name != 'user_sessions'
+        %li= link_to "Войти в личный кабинет", :login, :class => 'AmodalAuth right_login'
+
+    - if url_for == root_path
+      %h3 Для вас работает:
+      .face
+        = image_tag "/assets/faces/alexey.jpg"
+        %strong<> Алексей Мерцалов
+        %p
+          Специалист в области страхования с большим опытом. Ну что-то еще, что даст пользователям понять как тут все здорово.

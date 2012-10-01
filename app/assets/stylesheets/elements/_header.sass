@@ -1,0 +1,101 @@
+div.header
+  :padding 0 46px 17px 0
+  .user_block
+    :display none
+    :position absolute
+    :width 100%
+    :text-align right
+    +gradient(#e9e8e8, #fff)
+    :top 0px
+    :right 0px
+    :height 40px
+    :line-height 35px
+    .menu
+      :width 885px
+      :padding 0 46px
+      :margin 0 auto
+      a
+        :color #333
+  div.logo
+    :width 590px
+    :padding-top 6px
+    :float left
+    :font-size 16px
+    :color #abd03a
+    :line-height 14px
+    :position relative
+    :z-index 100
+    strong
+      :font-weight 500
+      :color #94b826
+  div.phone
+    :float right
+    :width 360px
+    :text-align right
+    :font-size 12px
+    :color #add13a
+    :margin-left -100px
+    div.inner
+      :font-size 41px
+      :color #939598
+      :padding-bottom 4px
+    span
+      :font-size 14px
+    a
+      :padding-left 15px
+div.topmenu
+  :clear both
+  :padding 0 46px 34px 0
+  +children-inline
+  .topmenuL
+    :float left
+    :width 625px
+    :font-size 15px
+    ul
+      :height 28px
+      :padding 10px 0
+      :margin-left -10px
+      li
+        +inline-block
+        :line-height 20px
+        :padding 4px 10px
+        :margin-right 20px
+        &.my_orders
+          :background #fff
+        &.active a
+          :color #add13a
+    ul.shorter
+      :margin-left -7px
+      li
+        :padding
+          :left 7px
+          :right 7px
+        :margin-right 8px
+  .topmenuR
+    :width 259px
+    :float right
+    :text-align right
+    :height 48px
+    a.zakaz
+      :width 259px
+      +inline-block
+      :font-size 21px
+      :color #fff
+      :height 31px
+      :text-align center
+      :padding 8px 0
+      :background url(/assets/button_zakaz.png) 0 0 no-repeat
+      :text-decoration none
+      +border-radius(8px)
+      +box-shadow(0 1px 3px rgba(0, 0, 0, 0.3))
+      :text-shadow 0 1px 2px rgba(0, 0, 0, 0.3)
+      &:hover
+        :background-position 0 -48px
+        :text-decoration none
+        :color #fff
+      &:active
+        :background-position 0 -96px
+        +box-shadow(inset 0 1px 3px rgba(0, 0, 0, 0.25))
+        :text-shadow 0 1px 2px rgba(0, 0, 0, 0.35)
+        :text-decoration none
+        :color #fff

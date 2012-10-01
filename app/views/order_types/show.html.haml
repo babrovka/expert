@@ -6,7 +6,7 @@
   .serviceR
     = @order_type.price
     %span руб.
-    %br
-    = link_to '<i>Изменить</i>'.html_safe, edit_object_path(@order_type), :class=>"greenButton AmodalService", :id=>"service_#{@order_type.id}"
+    .actions{:style => "padding-top: 10px"}
+      = link_to 'Изменить'.html_safe, edit_object_path(@order_type), :class => "green-button AmodalService", :id => "service_#{@order_type.id}"
 
 = link_to 'К списку услуг', objects_path 

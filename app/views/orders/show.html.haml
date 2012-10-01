@@ -39,11 +39,13 @@
             = link_to "Удалить", payment_url(payment), :method=>:delete, :confirm=>"Удалить платеж?"
       - if current_user.admin?
         = link_to "Ввести платеж", "#", :class=>"add_pay AmodalPlatejNew"
-  - @order.messages.each do |message|
-    = render :partial=>'message', :object=>message unless message.new_record?
+  - @order.messages.includes(:user, :documents).each do |message|
+    = render :partial => 'message', :object => message unless message.new_record?
+
   = link_to "Новое сообщение", new_message_url(:order_id=>@order.id), :id=>"new_message_#{@order.id}", :class=>"new_message"
-  %div{:id=>"new_message_form_#{@order.id}", :class=>@show_message ? "" : "hide"}
-    = render :partial=>"messages/form", :locals=>{:url=>{:controller=>"messages", :action=>:create}, :html=>{:multipart=>true}}
+
+  %div{:id => "new_message_form_#{@order.id}", :class => @show_message ? "" : "hide"}
+    = render :partial => "messages/form", :locals => {:url => {:controller => "messages", :action => :create}, :html => {:multipart => true}}
   - if @order.delivery
     %br
     %br
@@ -53,15 +55,16 @@
       - if current_user.admin?
         %br
         = link_to "Изменить", edit_delivery_url(@order.delivery)
-        = link_to "Удалить", delivery_url(@order.delivery), :method=>:delete, :confirm=>"Удалить запрос на доставку?"
+        = link_to "Удалить", delivery_url(@order.delivery), :method => :delete, :confirm => "Удалить запрос на доставку?"
   - elsif @order.paid_for?
-    = link_to "Заказать доставку документов", new_delivery_url(:order_id=>@order.id), :id=>"new_delivery_#{@order.id}", :class=>"make_order AmodalZakazDokumentov"
+    = link_to "Заказать доставку документов", new_delivery_url(:order_id => @order.id), :id => "new_delivery_#{@order.id}", :class => "make_order AmodalZakazDokumentov"
+
 #modalPlatejNew.modal.modalPlatej
   %h3 Новый платеж
   = form_for(@payment) do |form|
     = form.hidden_field :order_id
     %label{:for => "payment_sum"} Сумма
-    = form.text_field :sum, :size=>10
+    = form.text_field :sum, :size => 10
     %br
     %label{:for => "payment_payment_date"} Дата
     = form.date_select :payment_date
@@ -69,21 +72,22 @@
     %label{:for => "payment_comment"} Комментарий:
     %br
     = form.text_area :comment
-    %p= submit_tag "Сохранить", :class=>"textbutton"
+    %p= submit_tag "Сохранить", :class => "textbutton"
+
 #modalPlatej.modal.modalPlatej
 #modalZakazDokumentov.modal.modalDocs
   %h3 Запрос на доставку документов
   = form_for(@delivery) do |dlv|
     %fieldset
       = dlv.hidden_field :order_id
-      %label{:for => "delivery_zip"} Индекс:
-      = dlv.text_field :zip, :size=>10
-      %label{:for => "delivery_city"} Город:
+      = dlv.label :zip, "Индекс:"
+      = dlv.text_field :zip, :size => 10
+      = dlv.label :city, "Город:"
       = dlv.text_field :city
       = errors_for(@delivery, :city)
-      %label{:for => "delivery_address"} Адрес:
+      = dlv.label :address, "Адрес:"
       = dlv.text_area :address
-      %label{:for => "delivery_comment"} Комментарий:
+      = dlv.label :comment, "Комментарий:"
       = dlv.text_area :comment
       %br
       = submit_tag "Отправить", :class=>'textbutton'

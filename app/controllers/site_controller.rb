@@ -2,26 +2,25 @@
 class SiteController < ApplicationController
 
   def index
-   @title="Экспертный калькулятор"
+   @title = "Экспертный калькулятор"
   end
 
 
   def about
-   @title="О проекте"
+   @title = "Как это работает"
   end
 
   def payment
-   @title="Как оплатить"
+   @title = "Как оплатить"
   end
 
 
   def contacts
-   @title="Контакты"
+   @title = "Контакты"
   end
 
   def services
-   @title="Услуги"
-   @services=OrderType.active.all
+   @services = OrderType.active.all
   end
 
 

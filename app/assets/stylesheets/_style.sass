@@ -29,11 +29,11 @@ body
   :height 100%
 
 a
-  :color #673092
+  :color #4D1977
   :outline none
   &:hover
     :text-decoration none
-    :color #b38ad3
+    :color #8154a4
   &:active
     :color #add13a
 
@@ -71,7 +71,8 @@ h1, h2, h3, h4, h5, h6
 h1
   :font-size 21px
   :margin-bottom 10px
-  :color #673092
+  &.purple
+    :color #4D1977
 
 h2
   :font-size 18px
@@ -105,74 +106,7 @@ div
     :margin 0 auto
     :padding 50px 0 45px 0
     :padding-left 46px
-  &.header
-    :padding 0 46px 15px 0
-    div
-      &.logo
-        :width 590px
-        :padding-top 6px
-        :float left
-        :font-size 16px
-        :color #abd03a
-        :line-height 14px
-        strong
-          :font-weight 500
-      &.phone
-        :float right
-        :width 260px
-        :text-align right
-        :font-size 12px
-        :color #add13a
-        div.inner
-          :font-size 41px
-          :color #939598
-          :padding-bottom 4px
-        span
-          :font-size 14px
-        a
-          :padding-left 15px
-  &.topmenu
-    :clear both
-    :padding 0 46px 30px 0
-  &.topmenuL
-    :float left
-    :width 625px
-    :font-size 15px
-    :padding-top 13px
-    li
-      :display inline
-      :padding-right 40px
-      &.active a
-        :color #add13a
-    ul.shorter
-      li
-        :padding-right 21px
-  &.topmenuR
-    :width 259px
-    :float right
-    :text-align right
-    :height 48px
 
-/*//////////------//////////
-/*          Header
-/*//////////------//////////
-
-a.zakaz
-  :display block
-  :font-size 21px
-  :color #fff
-  :height 40px
-  :text-align center
-  :padding-top 8px
-  :background url(/assets/button_zakaz.png) 0 0 no-repeat
-  &:hover
-    :background-position 0 -48px
-    :text-decoration underline
-    :color #fff
-  &:active
-    :background-position 0 -96px
-    :text-decoration underline
-    :color #fff
 
 /*//////////------//////////
 /*          Content
@@ -224,6 +158,19 @@ div.block_new
       :color #d6d6eb
   span
     :color #fff
+
+.more-info
+  :margin-top 33px
+  p
+    :margin-top 20px
+    :line-height 20px
+    :padding-left 20px
+    :position relative
+    :font-size 13px
+    &:before
+      :position absolute
+      :left 5px
+      :content '*'
 div
   &.seo
     :clear both
@@ -235,11 +182,12 @@ div
       :margin-bottom 2px
     ul li
       :background url(/assets/li_green.png) 0 7px no-repeat
-      :padding 0 0 0 11px
+      :padding 0 0 0 15px
+      :margin-top 5px
     h3
       :color #8954a2
       :font-size 14px
-      :margin-bottom 0
+      :margin 5px 0 2px
       span
         :color #add13a
   &.content li
@@ -252,17 +200,26 @@ div
     :line-height 22px
   &.service
     :padding-bottom 25px
-    :clear both
-    div
-      &.serviceL
-        :float left
-        :width 420px
-        :position relative
-      &.service_info
-        :display none
-        :font-size 12px
-        :padding 6px 0 0 0
-        :color #262626
+    +clear
+    +children-inline
+    .serviceL
+      :width 420px
+      :position relative
+    .serviceR
+      :color #555 !important
+      :font-size 20px
+      :margin-top -3px
+      a
+        :margin-top 2px
+        :font-size 13px
+        :padding
+          :left 9px
+          :right 9px
+    .service_info
+      :display none
+      :font-size 12px
+      :padding 6px 0 0 0
+      :color #262626
 
 /*~~~~внутренние страницы~~~~
 
@@ -287,31 +244,42 @@ div.service div.serviceR
   :font-size 30px
   span
     :font-size 17px
-  .greenButton
-    :margin-top 2px
-    :font-size 13px
-    :line-height 13px
-    :display inline-block
-    +border-radius(4px)
-    i
-      :background none
-a
-  &.greenButton, &.activeStatus
-    :font-size 16px
-    :text-align center
-    :padding 6px 0 10px 0
-    :text-decoration none
-    :color white
-    :background url(/assets/greenbutton_l.png) 0 0 no-repeat
-  &.greenButton i, &.activeStatus i
+
+a.greenButton, a.activeStatus
+  :font-size 16px
+  :text-align center
+  :padding 6px 0 10px 0
+  :text-decoration none
+  :color white
+  :background url(/assets/greenbutton_l.png) 0 0 no-repeat
+  i
     :font-style normal
     :background url(/assets/greenbutton_r.png) 100% 0 no-repeat
     :text-decoration underline
     :padding 6px 15px 10px 15px
-  &.greenButton i, &.activeStatusi
-    :color #fff
-  &.greenButton:hover i, &.activeStatus:hover i
+  &:hover i
     :text-decoration none
+
+a.green-button
+  +green-button
+a.red-button
+  +green-button
+  +gradient(#de8468, #c86751)
+  :border-color #c86751
+  img
+    +opacity(0.6)
+  &:hover
+    img
+      +opacity(1)
+    +gradient(lighten(#de8468, 5%), lighten(#c86751, 5%))
+
+a.bigger-green-button
+  +green-button
+  :font-size 15px
+  :line-height 20px
+  :padding 3px 10px 4px 10px
+  +box-shadow(0px 1px 2px rgba(0, 0, 0, 0.15))
+  :border-bottom-color #a1bd4f
 
 /*~~~~кабинет~~~~
 
@@ -629,11 +597,28 @@ div
     :padding 15px 73px 180px 0
     :font-size 12px
     h3
-      :color #6d6e71
+      :color #333
       :font-size 16px
       :margin-bottom 15px
+    ul + h3
+      :margin-top 10px
     ul.links li
       :padding-bottom 15px
+      a
+        :color #636363
+        &.right_login
+          :color #4D1977
+    ul.user-links
+      :padding-bottom 4px
+      li
+        :padding-bottom 6px
+    .face
+      :text-align left
+      strong
+        +inline-block
+        :margin 5px 0
+      p
+        :line-height 1.4em
   &.footer
     :border-top 1px solid #cdced0
     :padding 5px 0 0 0
@@ -805,45 +790,31 @@ div
     label
       :width 50px !important
 
-.order_form
-  :margin-top 20px
-  select
-    :width 500px
-  textarea
-    :width 308px
-    :height 57px
-    :padding 5px 10px
-    :background url(/assets/textarea_328_67.gif) 0 0 no-repeat
-    :border 0
-    :font-size 12px !important
-    :color #262626
-    :margin-top 5px
-  label
-    :font-weight bold
-    :color #666
-    :margin-right 3px
-  hr
-    :margin 15px 0
-    :border 0
-    :height 2px
-    :background #ddd
-  .order_info
-    :font-size 13px
+.new_order_buttom
+  +inline-block
+  :padding 3px 10px
+  :background lighten(#915fac, 20%)
+  :color black
+  :font-size 13px
+  &:hover
+    :color black
+    :background lighten(#ae87c0, 15%)
+  &:active
+    :background lighten(#b9e736, 10%)
 
-/*//////////------//////////
-/*           Right
-/*//////////------//////////
-
-/*//////////------//////////
-/*          Footer
-/*//////////------//////////
-
-/*//////////------//////////
-/*          !!NEW!!
-/*//////////------//////////
-
-/*~~~~страница заказа~~~~
-
-/*~~~~окошко заказ документов~~~~
-
-/*~~~~окошко Редактирование/внесение платежа~~~~
+div.content .page_footer
+  :border-top 1px solid #ccc
+  :margin-top 15px
+  :padding-top 15px
+  ul
+    :padding-left 0px
+    :list-style-type disc
+    li
+      :background none
+      :font-size 13px
+      :list-style-type disc
+      :padding
+        :left 0
+        :bottom 0px
+      :display block
+      :width 100%

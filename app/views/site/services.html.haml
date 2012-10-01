@@ -1,2 +1,12 @@
+- @title = "Услуги и цены"
+
+%h1{:style => "padding-bottom: 10px"} Список услуг
+
 = render :partial => 'order_types/service', :collection => @services
 
+%footer.page_footer
+  %h3 Так-же
+  %ul
+    %li= link_to "Условия оплаты и доставки", payment_page_path
+    %li= link_to "Скачать квитанцию", "/platezh.xls"
+    %li= link_to "Когда необходима независимая экспертиза", "/#l1"

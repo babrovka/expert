@@ -1,0 +1,28 @@
+.header.clear
+  .logo
+    = link_to image_tag("logo.png", :alt=>"logo"), '/'
+    %strong Оценка ущерба, причиненного автомобилю в результате аварии (ДТП)
+  .phone
+    .inner
+      %span +7 (495)
+      762-13-60
+  - if url_for != root_path
+    .user_block
+      .menu
+        - if current_user
+          = link_to current_user.email, :account
+          = link_to "Настройки", '#', :class=>'AmodalOptions'
+          = link_to "Выход", :logout
+        - else
+          = link_to "Личный кабинет", :login, :class=>'AmodalAuth' unless controller.controller_name=='user_sessions'
+.topmenu.clear
+  .topmenuL<>
+    %ul{:class => current_user ? 'shorter' : nil}<>
+      - if current_user
+        %li.my_orders= link_to "Мои заказы", :account
+      %li= link_to "Услуги и цены", :services
+      %li= link_to "Как это работает", :about
+      %li= link_to "Законодательство"
+      %li= link_to "Контакты", :contacts
+  .topmenuR<>
+    = link_to "Заказать экспертизу", :new_order, :class=>"zakaz #{current_user ? nil : 'AmodalReg' }"

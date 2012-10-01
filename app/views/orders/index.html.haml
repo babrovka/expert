@@ -1,12 +1,14 @@
+- @title = @status ? "Заказы: #{@status.menu_name if @status}" : "Заказы"
+
 .cabinet
-  = render :partial=>'menu'
+  = render 'menu'
+
   = form_tag 'orders/update_status' do
     %fieldset
-      = render :partial => 'ordermin', :collection => @orders.all
+      = render :partial => 'ordermin', :collection => @orders
       .manage
         Переместить отмеченные
-        - @ord=Order.new
-        = collection_select :ord, :status, Status.all, :id, :name, :prompt=>"Выберите категорию"
+        = collection_select :order, :status_id, @statuses, :id, :name, :prompt => "Выберите категорию"
         = submit_tag "OK"
 
 = will_paginate @orders

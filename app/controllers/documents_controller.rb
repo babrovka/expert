@@ -1,11 +1,10 @@
 # encoding: utf-8
 class DocumentsController < ApplicationController
-
   before_filter :require_user
 
   def download
-    doc=Document.find(params[:id])
-    if doc.message.order.user==current_user || current_user.admin?
+    doc = Document.find(params[:id])
+    if doc.message.order.user == current_user || current_user.admin?
       if Rails.env.production?
         #Set the X-Accel-Redirect header with the path relative to the /downloads location in nginx
         response.headers['X-Accel-Redirect'] = "/downloads/#{doc.file.url}"
@@ -18,12 +17,7 @@ class DocumentsController < ApplicationController
         send_file doc.file.path
       end
     else
-      flash[:notice]="Документ не доступен"
-      redirect_to :back
+      redirect_to :back, :notice => "Документ не доступен"
     end
   end
-
-
-
 end
-
