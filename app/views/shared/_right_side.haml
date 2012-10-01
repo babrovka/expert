@@ -1,4 +1,13 @@
 .right
+  - if current_user
+    %h3 Личный кабинет
+    %ul.user-links.links
+      %li
+        %strong= current_user.name.presence || current_user.email
+      %li= link_to "Мои заказы", :account
+      %li= link_to "Настройки", '#', :class=>'AmodalOptions'
+      %li= link_to "Выход", :logout
+
   - if current_user && (current_user.supervisor? || current_user.admin?)
     %h3 Управление сайтом
     %ul.links
@@ -7,15 +16,6 @@
       %li= link_to "Заказы", '/orders'
       %li= link_to "Услуги", '/order_types'
   - else
-    - if current_user
-      %h3 Личный кабинет
-      %ul.user-links.links
-        %li
-          %strong= current_user.name.presence || current_user.email
-        %li= link_to "Мои заказы", :account
-        %li= link_to "Настройки", '#', :class=>'AmodalOptions'
-        %li= link_to "Выход", :logout
-
     %h3 Полезные ссылки
     %ul.links
       %li= link_to "Когда необходима независимая экспертиза", "/#l1"
