@@ -6,15 +6,9 @@
     .inner
       %span +7 (495)
       762-13-60
-  - if url_for != root_path
-    .user_block
-      .menu
-        - if current_user
-          = link_to current_user.email, :account
-          = link_to "Настройки", '#', :class=>'AmodalOptions'
-          = link_to "Выход", :logout
-        - else
-          = link_to "Личный кабинет", :login, :class=>'AmodalAuth' unless controller.controller_name=='user_sessions'
+    .menu
+      - unless current_user
+        = link_to "Личный кабинет", :login, :class=>'AmodalAuth' unless controller.controller_name=='user_sessions'
 .topmenu.clear
   .topmenuL<>
     %ul{:class => current_user ? 'shorter' : nil}<>

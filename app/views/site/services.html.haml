@@ -1,12 +1,26 @@
 - @title = "Услуги и цены"
 
-%h1{:style => "padding-bottom: 10px"} Список услуг
+%section.services_page
+  %h1 Список услуг
 
-= render :partial => 'order_types/service', :collection => @services
+  - @services.each do |service|
+    %article[service]
+      .info
+        = link_to "<span>#{service.name}</span>".html_safe,'#', :class=>"opener"
+        .service_info
+          = service.info
+      .price
+        - if service.price>0
+          = service.price
+          %span<> &nbsp;руб.
+        - else
+          бесплатно
+      .action
+        = link_to 'Заказать'.html_safe, new_order_url(:order_type_id => service.id), :class => "green-button #{current_user ? '' : 'AmodalReg' }"
 
-%footer.page_footer
-  %h3 Так-же
-  %ul
-    %li= link_to "Условия оплаты и доставки", payment_page_path
-    %li= link_to "Скачать квитанцию", "/platezh.xls"
-    %li= link_to "Когда необходима независимая экспертиза", "/#l1"
+  %footer.page_footer
+    %h3 Так-же
+    %ul
+      %li= link_to "Условия оплаты и доставки", payment_page_path
+      %li= link_to "Скачать квитанцию", "/platezh.xls"
+      %li= link_to "Когда необходима независимая экспертиза", "/#l1"

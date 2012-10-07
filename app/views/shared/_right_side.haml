@@ -4,9 +4,9 @@
     %ul.user-links.links
       %li
         %strong= current_user.name.presence || current_user.email
-      %li= link_to "Мои заказы", :account
-      %li= link_to "Настройки", '#', :class=>'AmodalOptions'
-      %li= link_to "Выход", :logout
+      %li= link_to "Мои заказы", :account, :class => "right_login"
+      %li= link_to "Настройки", '#', :class=>'AmodalOptions right_login'
+      %li= link_to "Выход", :logout, :class => "right_login"
 
   - if current_user && (current_user.supervisor? || current_user.admin?)
     %h3 Управление сайтом
