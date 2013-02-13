@@ -19,7 +19,7 @@
         = link_to 'Заказать'.html_safe, new_order_url(:order_type_id => service.id), :class => "green-button #{current_user ? '' : 'AmodalReg' }"
 
   %footer.page_footer
-    %h3 Так-же
+    %h3 Также
     %ul
       %li= link_to "Условия оплаты и доставки", payment_page_path
       %li= link_to "Скачать квитанцию", "/platezh.xls"
