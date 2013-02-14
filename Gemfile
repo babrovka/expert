@@ -3,6 +3,11 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.6'
 gem 'mysql2'
 
+gem 'capistrano'
+gem 'unicorn'
+gem 'execjs'
+gem 'therubyracer'
+
 
 gem 'authlogic', :git => 'https://github.com/james2m/authlogic.git', :branch => 'fix-migrations'
 gem "paperclip", "~> 2.4"

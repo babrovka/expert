@@ -1,61 +1,112 @@
+# По умолчанию для дистрибуции проектов используется Bundler.
+# Эта строка включает автоматическое обновление и установку
+# недостающих gems, указанных в вашем Gemfile.
+#
+## !!! Не забудьте добавить
+# gem 'capistrano'
+# gem 'unicorn'
+#
+# в ваш Gemfile.
+#
+# Если вы используете другую систему управления зависимостями,
+# закомментируйте эту строку.
 require 'bundler/capistrano'
-require "rvm/capistrano"
 
-set :application, "carexpert"
-set :rvm_ruby_string, 'ruby-1.9.3-p194'
-set :rvm_type, :system
+## Чтобы не хранить database.yml в системе контроля версий, поместите
+## dayabase.yml в shared-каталог проекта на сервере и раскомментируйте
+## следующие строки.
 
-nodes = [
-  '213.239.211.2'
-]
+# after "deploy:update_code", :copy_database_config
+# task :copy_database_config, roles => :app do
+#   db_config = "#{shared_path}/database.yml"
+#   run "cp #{db_config} #{release_path}/config/database.yml"
+# end
 
-role :app, *nodes
-role :web, *nodes
-role :db,  nodes.first, :primary => true
+# В rails 3 по умолчанию включена функция assets pipelining,
+# которая позволяет значительно уменьшить размер статических
+# файлов css и js.
+# Эта строка автоматически запускает процесс подготовки
+# сжатых файлов статики при деплое.
+# Если вы не используете assets pipelining в своем проекте,
+# или у вас старая версия rails, закомментируйте эту строку.
+load 'deploy/assets'
 
-set :scm, :git
-set :user, "carexpert"
-set :password, "carbagus"
-set :use_sudo, false
+# Для удобства работы мы рекомендуем вам настроить авторизацию
+# SSH по ключу. При работе capistrano будет использоваться
+# ssh-agent, который предоставляет возможность пробрасывать
+# авторизацию на другие хосты.
+# Если вы не используете авторизацию SSH по ключам И ssh-agent,
+# закомментируйте эту опцию.
+ssh_options[:forward_agent] = true
 
-set :deploy_via, :remote_cache
+# Имя вашего проекта в панели управления.
+# Не меняйте это значение без необходимости, оно используется дальше.
+set :application,     "expert"
 
-set :keep_releases, 15
-set :normalize_asset_timestamps, false
+# Сервер размещения проекта.
+set :deploy_server,   "fluorine.locum.ru"
 
-set :repository,  "git@bitbucket.org:paxa/expert.git"
+# Не включать в поставку разработческие инструменты и пакеты тестирования.
+set :bundle_without,  [:development, :test]
 
-set :deploy_to, "/srv/apps/#{application}"
+set :user,            "hosting_babrovka"
+set :login,           "babrovka"
+set :use_sudo,        false
+set :deploy_to,       "/home/#{user}/projects/#{application}"
+set :unicorn_conf,    "/etc/unicorn/#{application}.#{login}.rb"
+set :unicorn_pid,     "/var/run/unicorn/#{application}.#{login}.pid"
+set :bundle_dir,      File.join(fetch(:shared_path), 'gems')
+role :web,            deploy_server
+role :app,            deploy_server
+role :db,             deploy_server, :primary => true
 
-set :branch, 'master'
 
-THIN_COMMAND = "bundle exec thin -R config.ru -e production -d -a 0.0.0.0 -p 50000"
+# Следующие строки необходимы, т.к. ваш проект использует rvm.
+set :rvm_ruby_string, "1.9.3"
+set :rake,            "rvm use #{rvm_ruby_string} do bundle exec rake" 
+set :bundle_cmd,      "rvm use #{rvm_ruby_string} do bundle"
 
 
-namespace :deploy do
-  task :start, :roles => :app do
-    run "cd #{latest_release} && #{THIN_COMMAND} start"
-  end
+# Настройка системы контроля версий и репозитария,
+# по умолчанию - git, если используется иная система версий,
+# нужно изменить значение scm.
+set :scm,             :git
 
-  task :stop, :roles => :app do
-    run "cd #{latest_release} && #{THIN_COMMAND} stop"
-  end
+# Предполагается, что вы размещаете репозиторий Git в вашем
+# домашнем каталоге в подкаталоге git/<имя проекта>.git.
+# Подробнее о создании репозитория читайте в нашем блоге
+# http://locum.ru/blog/hosting/git-on-locum
+#set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/#{application}.git"
 
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "cd #{latest_release} && (#{THIN_COMMAND} stop || test 1) && #{THIN_COMMAND} start "
-  end
+## Если ваш репозиторий в GitHub, используйте такую конфигурацию
+set :repository,    "git@github.com:babrovka/expert.git"
 
-  task :precompile_assets do
-    run "cd #{release_path} && RAILS_ENV=production bundle exec rake assets:precompile"
-  end
+## --- Ниже этого места ничего менять скорее всего не нужно ---
 
-  task :symlink, :roles => :app do
-    run <<-CMD
-      rm -rf #{release_path}/downloads &&
-      ln -nfs #{shared_path}/downloads #{release_path}/downloads
-    CMD
-  end
+before 'deploy:finalize_update', 'set_current_release'
+task :set_current_release, :roles => :app do
+    set :current_release, latest_release
 end
 
-after 'deploy:update_code', 'deploy:precompile_assets'
-after "deploy:update_code", "deploy:symlink"
+
+  set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})"
+
+
+
+# - for unicorn - #
+namespace :deploy do
+  desc "Start application"
+  task :start, :roles => :app do
+    run unicorn_start_cmd
+  end
+
+  desc "Stop application"
+  task :stop, :roles => :app do
+    run "[ -f #{unicorn_pid} ] && kill -QUIT `cat #{unicorn_pid}`"
+  end
+
+  desc "Restart Application"
+  task :restart, :roles => :app do
+    run "[ -f #{unicorn_pid} ] && kill -USR2 `cat #{unicorn_pid}` || #{unicorn_start_cmd}"
+  end
+end
