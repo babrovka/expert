@@ -405,7 +405,6 @@ a.green-button {
   font-size: 13px;
   line-height: 1.3em;
   color: black;
-  background: red;
 }
 /* line 97, ../../app/assets/stylesheets/extra/_mixins.sass */
 a.green-button:hover {
