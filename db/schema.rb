@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090910160711) do
+ActiveRecord::Schema.define(:version => 20130217123010) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "order_id"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20090910160711) do
     t.string   "city"
     t.string   "address"
     t.string   "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "documents", :force => true do |t|
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20090910160711) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", :force => true do |t|
@@ -38,15 +38,35 @@ ActiveRecord::Schema.define(:version => 20090910160711) do
     t.integer  "order_id"
     t.string   "author"
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
   end
 
-  create_table "order_types", :force => true do |t|
-    t.string   "name"
+  create_table "order_payment_statuses", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  add_index "order_payment_statuses", ["order_id"], :name => "index_order_payment_statuses_on_order_id"
+
+  create_table "order_payments", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "payment_num"
+    t.date     "payment_date"
+    t.text     "comment"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "order_payments", ["order_id"], :name => "index_order_payments_on_order_id"
+
+  create_table "order_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "price"
     t.text     "info"
     t.boolean  "active"
@@ -57,8 +77,8 @@ ActiveRecord::Schema.define(:version => 20090910160711) do
     t.integer  "user_id"
     t.boolean  "payment"
     t.integer  "price"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "status_id"
   end
 
@@ -67,15 +87,15 @@ ActiveRecord::Schema.define(:version => 20090910160711) do
     t.integer  "sum"
     t.datetime "payment_date"
     t.string   "comment"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
@@ -83,8 +103,8 @@ ActiveRecord::Schema.define(:version => 20090910160711) do
 
   create_table "statuses", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "menu_name"
   end
 
@@ -99,8 +119,8 @@ ActiveRecord::Schema.define(:version => 20090910160711) do
     t.datetime "current_login_at"
     t.string   "last_login_ip"
     t.string   "current_login_ip"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name"
     t.boolean  "admin"
     t.string   "perishable_token",  :default => "", :null => false

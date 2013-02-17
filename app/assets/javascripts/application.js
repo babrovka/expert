@@ -5,6 +5,7 @@
 //= require services
 //= require new_order
 //= require orders
+//= require order
 
 
 $(document).ready(function() {

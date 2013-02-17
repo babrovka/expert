@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  order: 
+  payment_num: MyString
+  payment_date: 2013-02-17
+  comment: MyText
+
+two:
+  order: 
+  payment_num: MyString
+  payment_date: 2013-02-17
+  comment: MyText

@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def format_date_db(date)
+    date_arr = date.split('.')
+    Date.new(date_arr[2].to_i, date_arr[1].to_i, date_arr[0].to_i)
+  end
+
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)

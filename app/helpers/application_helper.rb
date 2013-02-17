@@ -27,6 +27,10 @@ module ApplicationHelper
    request.fullpath == '/'
  end
 
+ def format_date_user(date)
+   date.try(:strftime, '%d.%m.%Y')
+ end
+
  def error_messages_for(obj)
    obj = instance_variable_get("@#{obj}") if obj.is_a?(Symbol)
    return "" unless obj
