@@ -1,7 +1,15 @@
-= link_to "<span>#{@order.order_payment ? "Оплачено" : "Ожидание оплаты"}</span>".html_safe, "#", :class=>'opener', id: 'order_payment_link'
+= link_to "<span>#{@order.order_payment ? @order.order_payment.status_name : "Ожидание оплаты"}</span>".html_safe, "#", :class=>'opener', id: 'order_payment_link'
 #order_payment_block
   = form_tag order_payment_path do
     = hidden_field_tag :id, @order.id
+    = label_tag :status, 'Статус: '
+    %br
+    = select_tag :status, options_for_select(OrderPayment::STATUSES.map{|k,v| [v,k.to_s.to_i]}, [@order.order_payment.try(:status_name), @order.order_payment.try(:status)])
+    %br
+    = label_tag :sum, 'Сумма: '
+    %br
+    = text_field_tag :sum, @order.order_payment.try(:sum)
+    %br
     = label_tag :payment_num, 'Номер платежа: '
     %br
     = text_field_tag :payment_num, @order.order_payment.try(:payment_num)

@@ -70,6 +70,8 @@ class OrdersController < ApplicationController
       @order.order_payment = OrderPayment.new({
         payment_num: params[:payment_num],
         payment_date: format_date_db(params[:payment_date]),
+        sum: params[:sum],
+        status: params[:status].to_i,
         comment: params[:comment],
       })
       @order.save
