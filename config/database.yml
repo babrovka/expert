@@ -4,7 +4,6 @@ development:
   username: root
   password: local
   encoding: utf8
-  host: localhost
 
 test:
   adapter: mysql2

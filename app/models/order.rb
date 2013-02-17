@@ -5,6 +5,8 @@ class Order < ActiveRecord::Base
   has_many :messages
   has_many :payments
   has_one :delivery
+  has_one :order_payment
+  has_one :order_payment_status
 
   accepts_nested_attributes_for :messages
 

@@ -1,0 +1,17 @@
+= link_to "<span>#{@order.order_payment ? "Оплачено" : "Ожидание оплаты"}</span>".html_safe, "#", :class=>'opener', id: 'order_payment_link'
+#order_payment_block
+  = form_tag order_payment_path do
+    = hidden_field_tag :id, @order.id
+    = label_tag :payment_num, 'Номер платежа: '
+    %br
+    = text_field_tag :payment_num, @order.order_payment.try(:payment_num)
+    %br
+    = label_tag :payment_date, 'Дата платежного документа (дд.мм.гггг): '
+    %br
+    = text_field_tag :payment_date, format_date_user(@order.order_payment.try(:payment_date))
+    %br
+    = label_tag :comment, 'Комментарий:'
+    %br
+    = text_area_tag :comment, @order.order_payment.try(:comment), rows: 3, cols: 30
+    %br
+    = submit_tag 'Сохранить', class: 'textbutton'

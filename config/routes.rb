@@ -13,6 +13,7 @@ Expert::Application.routes.draw do
   resources :order_types
   resources :password_resets
   resource :user_session
+  match '/order_payment' => 'orders#order_payment', as: :order_payment
   match '/account' => 'users#account', :as => :account
   match '/' => 'site#index'
   match '/about' => 'site#about'

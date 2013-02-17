@@ -65,6 +65,19 @@ class OrdersController < ApplicationController
     end
   end
 
+  def order_payment
+    if params[:payment_num] && params[:payment_date] =~ /[0-9]{2}\.[0-9]{2}\.[0-9]{4}/
+      @order.order_payment = OrderPayment.new({
+        payment_num: params[:payment_num],
+        payment_date: format_date_db(params[:payment_date]),
+        comment: params[:comment],
+      })
+      @order.save
+    end
+
+    redirect_to @order
+  end
+
   def change_status
      if @order.update_attributes(:status_id => params[:status_id])
        flash[:notice]="Статус заказа #{order.id} изменен!"
@@ -88,5 +101,6 @@ class OrdersController < ApplicationController
   def find_order
     @order = Order.find(params[:id]) if params[:id]
   end
+
 end
 

@@ -23,7 +23,7 @@
         = link_to "<span>Оплачено</span>".html_safe, "#", :class=>'opener'
       - else
         - if current_user.admin?
-          = link_to "<span>Ожидание оплаты</span>".html_safe, "#", :class=>'opener'
+          = render partial: 'order_payment'
         - else
           = link_to "Оплатить", :payment_page
     .clearboth
