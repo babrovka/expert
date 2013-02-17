@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217123010) do
+ActiveRecord::Schema.define(:version => 20130217205835) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "order_id"
@@ -57,8 +57,10 @@ ActiveRecord::Schema.define(:version => 20130217123010) do
     t.string   "payment_num"
     t.date     "payment_date"
     t.text     "comment"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "status",       :default => 0
+    t.string   "sum"
   end
 
   add_index "order_payments", ["order_id"], :name => "index_order_payments_on_order_id"
