@@ -75,6 +75,7 @@ class OrdersController < ApplicationController
         comment: params[:comment],
       })
       @order.save
+      OrderMailer.payment(@order).deliver
     end
 
     redirect_to @order

@@ -29,6 +29,20 @@ class OrderMailer < ActionMailer::Base
   end
 
 
+  def payment(order, sent_at = Time.now)
+    @order    = order
+    @date     = to_russian_date(order.created_at)
+    @name     = order.user.name
+    @sum      = order.order_payment.sum
+    @payment_date   = to_russian_date(order.order_payment.payment_date)
+    @payment_num    = order.order_payment.payment_num
+    @comment    = order.order_payment.comment
+    
+    
+
+    mail(:to => order.user.email, :subject => "Новое сообщение по заказу №#{order.id}!")
+  end
+  
   def message_notification(message, sent_at = Time.now)
     @message  = message
     @order    = message.order

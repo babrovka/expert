@@ -36,16 +36,16 @@ module Expert
     config.assets.enabled = true
     config.assets.precompile += %w(html5.js ie.css)
 
-    config.action_mailer.delivery_method = :sendmail
-  #  config.action_mailer.smtp_settings = {
-  #     :tls => true,
-  #     :address  => "smtp.gmail.com",
-  #     :port  => 25,
-  #     :domain  => "gmail.com",
-  #     :user_name  => "noreply.ekka@gmail.com",
-  #     :password  => "ekkaekka",
-  #     :authentication  => :plain
-  # }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    address:        "smtp.gmail.com",
+    port:           587, 
+    domain:         "gmail.com",
+    authentication: "plain",
+    user_name:      "babrovka@gmail.com",
+    password:       "QwertQ1234!",
+    enable_starttls_auto: true
+    }
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
