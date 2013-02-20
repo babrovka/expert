@@ -18,6 +18,10 @@ class SiteController < ApplicationController
   def contacts
    @title = "Контакты"
   end
+  
+  def documents
+   @title = "Нормативные документы"
+  end
 
   def services
    @services = OrderType.active.all

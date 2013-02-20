@@ -16,7 +16,7 @@
         %li.my_orders= link_to "Мои заказы", :account
       %li= link_to "Услуги и цены", :services
       %li= link_to "Как это работает", :about
-      %li= link_to "Законодательство"
+      %li= link_to "Нормативные документы", :documents
       %li= link_to "Контакты", :contacts
   .topmenuR<>
     = link_to "Заказать экспертизу", :new_order, :class=>"zakaz #{current_user ? nil : 'AmodalReg' }"
