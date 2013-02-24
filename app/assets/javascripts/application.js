@@ -1,4 +1,3 @@
-//= require jquery
 //= require jquery_ujs
 //= require jquery.simplemodal.min
 //= require curvycorners.src.js
@@ -6,6 +5,7 @@
 //= require new_order
 //= require orders
 //= require order
+//= require_tree .
 
 
 $(document).ready(function() {

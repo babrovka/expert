@@ -25,10 +25,3 @@
       %li= link_to "Задать вопрос специалисту", new_order_path(:order_type_id => 6), :class => "#{current_user ? '' : 'AmodalReg' }"
       - if !current_user && controller.controller_name != 'user_sessions'
         %li= link_to "Войти в личный кабинет", :login, :class => 'AmodalAuth right_login'
-
-    - if url_for == root_path
-      %h3 Для вас работает:
-      .face
-        %strong<> Алексей Мерцалов
-        %p
-          Специалист в области страхования с большим опытом. Ну что-то еще, что даст пользователям понять как тут все здорово.
