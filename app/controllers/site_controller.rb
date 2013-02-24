@@ -7,6 +7,10 @@ class SiteController < ApplicationController
 
 
   def about
+   @title = "Идея проекта"
+  end
+  
+  def howto
    @title = "Как это работает"
   end
 

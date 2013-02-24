@@ -17,6 +17,7 @@ Expert::Application.routes.draw do
   match '/account' => 'users#account', :as => :account
   match '/' => 'site#index'
   match '/about' => 'site#about'
+  match '/howto' => 'site#howto'
   match '/documents' => 'site#documents'
   match '/payment' => 'site#payment', :as => :payment_page
   match '/services' => 'site#services'
