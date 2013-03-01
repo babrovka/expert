@@ -4,6 +4,11 @@
     = link_to "<span>#{order.order_type.name}</span>".html_safe, order
   .serviceStatus
     %span.active= order.status.name
+  .serviceStatus
+    %span= order.order_payment.try(:status_name)
+  .serviceStatus
+    %span= order.order_payment.try(:sum) 
+    %span руб.
   .serviceR
     %p.price
       - if order.price && order.price.to_i>0
