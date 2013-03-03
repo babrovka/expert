@@ -13,6 +13,10 @@ class SiteController < ApplicationController
   def howto
    @title = "Как это работает"
   end
+  
+  def pravila_photo
+   @title = "Правила фотографирования"
+  end
 
   def payment
    @title = "Как оплатить"
