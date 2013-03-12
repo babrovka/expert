@@ -19,6 +19,6 @@
     - if @order.paid_for?
       Оплачен
     - elsif order.price && order.price.to_i>0
-      = link_to "Как оплатить", "/payment", :class=>'link'
+      = link_to "Как оплатить", payment_page_path(order_id: order.id), :class=>'link'
       
 
