@@ -15,6 +15,7 @@ gem 'russian'
 gem 'will_paginate'
 gem 'roadie' # nice emails
 gem 'make_resourceful'
+gem 'spreadsheet'
 
 gem 'exception_notification'
 
