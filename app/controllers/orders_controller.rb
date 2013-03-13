@@ -1,8 +1,11 @@
 # encoding: utf-8
+require 'spreadsheet'
+
 class OrdersController < ApplicationController
   before_filter :require_user
-  before_filter :require_admin, :except => [:new, :create, :show]
+  before_filter :require_admin, :except => [:new, :create, :show, :download]
   before_filter :find_order
+  before_filter :check_ownership, only: :download
 
   def new
     @title = "Новый заказ"
@@ -65,6 +68,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def download
+    book = Spreadsheet.open Rails.root.join('public', 'platezh.xls')
+    fill_sheet(book.worksheet(0))
+
+    output = StringIO.new 
+    book.write output
+    send_data output.string, :filename => "platezh.xls", :type =>  "application/vnd.ms-excel"
+  end
+
   def order_payment
     if params[:payment_num] && params[:payment_date] =~ /[0-9]{2}\.[0-9]{2}\.[0-9]{4}/
       @order.order_payment = OrderPayment.new({
@@ -103,6 +115,26 @@ class OrdersController < ApplicationController
 
   def find_order
     @order = Order.find(params[:id]) if params[:id]
+  end
+
+  private
+  def check_ownership
+    raise 'У вас нет прав на этот заказ' unless current_user.admin || @order.user == current_user
+  end
+
+  def fill_sheet(sheet)
+    order_date = @order.created_at.strftime('%d/%m/%Y')
+    
+    row = sheet.row(8)
+    row[21] = @order.id
+    row[26] = order_date
+    row = sheet.row(11)
+    row[17] = @order.price
+    row = sheet.row(26)
+    row[21] = @order.id
+    row[26] = order_date
+    row = sheet.row(29)
+    row[17] = @order.price
   end
 
 end

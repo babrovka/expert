@@ -14,6 +14,7 @@ Expert::Application.routes.draw do
   resources :password_resets
   resource :user_session
   match '/order_payment' => 'orders#order_payment', as: :order_payment
+  match '/order_download' => 'orders#download', as: :order_download
   match '/account' => 'users#account', :as => :account
   match '/' => 'site#index'
   match '/about' => 'site#about'
