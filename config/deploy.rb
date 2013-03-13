@@ -91,7 +91,13 @@ end
 
   set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})"
 
-
+namespace(:customs) do
+  task :config, :roles => :app do
+    run <<-CMD
+      ln -nfs #{shared_path}/system/database.yml #{release_path}/config/database.yml
+    CMD
+  end
+end
 
 # - for unicorn - #
 namespace :deploy do
@@ -110,3 +116,6 @@ namespace :deploy do
     run "[ -f #{unicorn_pid} ] && kill -USR2 `cat #{unicorn_pid}` || #{unicorn_start_cmd}"
   end
 end
+
+after "deploy:update_code", "customs:config"
+after "deploy", "deploy:cleanup"
