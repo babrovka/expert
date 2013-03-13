@@ -94,7 +94,7 @@ end
 namespace(:customs) do
   task :config, :roles => :app do
     run <<-CMD
-      ln -nfs #{shared_path}/system/database.yml #{release_path}/config/database.yml
+      ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml
     CMD
   end
 end
