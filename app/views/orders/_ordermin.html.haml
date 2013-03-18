@@ -15,7 +15,7 @@
       - else
         бесплатно
     - if @order.paid_for?
-      Оплачено
+      = order.order_payment.try(:status_name)
     - elsif ordermin.price && ordermin.price.to_i>0
       Ожидание оплаты
 
