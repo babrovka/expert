@@ -14,8 +14,8 @@
         %span руб.
       - else
         бесплатно
-    - if @order.paid_for?
-      = order.order_payment.try(:status_name)
+    - if ordermin.order_payment.try(:status_name).present?
+      = ordermin.order_payment.status_name
     - elsif ordermin.price && ordermin.price.to_i>0
       Ожидание оплаты
 
