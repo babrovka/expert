@@ -36,15 +36,16 @@ module Expert
     config.assets.enabled = true
     config.assets.precompile += %w(html5.js ie.css)
 
-    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.delivery_method = :smtp    
     config.action_mailer.smtp_settings = {
-    address:        "smtp.gmail.com",
-    port:           587, 
-    domain:         "gmail.com",
-    authentication: "plain",
-    user_name:      "babrovka@gmail.com",
-    password:       "QwertQ1234!",
-    enable_starttls_auto: true
+      address:        "smtp.locum.ru",
+      port:           25, 
+      domain:         "locum.ru",
+      authentication: "login",
+      user_name:      "robot@expert.babrovka.lclients.ru",
+      password:       "f1o2o3d4",
+      enable_starttls_auto: false,
+      openssl_verify_mode: false 
     }
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
