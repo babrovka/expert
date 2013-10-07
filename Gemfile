@@ -4,7 +4,7 @@ gem 'rails', '3.2.6'
 gem 'mysql2'
 
 gem 'capistrano'
-gem 'unicorn'
+gem 'rvm-capistrano'
 gem 'execjs'
 gem 'therubyracer'
 
