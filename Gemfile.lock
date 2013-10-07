@@ -64,7 +64,7 @@ GEM
     curb (0.8.3)
     daemons (1.1.9)
     erubis (2.7.0)
-    eventmachine (1.0.0)
+    eventmachine (1.0.3)
     exception_notification (3.0.1)
       actionmailer (>= 3.0.4)
     execjs (1.4.0)
