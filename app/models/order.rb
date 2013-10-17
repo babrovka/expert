@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :status
 
   def paid_for?
-     price && price>0 && price<=payments.sum(:sum)
+     price && price>0 && price<=payments.sum(:sum) || price == 0
   end
 
   def with_empty_message
