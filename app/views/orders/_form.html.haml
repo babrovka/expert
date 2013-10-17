@@ -9,6 +9,23 @@
   .clear
   %hr
   #order_body
+    %h2 Доставка
+    = order_form.fields_for @delivery do |d|
+      %label{:for => :zip} индекс:
+      = d.text_field :zip
+      %br
+      %br
+      %label{:for => :city} город:
+      = d.text_field :city
+      %br
+      %br
+      %label{:for => :city} адрес:
+      = d.text_field :city
+      %br
+      %br
+      %label{:for => :comment} комментарий:
+      = d.text_area :comment
+      %hr
     = order_form.fields_for :messages do |msg|
       .span-12
         %p
