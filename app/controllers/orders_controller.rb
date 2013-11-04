@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     @order = Order.new.with_empty_message
     @order.order_type_id = params[:order_type_id].to_i if params[:order_type_id]
     @default_type = @order.order_type || OrderType.active.first
-    @delivery = @order.build_delivery
+    #@delivery = @order.build_delivery
   end
 
   def create
