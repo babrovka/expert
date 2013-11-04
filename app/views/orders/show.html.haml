@@ -56,7 +56,7 @@
         %br
         = link_to "Изменить", edit_delivery_url(@order.delivery)
         = link_to "Удалить", delivery_url(@order.delivery), :method => :delete, :confirm => "Удалить запрос на доставку?"
-  - elsif @order.paid_for?
+  - elsif @order.order_type.delivery
     = link_to "Заказать доставку документов", new_delivery_url(:order_id => @order.id), :id => "new_delivery_#{@order.id}", :class => "make_order AmodalZakazDokumentov"
 
 #modalPlatejNew.modal.modalPlatej
