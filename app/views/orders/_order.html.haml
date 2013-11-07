@@ -16,9 +16,11 @@
         %span руб.
       - else
         бесплатно
-    - if @order.paid_for?
+    - if order.price && order.price==0
+      = nil
+    - elsif order.paid_for?
       Оплачен
-    - elsif order.price && order.price.to_i>0
+    - elsif
       = link_to "Как оплатить", payment_page_path(order_id: order.id), :class=>'link'
       
 

@@ -52,6 +52,12 @@
     .delivery
       Заказана доставка документов по адресу:
       = @order.delivery.full_address
+      %br
+      %br
+      Комментарий к доставке:
+      %br
+      = @order.delivery.comment
+      %br
       - if current_user.admin?
         %br
         = link_to "Изменить", edit_delivery_url(@order.delivery)

@@ -1,7 +1,8 @@
 %article[order_type]
   .name
-    = link_to "<span>#{order_type.name}</span>".html_safe, '#', :class => "opener"
-    %div{:class => defined?(expanded) && expanded ? "" : 'service_info'}
+    %h2
+      = order_type.name
+    %div
       = order_type.info
   .price
     = number_to_currency order_type.price
