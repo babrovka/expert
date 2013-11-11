@@ -26,7 +26,11 @@ gem 'json'
 gem 'haml'
 
 gem 'mailgun-rails', :group => :development
-gem 'thin'
+
+
+group :development do
+  gem 'thin'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
