@@ -17,6 +17,8 @@ gem 'roadie' # nice emails
 gem 'make_resourceful'
 gem 'spreadsheet'
 
+gem 'unicorn'
+
 gem 'exception_notification'
 
 gem 'execjs'
