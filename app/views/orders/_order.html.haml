@@ -1,7 +1,7 @@
 .service.clear
   .serviceL
     = "#{order.id}."
-    = link_to "<span>#{order.order_type.name}</span>".html_safe, order
+    = link_to "<span>#{order.order_type.try(:name)}</span>".html_safe, order
   .serviceStatus
     %span.active= order.status.name
   .serviceStatus
